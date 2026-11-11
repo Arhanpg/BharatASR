@@ -1,0 +1,5 @@
+typer>=0.12
+rich>=13.7
+soundfile>=0.12
+numpy>=1.26
+jiwer>=3.0
