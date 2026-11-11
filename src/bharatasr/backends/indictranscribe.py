@@ -1,7 +1,7 @@
 """Adapter for the official Bodhan AI Indic-Transcribe Core/Flex inference.py CLI.
 
 The model repository bundles its own inference pipeline. Invoking that script
-avoids guessing or reimplementing its audio preprocessing and chunking logic.
+avoids reimplementing its audio preprocessing and long-audio chunking logic.
 """
 from __future__ import annotations
 
@@ -49,6 +49,8 @@ class IndicTranscribeBackend(ASRBackend):
         command = [sys.executable, str(self.inference_script), str(path)]
         if language.lower() not in {"auto", "none"}:
             command.extend(["--lang", language.lower()])
+        else:
+            command.append("--show-lang")
 
         started = time.perf_counter()
         process = subprocess.run(
@@ -69,12 +71,16 @@ class IndicTranscribeBackend(ASRBackend):
                 "Indic-Transcribe returned no stdout transcript. "
                 f"stderr: {stderr[-2000:]}"
             )
-        # Upstream's documented multi-file output is path<TAB>transcript.
+        # Upstream's documented multi-file CLI emits path<TAB>transcript.
+        # For a single file, the last non-empty stdout line is the hypothesis.
         last_line = lines[-1]
         transcript = last_line.split("\t", 1)[-1].strip()
         transcript = re.sub(r"^transcript\s*:\s*", "", transcript, flags=re.IGNORECASE)
         if not transcript:
-            raise RuntimeError("Could not parse transcript from Indic-Transcribe CLI output.")
+            raise RuntimeError(
+                "Could not parse transcript from Indic-Transcribe CLI output. "
+                f"Last stdout line: {last_line!r}"
+            )
 
         return TranscriptionResult(
             backend=self.name, model=self.model_id, transcript=transcript,
@@ -86,6 +92,6 @@ class IndicTranscribeBackend(ASRBackend):
                 "model_directory": str(self.model_dir),
                 "stdout_last_line": last_line,
                 "stderr_tail": stderr[-2000:],
-                "note": "Utterance-level transcript; upstream CLI output is retained for audit.",
+                "note": "Utterance-level transcript; full stdout/stderr tails are retained for audit.",
             },
         )
