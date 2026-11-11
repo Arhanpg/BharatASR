@@ -1,0 +1,43 @@
+{
+  "description": "Optional ASR vocabulary hints for Sanskrit, Prakrit-aware review, Jain vocabulary and common mantra syllables. These are prompts only: BharatASR never replaces or autocorrects transcript text using this file.",
+  "priority_terms": [
+    "ॐ", "OM", "AUM",
+    "ह्रीं", "HRIM", "Hrim", "Hreem",
+    "क्लीं", "KLIEM", "Klim", "Kleem",
+    "श्रीं", "SHRIM", "Shrim", "Shreem",
+    "ऐं", "AIM", "Aim", "क्रीं", "KREEM", "Kreem",
+    "स्वाहा", "SVAHA", "Svaha", "Swaha",
+    "नमः", "Namah", "अर्हं", "Arham"
+  ],
+  "terms": [
+    {"term": "गं", "variants": ["Gam", "Gaṃ"]},
+    {"term": "दुं", "variants": ["Dum", "Duṃ"]},
+    {"term": "नमो", "variants": ["Namo"]},
+    {"term": "णमो अरिहंताणं", "variants": ["Namo Arihantanam"]},
+    {"term": "णमो सिद्धाणं", "variants": ["Namo Siddhanam"]},
+    {"term": "णमो आयरियाणं", "variants": ["Namo Ayariyanam"]},
+    {"term": "णमो उवज्झायाणं", "variants": ["Namo Uvajjhayanam"]},
+    {"term": "णमो लोए सव्वसाहूणं", "variants": ["Namo Loe Savvasahunam"]},
+    {"term": "णमोकार मंत्र", "variants": ["Namokar Mantra", "Navkar Mantra"]},
+    {"term": "समवसरण", "variants": ["Samavasaran", "Samavasaraṇa"]},
+    {"term": "तीर्थंकर", "variants": ["Tirthankar", "Tīrthaṅkara"]},
+    {"term": "केवलज्ञान", "variants": ["Keval Gyan", "Kevalajñāna"]},
+    {"term": "दिव्यध्वनि", "variants": ["Divya Dhwani", "Divyadhvani"]},
+    {"term": "आदिनाथ", "variants": ["Adinath", "Ādinātha"]},
+    {"term": "ऋषभदेव", "variants": ["Rishabhdev", "Ṛṣabhadeva"]},
+    {"term": "जिनसेन", "variants": ["Jinasena"]},
+    {"term": "यतिवृषभ", "variants": ["Yativrishabh", "Yativṛṣabha"]},
+    {"term": "तिलोयपण्णत्ति", "variants": ["Tiloyapannatti"]},
+    {"term": "आदिपुराण", "variants": ["Adipurana", "Ādipurāṇa"]},
+    {"term": "गाथा", "variants": ["Gatha", "Gāthā"]},
+    {"term": "श्लोक", "variants": ["Shloka", "Śloka"]},
+    {"term": "सूत्र", "variants": ["Sutra", "Sūtra"]},
+    {"term": "प्राकृत", "variants": ["Prakrit"]},
+    {"term": "संस्कृत", "variants": ["Sanskrit", "Saṃskṛta"]}
+  ],
+  "notes": [
+    "A mantra syllable can have multiple legitimate orthographic traditions. Do not treat the variants above as interchangeable ground truth.",
+    "Do not automatically convert Roman text such as HRIM/KLIEM into Devanagari or vice versa.",
+    "Prakrit spellings vary by canonical text, region, period and recitation tradition. Preserve the model output and mark doubtful words for scholarly review."
+  ]
+}
