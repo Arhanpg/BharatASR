@@ -29,7 +29,7 @@ def download_youtube_audio(url: str, output_dir: Path) -> list[Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     options = {
         "format": "bestaudio/best",
-        "outtmpl": str(output_dir / "%(playlist_index)03d_%(id)s.%(ext)s"),
+        "outtmpl": str(output_dir / "%(id)s.%(ext)s"),
         "noplaylist": False,
         "ignoreerrors": True,
         "quiet": False,
@@ -45,7 +45,15 @@ def download_youtube_audio(url: str, output_dir: Path) -> list[Path]:
         if not info:
             raise RuntimeError("yt-dlp could not read the supplied YouTube URL.")
 
-    audio_files = sorted(output_dir.glob("*.wav"))
+    entries = info.get("entries") or [info]
+    expected = [
+        output_dir / f"{str(entry.get('id'))}.wav"
+        for entry in entries
+        if entry and entry.get("id")
+    ]
+    audio_files = [path for path in expected if path.is_file()]
     if not audio_files:
-        raise RuntimeError("No audio was downloaded. Check the URL, video availability and FFmpeg installation.")
+        raise RuntimeError(
+            "No audio was downloaded. Check the URL, video availability and FFmpeg installation."
+        )
     return audio_files

@@ -10,7 +10,7 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
-from bharatasr.io import create_run_dir, save_result, write_json
+from bharatasr.io import create_run_dir, get_audio_duration, save_result, write_json
 from bharatasr.metrics import compare_run
 from bharatasr.youtube import download_youtube_audio
 
@@ -46,9 +46,11 @@ def _run_one_audio(
     source_url: str | None = None,
 ) -> Path:
     run_dir = create_run_dir(audio_path, output)
+    duration = get_audio_duration(audio_path)
     write_json(run_dir / "input.json", {
         "audio_path": str(audio_path.resolve()),
         "audio_name": audio_path.name,
+        "audio_duration_seconds": duration,
         "source_url": source_url,
         "language_requested": language,
         "selected_models": selected,
@@ -61,6 +63,7 @@ def _run_one_audio(
         try:
             backend = _backend(name, whisper_model=whisper_model)
             result = backend.transcribe(audio_path, language)
+            result.metadata.setdefault("audio_duration_seconds", duration)
             save_result(run_dir, result)
             rows.append({
                 "backend": name, "status": "success",
@@ -116,11 +119,9 @@ def run(
     if not selected:
         raise typer.BadParameter("Select at least one backend.")
 
-    if audio is not None:
-        audio_paths = [audio]
-    else:
-        audio_paths = download_youtube_audio(youtube_url or "", Path(".cache") / "youtube_audio")
-
+    audio_paths = [audio] if audio is not None else download_youtube_audio(
+        youtube_url or "", Path(".cache") / "youtube_audio"
+    )
     for audio_path in audio_paths:
         _run_one_audio(
             audio_path=audio_path,
