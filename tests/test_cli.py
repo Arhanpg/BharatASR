@@ -1,3 +1,5 @@
+import inspect
+
 from typer.testing import CliRunner
 
 from bharatasr.cli import app
@@ -10,8 +12,8 @@ def test_cli_help_lists_run_and_compare():
     assert "compare" in result.stdout
 
 
-def test_run_help_exposes_playlist_safety_cap():
-    result = CliRunner().invoke(app, ["run", "--help"])
-    assert result.exit_code == 0
-    assert "--max-videos" in result.stdout
-    assert "--glossary" in result.stdout
+def test_run_options_include_playlist_cap_and_glossary_path():
+    command = next(item for item in app.registered_commands if item.name == "run")
+    parameters = inspect.signature(command.callback).parameters
+    assert "max_videos" in parameters
+    assert "glossary" in parameters

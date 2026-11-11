@@ -1,18 +1,18 @@
 {
   "description": "Optional ASR vocabulary hints for Sanskrit, Prakrit-aware review, Jain vocabulary and common mantra syllables. These are prompts only: BharatASR never replaces or autocorrects transcript text using this file.",
+  "priority_terms": [
+    "ॐ", "OM", "AUM",
+    "ह्रीं", "HRIM", "Hrim", "Hreem",
+    "क्लीं", "KLIEM", "Klim", "Kleem",
+    "श्रीं", "SHRIM", "Shrim", "Shreem",
+    "ऐं", "AIM", "Aim", "क्रीं", "KREEM", "Kreem",
+    "स्वाहा", "SVAHA", "Svaha", "Swaha",
+    "नमः", "Namah", "अर्हं", "Arham"
+  ],
   "terms": [
-    {"term": "ॐ", "variants": ["Om", "Aum", "ओम्", "ओं"]},
-    {"term": "ह्रीं", "variants": ["Hrim", "Hreem", "Hrīm", "Hriṃ", "HRIM"]},
-    {"term": "क्लीं", "variants": ["Klim", "Kleem", "Klīm", "Kliṃ", "KLIEM"]},
-    {"term": "श्रीं", "variants": ["Shrim", "Shreem", "Śrīm", "Śrīṃ"]},
-    {"term": "ऐं", "variants": ["Aim", "Ayiṃ"]},
-    {"term": "क्रीं", "variants": ["Kreem", "Krim", "Krīṃ"]},
     {"term": "गं", "variants": ["Gam", "Gaṃ"]},
     {"term": "दुं", "variants": ["Dum", "Duṃ"]},
-    {"term": "स्वाहा", "variants": ["Svaha", "Swaha", "Svāhā"]},
-    {"term": "नमः", "variants": ["Namah", "Namaḥ"]},
     {"term": "नमो", "variants": ["Namo"]},
-    {"term": "अर्हं", "variants": ["Arham", "Arahṃ"]},
     {"term": "णमो अरिहंताणं", "variants": ["Namo Arihantanam"]},
     {"term": "णमो सिद्धाणं", "variants": ["Namo Siddhanam"]},
     {"term": "णमो आयरियाणं", "variants": ["Namo Ayariyanam"]},
