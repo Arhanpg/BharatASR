@@ -76,9 +76,20 @@ Model card: https://huggingface.co/ARTPARK-IISc/SraVaani-1.0
 
 AI4Bharat provides a multilingual 600M checkpoint and language-specific NeMo checkpoints. The model is a hybrid RNNT/CTC system. Follow the official AI4Bharat NeMo fork installation instructions in a dedicated Linux/WSL environment, then download the checkpoint for your language.
 
-```powershell
-$env:INDICCONFORMER_CHECKPOINT = "D:\models\indicconformer_hi.nemo"
-pip install -r requirements-indicconformer.txt
+First install the AI4Bharat NeMo fork in a dedicated Linux/WSL environment, exactly as required by the model authors:
+
+```bash
+git clone https://github.com/AI4Bharat/NeMo.git
+cd NeMo
+git checkout nemo-v2
+bash reinstall.sh
+```
+
+Then, from the Python environment where that fork is installed, run BharatASR:
+
+```bash
+export INDICCONFORMER_CHECKPOINT="$HOME/models/indicconformer_hi.nemo"
+export INDICCONFORMER_DEVICE=cpu
 python -m bharatasr run --audio data/audio/sample.wav --language hi --models indicconformer
 ```
 
