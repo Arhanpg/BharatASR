@@ -54,7 +54,7 @@ python -m bharatasr run --audio data/audio/sample.wav --language hi --models whi
 
 Or use `--models all` to run all local backends. It never enables Sarvam. A backend that is not installed, has no checkpoint, or is gated will create an `error.json` in its own output folder without stopping other backends.
 
-Use ISO language codes such as `hi`, `mr`, `kn`, `ta`, `te`, `bn`, `gu`, `ml`, `pa`, `or`, `as`, `sa`, or `auto`. Language support varies by model.
+Use `--language auto` by default. You may also specify a language name or code such as `hi`, `mr`, `kn`, `ta`, `te`, `bn`, `gu`, `ml`, `pa`, `or`, `as`, or `sa`. `--language Prakrit` is an experimental review-only mode: it keeps automatic multilingual inference and never pretends Prakrit is a supported dedicated model language.
 
 ## Optional local model setup
 
@@ -162,15 +162,15 @@ VidTrace's YouTube extraction workflow is also carried into BharatASR: yt-dlp do
 pip install -r requirements-youtube.txt
 # Install FFmpeg and confirm: ffmpeg -version
 
-python -m bharatasr run --youtube-url "https://www.youtube.com/watch?v=VIDEO_ID" --language hi --models whisper,sravaani,indictranscribe
+python -m bharatasr run --youtube-url "https://www.youtube.com/watch?v=VIDEO_ID" --language auto --models whisper,indictranscribe
 
 # Or a playlist (each successfully downloaded item gets its own output run)
-python -m bharatasr run --youtube-url "https://www.youtube.com/playlist?list=PLAYLIST_ID" --language auto --models all
+python -m bharatasr run --youtube-url "https://www.youtube.com/playlist?list=PLAYLIST_ID" --language auto --max-videos 20 --models all
 ```
 
-Downloaded audio is cached under `.cache/youtube_audio/` so interrupted tests can be rerun without necessarily downloading every file again. Do not publish or commit copyrighted audio or transcripts without the required permissions.
+Downloaded audio is cached under `.cache/youtube_audio/`, normalized to mono 16 kHz PCM WAV, and accompanied by source metadata. Playlist downloads are limited to 20 videos by default; change the limit explicitly with `--max-videos` (1–100). The downloader is audio-only and does not configure cookies or access-control bypass. Do not publish or commit copyrighted audio or transcripts without the required permissions.
 
-## Accuracy evaluation (WER / CER)
+## Sanskrit, Prakrit and mantra preservation\n\nBharatASR includes `configs/sacred_terms.json` as an optional Whisper vocabulary hint file. It contains forms such as OM/ॐ, HRIM/ह्रीं, KLIEM/क्लीं, and selected Jain terminology. These are hints only: transcript text is never rewritten, transliterated or corrected automatically. Each backend saves `transcript.review.md` with manual-review warnings. For Prakrit, use `--language Prakrit`; automatic multilingual recognition is attempted, but no integrated model currently documents a dedicated Prakrit mode. See [the transcription policy](docs/TRANSCRIPTION_POLICY.md) for the review rules.\n\n## Accuracy evaluation (WER / CER)
 
 Create a UTF-8 reference transcript at `data/references/sample.txt`. Make sure it is manually verified against the audio.
 
@@ -200,9 +200,9 @@ Runtime, audio duration, device, precision and model metadata are saved separate
 
 ## Current limitations
 
-- Whisper provides word timestamps; the other initial adapters may return utterance-level text only.
+- Whisper provides word timestamps and multilingual per-segment decoding. The other initial adapters may return utterance-level text only.
 - Indic-Transcribe uses its bundled CLI and the adapter records the resulting console output for traceability; if upstream output formatting changes, adjust the parser. Core/Flex checkpoints are ~4.6 GB and should run on CPU by default on a 4 GB GPU laptop.
-- The IndicConformer checkpoint must match the supplied language code.
+- IndicConformer does not provide automatic language identification in this adapter; set `INDICCONFORMER_LANGUAGE` to match the checkpoint. It is skipped with a clear message when that value is missing.
 - Model-level language support is not identical; a language absent from a model should not be treated as a failed accuracy result.
 - A model output is not human-verified and must not be presented as ground truth.
 
