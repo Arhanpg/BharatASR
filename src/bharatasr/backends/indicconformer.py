@@ -20,6 +20,12 @@ class IndicConformerBackend(ASRBackend):
                 "Set INDICCONFORMER_CHECKPOINT to a downloaded .nemo checkpoint. "
                 "See https://github.com/AI4Bharat/IndicConformerASR"
             )
+        self.checkpoint_path = Path(checkpoint)
+        if not self.checkpoint_path.is_file():
+            raise FileNotFoundError(
+                f"IndicConformer checkpoint not found: {self.checkpoint_path}"
+            )
+
         try:
             import nemo.collections.asr as nemo_asr
             import torch
@@ -29,18 +35,18 @@ class IndicConformerBackend(ASRBackend):
                 "See https://github.com/AI4Bharat/IndicConformerASR"
             ) from exc
 
-        checkpoint_path = Path(checkpoint)
-        if not checkpoint_path.is_file():
-            raise FileNotFoundError(f"IndicConformer checkpoint not found: {checkpoint_path}")
+        self.device = os.getenv("INDICCONFORMER_DEVICE", "cpu").strip().lower()
+        if self.device not in {"cpu", "cuda"}:
+            raise ValueError("INDICCONFORMER_DEVICE must be 'cpu' or 'cuda'")
+        if self.device == "cuda" and not torch.cuda.is_available():
+            raise RuntimeError("INDICCONFORMER_DEVICE=cuda requested, but CUDA is unavailable.")
 
-        # The released IndicConformer checkpoints are hybrid RNNT/CTC models.
-        # NeMo's generic ASRModel loader restores the concrete class from the
-        # checkpoint metadata; forcing EncDecCTCModel would reject RNNT models.
+        # The released checkpoints are hybrid RNNT/CTC models. Restore using
+        # NeMo's generic ASRModel so it discovers the concrete class from config.
         self.model = nemo_asr.models.ASRModel.restore_from(
-            restore_path=str(checkpoint_path)
+            restore_path=str(self.checkpoint_path)
         )
         self.model.eval()
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.model = self.model.to(self.device)
 
     def transcribe(self, audio_path: Path, language: str = "hi") -> TranscriptionResult:
@@ -48,7 +54,6 @@ class IndicConformerBackend(ASRBackend):
         if not path.is_file():
             raise FileNotFoundError(path)
         start = time.perf_counter()
-
         # Use the checkpoint's configured/default hybrid decoder.
         outputs = self.model.transcribe(
             audio=[str(path)], batch_size=1, return_hypotheses=False
@@ -66,7 +71,7 @@ class IndicConformerBackend(ASRBackend):
                 "device": self.device,
                 "language_requested": language,
                 "decoder": "checkpoint default hybrid decoder",
-                "checkpoint": str(checkpoint_path),
+                "checkpoint": str(self.checkpoint_path),
             },
         )
 

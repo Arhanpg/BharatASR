@@ -1,5 +1,9 @@
-# Install AI4Bharat's NeMo fork as documented by the model authors.
-# Do not combine blindly with the standard project venv; use a dedicated Python 3.10 environment.
-# https://github.com/AI4Bharat/IndicConformerASR
-# https://github.com/AI4Bharat/NeMo
-nemo_toolkit[asr]
+# IndicConformer uses the AI4Bharat NeMo fork, not an arbitrary stock NeMo wheel.
+# In a dedicated Linux / WSL environment, follow the upstream install exactly:
+# git clone https://github.com/AI4Bharat/NeMo.git
+# cd NeMo
+# git checkout nemo-v2
+# bash reinstall.sh
+# Then return to BharatASR and install the project: pip install -e .
+#
+# Upstream: https://github.com/AI4Bharat/IndicConformerASR

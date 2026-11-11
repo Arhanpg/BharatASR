@@ -74,7 +74,7 @@ Model card: https://huggingface.co/ARTPARK-IISc/SraVaani-1.0
 
 ### 2. AI4Bharat IndicConformer
 
-AI4Bharat provides a multilingual 600M checkpoint and language-specific NeMo checkpoints. Follow the official repository's AI4Bharat NeMo installation instructions, then download the checkpoint for your language.
+AI4Bharat provides a multilingual 600M checkpoint and language-specific NeMo checkpoints. The model is a hybrid RNNT/CTC system. Follow the official AI4Bharat NeMo fork installation instructions in a dedicated Linux/WSL environment, then download the checkpoint for your language.
 
 ```powershell
 $env:INDICCONFORMER_CHECKPOINT = "D:\models\indicconformer_hi.nemo"
@@ -82,7 +82,7 @@ pip install -r requirements-indicconformer.txt
 python -m bharatasr run --audio data/audio/sample.wav --language hi --models indicconformer
 ```
 
-The adapter uses the official NeMo `EncDecCTCModel.restore_from` workflow and CTC decoder. The selected checkpoint and language code must match. For model downloads and the full language list, see https://github.com/AI4Bharat/IndicConformerASR.
+The adapter uses NeMo's generic `ASRModel.restore_from` loader so the checkpoint's hybrid RNNT/CTC model class is restored from its own metadata. CPU is the default; use `INDICCONFORMER_DEVICE=cuda` only when enough VRAM is available. The checkpoint and language code must match. For model downloads, install steps and the language list, see https://github.com/AI4Bharat/IndicConformerASR.
 
 ### 3. AI4Bharat / Bodhan Indic-Transcribe Core or Flex
 
@@ -111,7 +111,7 @@ $env:SARVAM_API_KEY = "your_api_key"
 python -m bharatasr run --audio data/audio/sample.wav --language hi --models sarvam --enable-sarvam --confirm-metered-api
 ```
 
-This confirmation does not add a payment method or top up credits. Do not run the Sarvam backend if you want strictly local inference. Pricing and API docs: https://docs.sarvam.ai/api/getting-started/pricing and https://docs.sarvam.ai/api-reference/speech-to-text/transcribe.
+The synchronous Sarvam REST endpoint supports audio up to 30 seconds; longer recordings need its separate batch endpoint, which is not yet wired into this initial adapter. Try it only on short clips. This confirmation does not add a payment method or top up credits. Do not run the Sarvam backend if you want strictly local inference. Pricing and API docs: https://docs.sarvam.ai/api/getting-started/pricing and https://docs.sarvam.ai/api-reference/speech-to-text/transcribe.
 
 ## Output structure
 
