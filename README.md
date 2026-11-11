@@ -4,60 +4,118 @@
 
 BharatASR runs multiple local/self-hosted ASR systems against the same audio files, stores each model's transcript independently, and produces comparable runtime and (when reference transcripts are provided) accuracy metrics.
 
-> **Important:** No benchmark results are included until you run the models on your own audio and reference transcripts. A transcript by itself is not an accuracy score.
+> A transcript is not an accuracy score. WER/CER are calculated only when you provide a human-verified reference transcript.
 
-## What is included
+## Model lineup
 
-| Backend | Type | Default availability | Notes |
+| Backend | Type | Availability | Notes |
 |---|---|---|---|
-| faster-whisper (Whisper) | Local | Enabled | Adapted from the working VidTrace implementation: VAD, word timestamps, CUDA detection and CPU fallback. |
-| SraVaani 1.0 | Local | Optional | Project Vaani FastConformer model for Indian languages. Hugging Face access is gated; accept its model conditions and provide `HF_TOKEN`. |
-| IndicConformer | Local | Optional / advanced | AI4Bharat NeMo checkpoint workflow. Requires a separately downloaded checkpoint and NeMo-compatible environment. |
-| Indic-Transcribe Core / Flex | Local | Planned adapter | Newer AI4Bharat/Bodhan ASR family. Model loading interface and license conditions should be verified against its current model card before enabling. |
-| Sarvam Saaras | Hosted API | Disabled | Optional only. API is metered; signup credits are limited and requests can incur charges after exhaustion. Not required for this project. |
+| faster-whisper (Whisper) | Local | Implemented | Adapted from VidTrace: VAD, word timestamps, CUDA detection and CPU fallback. |
+| SraVaani 1.0 | Local | Implemented | Project Vaani FastConformer; model card reports 65 Indian languages/dialects. Gated Hugging Face access; accept conditions and set `HF_TOKEN`. |
+| AI4Bharat IndicConformer | Local | Implemented | Official NeMo CTC/RNNT checkpoint workflow; download a .nemo model and set its path. |
+| Indic-Transcribe Core / Flex | Local | Implemented | Runs the official model-packaged `inference.py` script; choose Core or Flex with `INDIC_TRANSCRIBE_MODEL`. |
+| Sarvam Saaras v4 | Hosted API | Optional / disabled | Signup includes ₹100 credits; usage is metered. It is excluded from `all` and needs two explicit CLI confirmations. No payment method is needed for local backends. |
 
-The default setup does **not** require a Sarvam account, API key, payment method, or billing setup.
+## Quick start — Windows PowerShell
 
-## Quick start (Windows PowerShell)
-
-Python 3.10+ is required. Python 3.11 is a good starting point.
+Python 3.10+ is required. Python 3.11 is recommended.
 
 ```powershell
 git clone https://github.com/Arhanpg/BharatASR.git
 cd BharatASR
-
 py -3.11 -m venv .venv
 .\.venv\Scripts\Activate.ps1
-
 python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
-
-Install FFmpeg and make sure `ffmpeg -version` works in a new terminal. Then install the local Whisper backend:
-
-```powershell
+pip install -e .
 pip install -r requirements-whisper.txt
 ```
 
-Place audio in `data/audio/`. Supported input formats depend on FFmpeg/decoder support (WAV, MP3, M4A, FLAC and common formats).
+Install FFmpeg and ensure `ffmpeg -version` works in a new terminal. Place an audio file in `data/audio/`.
 
-## Run Whisper first
+## First run — Whisper
 
 ```powershell
 python -m bharatasr run --audio data/audio/sample.wav --language hi --models whisper
 ```
 
-Run all currently available local backends:
+Whisper defaults to the `small` checkpoint to be friendlier to GPUs with 4 GB VRAM. Change it when needed:
 
 ```powershell
-python -m bharatasr run --audio data/audio/sample.wav --language hi --models all
+python -m bharatasr run --audio data/audio/sample.wav --language hi --models whisper --whisper-model medium
 ```
 
-Use `--language auto` for automatic language detection where supported. Model availability and language coverage differ; inspect the backend notes before comparing.
+## Run multiple open models
 
-## Output layout
+Install optional backends separately, then run:
 
-Every run receives its own timestamped directory. Each model writes into a separate folder:
+```powershell
+python -m bharatasr run --audio data/audio/sample.wav --language hi --models whisper,sravaani,indicconformer,indictranscribe
+```
+
+Or use `--models all` to run all local backends. It never enables Sarvam. A backend that is not installed, has no checkpoint, or is gated will create an `error.json` in its own output folder without stopping other backends.
+
+Use ISO language codes such as `hi`, `mr`, `kn`, `ta`, `te`, `bn`, `gu`, `ml`, `pa`, `or`, `as`, `sa`, or `auto`. Language support varies by model.
+
+## Optional local model setup
+
+### 1. SraVaani 1.0 (Project Vaani)
+
+The model card reports a ~430M parameter FastConformer, ~900 MB FP16 checkpoint and 65 Indian languages/dialects. Access is gated: sign in to Hugging Face, accept the model conditions, and create a read token.
+
+```powershell
+$env:HF_TOKEN = "hf_your_token"
+pip install -r requirements-sravaani.txt
+python -m bharatasr run --audio data/audio/sample.wav --language hi --models sravaani
+```
+
+This adapter uses CPU by default to avoid VRAM pressure on 4 GB GPUs. Set `SRAVAANI_DEVICE=cuda` only when you have sufficient free VRAM.
+
+Model card: https://huggingface.co/ARTPARK-IISc/SraVaani-1.0
+
+### 2. AI4Bharat IndicConformer
+
+AI4Bharat provides a multilingual 600M checkpoint and language-specific NeMo checkpoints. Follow the official repository's AI4Bharat NeMo installation instructions, then download the checkpoint for your language.
+
+```powershell
+$env:INDICCONFORMER_CHECKPOINT = "D:\models\indicconformer_hi.nemo"
+pip install -r requirements-indicconformer.txt
+python -m bharatasr run --audio data/audio/sample.wav --language hi --models indicconformer
+```
+
+The adapter uses the official NeMo `EncDecCTCModel.restore_from` workflow and CTC decoder. The selected checkpoint and language code must match. For model downloads and the full language list, see https://github.com/AI4Bharat/IndicConformerASR.
+
+### 3. AI4Bharat / Bodhan Indic-Transcribe Core or Flex
+
+Install the model runner dependencies:
+
+```powershell
+pip install -r requirements-indictranscribe.txt
+```
+
+The backend downloads the official Hugging Face model repository on first use and invokes its bundled `inference.py`. Core is the default; set Flex to compare the flexible checkpoint:
+
+```powershell
+$env:INDIC_TRANSCRIBE_MODEL = "bodhan-ai/indic-transcribe-flex"
+python -m bharatasr run --audio data/audio/sample.wav --language hi --models indictranscribe
+```
+
+Use `bodhan-ai/indic-transcribe-core` for the default Core model. The model script performs its own long-audio chunking. First download can be large and inference may be slow on CPU. Model card and usage: https://huggingface.co/bodhan-ai/indic-transcribe-core and https://huggingface.co/bodhan-ai/indic-transcribe-flex.
+
+### 4. Sarvam Saaras v4 — optional hosted API
+
+Sarvam is **not required**. Official documentation currently describes ₹100 signup credits; requests are metered, and when credits are exhausted the API returns an insufficient-quota error until credits are added. The project never calls Sarvam unless you explicitly pass both flags below.
+
+```powershell
+pip install sarvamai
+$env:SARVAM_API_KEY = "your_api_key"
+python -m bharatasr run --audio data/audio/sample.wav --language hi --models sarvam --enable-sarvam --confirm-metered-api
+```
+
+This confirmation does not add a payment method or top up credits. Do not run the Sarvam backend if you want strictly local inference. Pricing and API docs: https://docs.sarvam.ai/api/getting-started/pricing and https://docs.sarvam.ai/api-reference/speech-to-text/transcribe.
+
+## Output structure
+
+Every execution gets a unique timestamped run directory. Each model writes to its own folder:
 
 ```text
 outputs/
@@ -71,83 +129,55 @@ outputs/
     sravaani/
       transcript.txt
       transcript.json
+      segments.json
       metrics.json
     indicconformer/
       ...
-    sarvam/
-      ... (only when explicitly enabled)
+    indictranscribe/
+      ...
     comparison/
       summary.json
       summary.csv
 ```
 
-A failed/locked/unavailable model is recorded as a failure and does not erase successful outputs from other models.
+The Sarvam folder appears only when you explicitly enable it. Failed backends receive an `error.json`; successful results remain intact.
 
-## Compare accuracy (WER / CER)
+## Accuracy evaluation (WER / CER)
 
-Create a UTF-8 reference transcript at `data/references/sample.txt`, then run:
+Create a UTF-8 reference transcript at `data/references/sample.txt`. Make sure it is manually verified against the audio.
 
 ```powershell
 python -m bharatasr compare --run outputs/20261112_123000_sample --reference data/references/sample.txt
 ```
 
-The comparison calculates:
-- **WER** (word error rate): word-level substitutions, deletions and insertions divided by reference word count.
-- **CER** (character error rate): character-level edit distance divided by reference character count.
-- **Runtime** and **real-time factor** when audio duration can be read.
-- **Output availability** and backend error status.
+The comparator calculates:
+- **WER** — word error rate (substitutions + deletions + insertions divided by reference words).
+- **CER** — character error rate (edit distance divided by reference characters).
+- Hypothesis/reference word counts.
 
-Use the same normalization policy and the same reference text for every model. For research-quality results, document whether punctuation, case, numerals, Unicode normalization, and script variants are normalized. Do not compare WER across different normalization policies.
+Normalization applies Unicode NFC, case-folding, punctuation removal and whitespace collapsing. For Indic scripts, CER can be a more stable complementary metric. Before publishing, state the normalization rules, ensure one reference per audio, and use the same reference for every model. WER can be script/tokenization-sensitive, especially for code-mixed speech.
 
-## Optional backends
-
-### SraVaani 1.0
-
-1. Request/accept access on the [SraVaani Hugging Face model page](https://huggingface.co/ARTPARK-IISc/SraVaani-1.0).
-2. Create a Hugging Face read token and set it in your shell:
-
-```powershell
-$env:HF_TOKEN = "hf_your_token"
-pip install -r requirements-sravaani.txt
-python -m bharatasr run --audio data/audio/sample.wav --language hi --models sravaani
-```
-
-The checkpoint is roughly 900 MB and model inference requires PyTorch. On a 4 GB GPU, use CPU or expect memory pressure; this adapter chooses CPU by default unless configured otherwise.
-
-### AI4Bharat IndicConformer
-
-This backend requires NeMo and a compatible downloaded `.nemo` checkpoint. Follow the official [IndicConformerASR repository](https://github.com/AI4Bharat/IndicConformerASR) and AI4Bharat documentation for checkpoint setup. Set `INDICCONFORMER_CHECKPOINT` to the local checkpoint path and install the backend's dedicated dependencies. It is intentionally kept out of the base install because NeMo has a large and environment-sensitive dependency stack.
-
-### Sarvam (optional; paid after free credits)
-
-Sarvam provides a signup credit, but speech-to-text is usage-metered. This project therefore **does not call Sarvam unless you explicitly pass `--enable-sarvam`** and set `SARVAM_API_KEY`. The CLI also requires a second explicit confirmation flag `--confirm-metered-api` to prevent accidental requests.
-
-No billing configuration is needed for the local models. Do not add a payment method just to run the default benchmark.
+Runtime, audio duration, device, precision and model metadata are saved separately per backend. Do not compare raw latency across different hardware or cold/warm model conditions without reporting them.
 
 ## Fair benchmarking protocol
 
-1. Use identical audio bytes for every backend.
-2. Keep reference transcripts human-verified and separate from model output.
-3. Record language, dialect/region, duration, sample rate, channel count and noise conditions.
-4. Run each backend more than once when measuring latency; report warm-up separately.
-5. Report CPU/GPU, RAM/VRAM, precision, model/checkpoint revision and package versions.
-6. Do not treat a model's language-detection output as ground truth.
-7. Report unavailable languages and model errors rather than silently excluding them.
-8. Publish dataset provenance and permissions. Do not commit private or copyrighted recordings without permission.
+1. Feed byte-identical audio to each model.
+2. Use a human-verified reference transcript; never use another model's output as ground truth.
+3. Record language, dialect/region, duration, sample rate, channels, noise and recording conditions.
+4. Keep inference settings, checkpoint revisions and library versions.
+5. Separate model loading time from inference time when collecting repeated latency results.
+6. Report CPU/GPU, RAM/VRAM, precision, and whether the model fell back to CPU.
+7. Report model failures and unsupported languages instead of silently dropping them.
+8. Respect dataset licenses, privacy, consent and redistribution permissions.
 
-## Current status
+## Current limitations
 
-This is the initial benchmark scaffold. Whisper is the first implemented backend. SraVaani is an optional gated local backend. IndicConformer is documented as an advanced/manual checkpoint setup. Sarvam is disabled by default and requires explicit opt-in. Actual model accuracy must be established by running the benchmark with references.
-
-## References
-
-- [VidTrace](https://github.com/Arhanpg/VidTrace) — source of the faster-whisper implementation adapted here.
-- [Project Vaani — SraVaani 1.0](https://vaani.iisc.ac.in/models/sravaani)
-- [SraVaani 1.0 model card](https://huggingface.co/ARTPARK-IISc/SraVaani-1.0)
-- [AI4Bharat IndicConformer](https://github.com/AI4Bharat/IndicConformerASR)
-- [Bodhan AI / AI4Bharat Indic-Transcribe](https://ai4bharat.iitm.ac.in/blog/bodhan-asr/)
-- [Sarvam pricing](https://docs.sarvam.ai/api/getting-started/pricing)
+- Whisper provides word timestamps; the other initial adapters may return utterance-level text only.
+- Indic-Transcribe uses its bundled CLI and the adapter records the resulting console output for traceability; if upstream output formatting changes, adjust the parser.
+- The IndicConformer checkpoint must match the supplied language code.
+- Model-level language support is not identical; a language absent from a model should not be treated as a failed accuracy result.
+- A model output is not human-verified and must not be presented as ground truth.
 
 ## License
 
-See [LICENSE](LICENSE). Each model and service remains subject to its own license and terms.
+See [LICENSE](LICENSE). Each model/checkpoint and hosted service is also subject to its own license and usage terms.

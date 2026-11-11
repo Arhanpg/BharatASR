@@ -1,4 +1,4 @@
-"""Advanced AI4Bharat NeMo IndicConformer checkpoint adapter."""
+"""AI4Bharat IndicConformer NeMo checkpoint adapter (CTC decoder)."""
 from __future__ import annotations
 
 import os
@@ -11,7 +11,7 @@ from bharatasr.types import TranscriptSegment, TranscriptionResult
 
 class IndicConformerBackend(ASRBackend):
     name = "indicconformer"
-    model_id = "ai4bharat/indic-conformer-600m-multilingual"
+    model_id = "AI4Bharat IndicConformer NeMo checkpoint"
 
     def __init__(self) -> None:
         checkpoint = os.getenv("INDICCONFORMER_CHECKPOINT")
@@ -25,8 +25,8 @@ class IndicConformerBackend(ASRBackend):
             import torch
         except ImportError as exc:
             raise RuntimeError(
-                "IndicConformer needs a separate NeMo-compatible environment. "
-                "See the official AI4Bharat instructions."
+                "IndicConformer needs the AI4Bharat NeMo environment. "
+                "See https://github.com/AI4Bharat/IndicConformerASR"
             ) from exc
         self.model = nemo_asr.models.EncDecCTCModel.restore_from(restore_path=checkpoint)
         self.model.freeze()
@@ -40,8 +40,8 @@ class IndicConformerBackend(ASRBackend):
         start = time.perf_counter()
         self.model.cur_decoder = "ctc"
         kwargs = {"batch_size": 1, "logprobs": False}
-        if language not in {"auto", "none"}:
-            kwargs["language_id"] = language
+        if language.lower() not in {"auto", "none"}:
+            kwargs["language_id"] = language.lower()
         output = self.model.transcribe([str(path)], **kwargs)
         text = str(output[0]).strip()
         elapsed = time.perf_counter() - start
@@ -51,3 +51,12 @@ class IndicConformerBackend(ASRBackend):
             elapsed_seconds=elapsed,
             metadata={"device": self.device, "decoder": "ctc", "language_requested": language},
         )
+
+    def close(self) -> None:
+        self.model = None
+        try:
+            import torch
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+        except ImportError:
+            pass

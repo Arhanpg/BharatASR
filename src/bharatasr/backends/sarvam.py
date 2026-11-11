@@ -1,7 +1,7 @@
 """Explicitly opt-in Sarvam Saaras hosted API backend.
 
-This backend is deliberately disabled unless BOTH the CLI opt-in flags and API
-key are provided. It may consume paid credits; there is no free-only guarantee.
+This can use free signup credits, but the service is metered. It remains
+excluded from the default local benchmark and requires two explicit CLI flags.
 """
 from __future__ import annotations
 
@@ -14,20 +14,20 @@ from bharatasr.types import TranscriptSegment, TranscriptionResult
 
 LANG_CODES = {
     "hi": "hi-IN", "bn": "bn-IN", "kn": "kn-IN", "ml": "ml-IN",
-    "mr": "mr-IN", "or": "od-IN", "pa": "pa-IN", "ta": "ta-IN",
-    "te": "te-IN", "gu": "gu-IN", "as": "as-IN", "sa": "sa-IN",
-    "auto": "unknown",
+    "mr": "mr-IN", "or": "od-IN", "od": "od-IN", "pa": "pa-IN",
+    "ta": "ta-IN", "te": "te-IN", "gu": "gu-IN", "as": "as-IN",
+    "sa": "sa-IN", "ur": "ur-IN", "ne": "ne-IN", "auto": "unknown",
 }
 
 
 class SarvamBackend(ASRBackend):
     name = "sarvam"
-    model_id = "saaras:v3"
+    model_id = "saaras:v4"
 
     def __init__(self) -> None:
         key = os.getenv("SARVAM_API_KEY")
         if not key:
-            raise RuntimeError("SARVAM_API_KEY is not set. Sarvam remains optional and metered.")
+            raise RuntimeError("SARVAM_API_KEY is not set. Sarvam is optional and metered.")
         try:
             from sarvamai import SarvamAI
         except ImportError as exc:
@@ -50,5 +50,8 @@ class SarvamBackend(ASRBackend):
             backend=self.name, model=self.model_id, transcript=text,
             segments=[TranscriptSegment(index=0, start=None, end=None, text=text)] if text else [],
             elapsed_seconds=elapsed,
-            metadata={"language_requested": language, "language_code": code, "billing": "metered API"},
+            metadata={
+                "language_requested": language, "language_code": code,
+                "service": "hosted metered API", "transcript_mode": "transcribe",
+            },
         )

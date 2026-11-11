@@ -1,13 +1,10 @@
 from __future__ import annotations
 
 import csv
-import json
-import logging
 import os
 import time
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
 
 import typer
 from rich.console import Console
@@ -20,16 +17,19 @@ app = typer.Typer(help="Benchmark ASR models on Indian-language audio.")
 console = Console()
 
 
-def _backend(name: str):
+def _backend(name: str, whisper_model: str = "small"):
     if name == "whisper":
         from bharatasr.backends.whisper import WhisperBackend
-        return WhisperBackend()
+        return WhisperBackend(model_id=whisper_model)
     if name == "sravaani":
         from bharatasr.backends.sravaani import SraVaaniBackend
-        return SraVaaniBackend()
+        return SraVaaniBackend(device=os.getenv("SRAVAANI_DEVICE", "cpu"))
     if name == "indicconformer":
         from bharatasr.backends.indicconformer import IndicConformerBackend
         return IndicConformerBackend()
+    if name == "indictranscribe":
+        from bharatasr.backends.indictranscribe import IndicTranscribeBackend
+        return IndicTranscribeBackend()
     if name == "sarvam":
         from bharatasr.backends.sarvam import SarvamBackend
         return SarvamBackend()
@@ -39,18 +39,23 @@ def _backend(name: str):
 @app.command()
 def run(
     audio: Path = typer.Option(..., "--audio", exists=True, readable=True),
-    language: str = typer.Option("auto", "--language", help="ISO/Whisper code, e.g. hi, mr, kn, ta, auto."),
-    models: str = typer.Option("whisper", "--models", help="Comma-separated names or 'all'."),
+    language: str = typer.Option("auto", "--language", help="Language code, e.g. hi, mr, kn, ta, auto."),
+    models: str = typer.Option("whisper", "--models", help="Comma-separated names or 'all' (local only)."),
     output: Path = typer.Option(Path("outputs"), "--output"),
-    whisper_model: str = typer.Option("medium", "--whisper-model"),
+    whisper_model: str = typer.Option("small", "--whisper-model"),
     sarvam_opt_in: bool = typer.Option(False, "--enable-sarvam", help="Explicitly allow metered Sarvam API usage."),
-    confirm_metered_api: bool = typer.Option(False, "--confirm-metered-api", help="Confirm that Sarvam may consume paid credits."),
+    confirm_metered_api: bool = typer.Option(False, "--confirm-metered-api", help="Confirm possible consumption of paid credits."),
 ):
-    """Transcribe one audio file with one or more backends; persist outputs separately."""
-    selected = ["whisper", "sravaani", "indicconformer"] if models == "all" else [x.strip() for x in models.split(",") if x.strip()]
+    """Transcribe one audio file with one or more backends; persist outputs independently."""
+    local_models = ["whisper", "sravaani", "indicconformer", "indictranscribe"]
+    selected = local_models if models.strip().lower() == "all" else [
+        item.strip().lower() for item in models.split(",") if item.strip()
+    ]
     if "sarvam" in selected:
         if not sarvam_opt_in or not confirm_metered_api:
-            raise typer.BadParameter("Sarvam is metered. Pass BOTH --enable-sarvam and --confirm-metered-api to continue.")
+            raise typer.BadParameter(
+                "Sarvam is metered. Pass BOTH --enable-sarvam and --confirm-metered-api to continue."
+            )
         if not os.getenv("SARVAM_API_KEY"):
             raise typer.BadParameter("Set SARVAM_API_KEY before enabling Sarvam.")
     if not selected:
@@ -67,13 +72,7 @@ def run(
         started = time.perf_counter()
         backend = None
         try:
-            backend = _backend(name)
-            if name == "whisper":
-                backend.model_id = whisper_model
-                # Re-initialize if caller requested a non-default size.
-                if whisper_model != "medium":
-                    backend.close()
-                    backend = _backend_with_whisper_model(whisper_model)
+            backend = _backend(name, whisper_model=whisper_model)
             result = backend.transcribe(audio, language)
             save_result(run_dir, result)
             rows.append({
@@ -100,11 +99,6 @@ def run(
     console.print(f"\nOutputs: [bold]{run_dir.resolve()}[/bold]")
 
 
-def _backend_with_whisper_model(model_name: str):
-    from bharatasr.backends.whisper import WhisperBackend
-    return WhisperBackend(model_id=model_name)
-
-
 @app.command()
 def compare(
     run: Path = typer.Option(..., "--run", exists=True, file_okay=False),
@@ -122,7 +116,7 @@ def compare(
             writer.writeheader()
             writer.writerows(rows)
     table = Table(title="BharatASR model comparison")
-    for heading in (["Backend", "WER", "CER"]):
+    for heading in ("Backend", "WER", "CER"):
         table.add_column(heading)
     for row in rows:
         table.add_row(row["backend"], f"{row['wer']:.4f}", f"{row['cer']:.4f}")
