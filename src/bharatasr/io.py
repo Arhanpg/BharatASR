@@ -22,7 +22,7 @@ def create_run_dir(audio_path: Path, output_root: Path = Path("outputs")) -> Pat
 
 
 def get_audio_duration(path: Path) -> float | None:
-    """Probe audio duration consistently across local and yt-dlp downloaded formats."""
+    """Probe audio duration consistently across local and downloaded formats."""
     try:
         result = subprocess.run(
             [
