@@ -1,6 +1,5 @@
 """Project Vaani SraVaani 1.0 local backend (gated Hugging Face checkpoint)."""
 from __future__ import annotations
-
 import os
 import time
 from pathlib import Path
@@ -25,7 +24,6 @@ class SraVaaniBackend(ASRBackend):
             from transformers import AutoModel
         except ImportError as exc:
             raise RuntimeError("Install requirements-sravaani.txt first") from exc
-
         if device == "cuda" and not torch.cuda.is_available():
             raise RuntimeError("SRAVAANI_DEVICE=cuda requested, but CUDA is unavailable.")
         self.device = device
@@ -38,24 +36,23 @@ class SraVaaniBackend(ASRBackend):
         if not path.is_file():
             raise FileNotFoundError(path)
         start = time.perf_counter()
-        # The official model card expects a list of input paths.
-        hypotheses = self.model.transcribe([str(path)], return_hypotheses=True)
-        text_parts = [
-            str(getattr(hypothesis, "text", hypothesis)).strip()
-            for hypothesis in hypotheses
-        ]
-        text = " ".join(part for part in text_parts if part).strip()
-        elapsed = time.perf_counter() - start
+        # Official model card uses a single file path string, not a list.
+        hypotheses = list(self.model.transcribe(str(path), return_hypotheses=True))
+        parts = []
+        for hypothesis in hypotheses:
+            text = str(getattr(hypothesis, "text", hypothesis)).strip()
+            if text:
+                parts.append(text)
+        text = " ".join(parts).strip()
         return TranscriptionResult(
-            backend=self.name,
-            model=self.model_id,
-            transcript=text,
+            backend=self.name, model=self.model_id, transcript=text,
             segments=[TranscriptSegment(index=0, start=None, end=None, text=text)] if text else [],
-            elapsed_seconds=elapsed,
+            elapsed_seconds=time.perf_counter() - start,
             metadata={
-                "device": self.device,
-                "language_requested": language,
-                "note": "Official model-card API; this adapter returns utterance-level text.",
+                "device": self.device, "language_requested": language,
+                "language_detection": "automatic model inference; no language argument exposed by model card",
+                "hypothesis_count": len(hypotheses),
+                "note": "ASR draft; manually verify mantra spellings and Prakrit words.",
             },
         )
 

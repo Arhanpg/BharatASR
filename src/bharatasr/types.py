@@ -1,5 +1,4 @@
 from __future__ import annotations
-
 from dataclasses import asdict, dataclass, field
 from typing import Any
 
@@ -11,6 +10,7 @@ class TranscriptSegment:
     end: float | None
     text: str
     words: list[dict[str, Any]] = field(default_factory=list)
+    language: str | None = None
 
 
 @dataclass
