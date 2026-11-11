@@ -142,6 +142,23 @@ outputs/
 
 The Sarvam folder appears only when you explicitly enable it. Failed backends receive an `error.json`; successful results remain intact.
 
+
+## YouTube video and playlist input
+
+VidTrace's YouTube extraction workflow is also carried into BharatASR: yt-dlp downloads **audio only**, FFmpeg converts it to WAV, and each downloaded video is benchmarked independently with the selected backends.
+
+```powershell
+pip install -r requirements-youtube.txt
+# Install FFmpeg and confirm: ffmpeg -version
+
+python -m bharatasr run --youtube-url "https://www.youtube.com/watch?v=VIDEO_ID" --language hi --models whisper,sravaani,indictranscribe
+
+# Or a playlist (each successfully downloaded item gets its own output run)
+python -m bharatasr run --youtube-url "https://www.youtube.com/playlist?list=PLAYLIST_ID" --language auto --models all
+```
+
+Downloaded audio is cached under `.cache/youtube_audio/` so interrupted tests can be rerun without necessarily downloading every file again. Do not publish or commit copyrighted audio or transcripts without the required permissions.
+
 ## Accuracy evaluation (WER / CER)
 
 Create a UTF-8 reference transcript at `data/references/sample.txt`. Make sure it is manually verified against the audio.

@@ -12,6 +12,7 @@ from rich.table import Table
 
 from bharatasr.io import create_run_dir, save_result, write_json
 from bharatasr.metrics import compare_run
+from bharatasr.youtube import download_youtube_audio
 
 app = typer.Typer(help="Benchmark ASR models on Indian-language audio.")
 console = Console()
@@ -36,9 +37,60 @@ def _backend(name: str, whisper_model: str = "small"):
     raise ValueError(f"Unknown backend: {name}")
 
 
+def _run_one_audio(
+    audio_path: Path,
+    language: str,
+    selected: list[str],
+    output: Path,
+    whisper_model: str,
+    source_url: str | None = None,
+) -> Path:
+    run_dir = create_run_dir(audio_path, output)
+    write_json(run_dir / "input.json", {
+        "audio_path": str(audio_path.resolve()),
+        "audio_name": audio_path.name,
+        "source_url": source_url,
+        "language_requested": language,
+        "selected_models": selected,
+        "created_at": datetime.now().astimezone().isoformat(),
+    })
+    rows = []
+    for name in selected:
+        started = time.perf_counter()
+        backend = None
+        try:
+            backend = _backend(name, whisper_model=whisper_model)
+            result = backend.transcribe(audio_path, language)
+            save_result(run_dir, result)
+            rows.append({
+                "backend": name, "status": "success",
+                "elapsed_seconds": result.elapsed_seconds, "model": result.model,
+            })
+            console.print(f"[green]✓[/green] {audio_path.name} | {name}: {result.elapsed_seconds:.2f}s")
+        except Exception as exc:
+            rows.append({
+                "backend": name, "status": "failed",
+                "elapsed_seconds": time.perf_counter() - started,
+                "error": f"{type(exc).__name__}: {exc}",
+            })
+            write_json(run_dir / name / "error.json", rows[-1])
+            console.print(f"[red]✗[/red] {audio_path.name} | {name}: {exc}")
+        finally:
+            if backend is not None:
+                try:
+                    backend.close()
+                except Exception:
+                    pass
+
+    write_json(run_dir / "run_summary.json", {"models": rows, "run_dir": str(run_dir)})
+    console.print(f"Outputs: [bold]{run_dir.resolve()}[/bold]")
+    return run_dir
+
+
 @app.command()
 def run(
-    audio: Path = typer.Option(..., "--audio", exists=True, readable=True),
+    audio: Path | None = typer.Option(None, "--audio", exists=True, readable=True),
+    youtube_url: str | None = typer.Option(None, "--youtube-url", help="YouTube video or playlist URL; downloads audio only."),
     language: str = typer.Option("auto", "--language", help="Language code, e.g. hi, mr, kn, ta, auto."),
     models: str = typer.Option("whisper", "--models", help="Comma-separated names or 'all' (local only)."),
     output: Path = typer.Option(Path("outputs"), "--output"),
@@ -46,7 +98,10 @@ def run(
     sarvam_opt_in: bool = typer.Option(False, "--enable-sarvam", help="Explicitly allow metered Sarvam API usage."),
     confirm_metered_api: bool = typer.Option(False, "--confirm-metered-api", help="Confirm possible consumption of paid credits."),
 ):
-    """Transcribe one audio file with one or more backends; persist outputs independently."""
+    """Transcribe a local audio file or YouTube video/playlist with multiple backends."""
+    if (audio is None) == (youtube_url is None):
+        raise typer.BadParameter("Provide exactly one of --audio or --youtube-url.")
+
     local_models = ["whisper", "sravaani", "indicconformer", "indictranscribe"]
     selected = local_models if models.strip().lower() == "all" else [
         item.strip().lower() for item in models.split(",") if item.strip()
@@ -61,42 +116,20 @@ def run(
     if not selected:
         raise typer.BadParameter("Select at least one backend.")
 
-    run_dir = create_run_dir(audio, output)
-    write_json(run_dir / "input.json", {
-        "audio_path": str(audio.resolve()), "audio_name": audio.name,
-        "language_requested": language, "selected_models": selected,
-        "created_at": datetime.now().astimezone().isoformat(),
-    })
-    rows = []
-    for name in selected:
-        started = time.perf_counter()
-        backend = None
-        try:
-            backend = _backend(name, whisper_model=whisper_model)
-            result = backend.transcribe(audio, language)
-            save_result(run_dir, result)
-            rows.append({
-                "backend": name, "status": "success",
-                "elapsed_seconds": result.elapsed_seconds, "model": result.model,
-            })
-            console.print(f"[green]✓[/green] {name}: {result.elapsed_seconds:.2f}s")
-        except Exception as exc:
-            rows.append({
-                "backend": name, "status": "failed",
-                "elapsed_seconds": time.perf_counter() - started,
-                "error": f"{type(exc).__name__}: {exc}",
-            })
-            write_json(run_dir / name / "error.json", rows[-1])
-            console.print(f"[red]✗[/red] {name}: {exc}")
-        finally:
-            if backend is not None:
-                try:
-                    backend.close()
-                except Exception:
-                    pass
+    if audio is not None:
+        audio_paths = [audio]
+    else:
+        audio_paths = download_youtube_audio(youtube_url or "", Path(".cache") / "youtube_audio")
 
-    write_json(run_dir / "run_summary.json", {"models": rows, "run_dir": str(run_dir)})
-    console.print(f"\nOutputs: [bold]{run_dir.resolve()}[/bold]")
+    for audio_path in audio_paths:
+        _run_one_audio(
+            audio_path=audio_path,
+            language=language,
+            selected=selected,
+            output=output,
+            whisper_model=whisper_model,
+            source_url=youtube_url,
+        )
 
 
 @app.command()
