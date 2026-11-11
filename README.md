@@ -30,7 +30,7 @@ pip install -e .
 pip install -r requirements-whisper.txt
 ```
 
-Install FFmpeg and ensure `ffmpeg -version` works in a new terminal. Place an audio file in `data/audio/`.
+Install FFmpeg and ensure `ffmpeg -version` works in a new terminal. For current YouTube extraction, also install a supported JavaScript runtime (Deno is recommended by yt-dlp): `winget install -e --id DenoLand.Deno`, then verify `deno --version`. Place an audio file in `data/audio/`.
 
 ## First run — Whisper
 
@@ -74,15 +74,26 @@ Model card: https://huggingface.co/ARTPARK-IISc/SraVaani-1.0
 
 ### 2. AI4Bharat IndicConformer
 
-AI4Bharat provides a multilingual 600M checkpoint and language-specific NeMo checkpoints. Follow the official repository's AI4Bharat NeMo installation instructions, then download the checkpoint for your language.
+AI4Bharat provides a multilingual 600M checkpoint and language-specific NeMo checkpoints. The model is a hybrid RNNT/CTC system. Follow the official AI4Bharat NeMo fork installation instructions in a dedicated Linux/WSL environment, then download the checkpoint for your language.
 
-```powershell
-$env:INDICCONFORMER_CHECKPOINT = "D:\models\indicconformer_hi.nemo"
-pip install -r requirements-indicconformer.txt
+First install the AI4Bharat NeMo fork in a dedicated Linux/WSL environment, exactly as required by the model authors:
+
+```bash
+git clone https://github.com/AI4Bharat/NeMo.git
+cd NeMo
+git checkout nemo-v2
+bash reinstall.sh
+```
+
+Then, from the Python environment where that fork is installed, run BharatASR:
+
+```bash
+export INDICCONFORMER_CHECKPOINT="$HOME/models/indicconformer_hi.nemo"
+export INDICCONFORMER_DEVICE=cpu
 python -m bharatasr run --audio data/audio/sample.wav --language hi --models indicconformer
 ```
 
-The adapter uses the official NeMo `EncDecCTCModel.restore_from` workflow and CTC decoder. The selected checkpoint and language code must match. For model downloads and the full language list, see https://github.com/AI4Bharat/IndicConformerASR.
+The adapter uses NeMo's generic `ASRModel.restore_from` loader so the checkpoint's hybrid RNNT/CTC model class is restored from its own metadata. CPU is the default; use `INDICCONFORMER_DEVICE=cuda` only when enough VRAM is available. The checkpoint and language code must match. For model downloads, install steps and the language list, see https://github.com/AI4Bharat/IndicConformerASR.
 
 ### 3. AI4Bharat / Bodhan Indic-Transcribe Core or Flex
 
@@ -92,14 +103,14 @@ Install the model runner dependencies:
 pip install -r requirements-indictranscribe.txt
 ```
 
-The backend downloads the official Hugging Face model repository on first use and invokes its bundled `inference.py`. Core is the default; set Flex to compare the flexible checkpoint:
+The backend downloads the official Hugging Face model repository on first use and invokes its bundled `inference.py`. Both checkpoints require agreeing to their gated Hugging Face terms and using the Indic Open Model License (plus the base model's terms); these are not MIT/Apache-licensed checkpoints. Core is the default; set Flex to compare the flexible checkpoint:
 
 ```powershell
 $env:INDIC_TRANSCRIBE_MODEL = "bodhan-ai/indic-transcribe-flex"
 python -m bharatasr run --audio data/audio/sample.wav --language hi --models indictranscribe
 ```
 
-Use `bodhan-ai/indic-transcribe-core` for the default Core model. The model script performs its own long-audio chunking. First download can be large and inference may be slow on CPU. Model card and usage: https://huggingface.co/bodhan-ai/indic-transcribe-core and https://huggingface.co/bodhan-ai/indic-transcribe-flex.
+Use `bodhan-ai/indic-transcribe-core` for the default Core model. Both Core and Flex are about 4.6 GB on disk and use a 1.2B-parameter architecture, so neither is a sensible GPU choice for your 4 GB RTX 3050. The runner forces CPU by default (`INDIC_TRANSCRIBE_DEVICE=cpu`). Only set `$env:INDIC_TRANSCRIBE_DEVICE = "cuda"` to explicitly try GPU inference on a machine with enough VRAM. The model script performs its own long-audio chunking. First download can be large and inference may be slow on CPU. Model card and usage: https://huggingface.co/bodhan-ai/indic-transcribe-core and https://huggingface.co/bodhan-ai/indic-transcribe-flex.
 
 ### 4. Sarvam Saaras v4 — optional hosted API
 
@@ -111,7 +122,7 @@ $env:SARVAM_API_KEY = "your_api_key"
 python -m bharatasr run --audio data/audio/sample.wav --language hi --models sarvam --enable-sarvam --confirm-metered-api
 ```
 
-This confirmation does not add a payment method or top up credits. Do not run the Sarvam backend if you want strictly local inference. Pricing and API docs: https://docs.sarvam.ai/api/getting-started/pricing and https://docs.sarvam.ai/api-reference/speech-to-text/transcribe.
+The synchronous Sarvam REST endpoint supports audio up to 30 seconds; longer recordings need its separate batch endpoint, which is not yet wired into this initial adapter. Try it only on short clips. This confirmation does not add a payment method or top up credits. Do not run the Sarvam backend if you want strictly local inference. Pricing and API docs: https://docs.sarvam.ai/api/getting-started/pricing and https://docs.sarvam.ai/api-reference/speech-to-text/transcribe.
 
 ## Output structure
 
@@ -141,6 +152,23 @@ outputs/
 ```
 
 The Sarvam folder appears only when you explicitly enable it. Failed backends receive an `error.json`; successful results remain intact.
+
+
+## YouTube video and playlist input
+
+VidTrace's YouTube extraction workflow is also carried into BharatASR: yt-dlp downloads **audio only**, FFmpeg converts it to WAV, and each downloaded video is benchmarked independently with the selected backends.
+
+```powershell
+pip install -r requirements-youtube.txt
+# Install FFmpeg and confirm: ffmpeg -version
+
+python -m bharatasr run --youtube-url "https://www.youtube.com/watch?v=VIDEO_ID" --language hi --models whisper,sravaani,indictranscribe
+
+# Or a playlist (each successfully downloaded item gets its own output run)
+python -m bharatasr run --youtube-url "https://www.youtube.com/playlist?list=PLAYLIST_ID" --language auto --models all
+```
+
+Downloaded audio is cached under `.cache/youtube_audio/` so interrupted tests can be rerun without necessarily downloading every file again. Do not publish or commit copyrighted audio or transcripts without the required permissions.
 
 ## Accuracy evaluation (WER / CER)
 
@@ -173,7 +201,7 @@ Runtime, audio duration, device, precision and model metadata are saved separate
 ## Current limitations
 
 - Whisper provides word timestamps; the other initial adapters may return utterance-level text only.
-- Indic-Transcribe uses its bundled CLI and the adapter records the resulting console output for traceability; if upstream output formatting changes, adjust the parser.
+- Indic-Transcribe uses its bundled CLI and the adapter records the resulting console output for traceability; if upstream output formatting changes, adjust the parser. Core/Flex checkpoints are ~4.6 GB and should run on CPU by default on a 4 GB GPU laptop.
 - The IndicConformer checkpoint must match the supplied language code.
 - Model-level language support is not identical; a language absent from a model should not be treated as a failed accuracy result.
 - A model output is not human-verified and must not be presented as ground truth.

@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import re
 import unicodedata
 from pathlib import Path
 
@@ -8,9 +7,24 @@ from jiwer import cer, wer
 
 
 def normalize_text(text: str) -> str:
+    """Normalize transcripts without deleting Indic-script combining marks.
+
+    Keep Unicode letters, marks (vowel signs/viramas/diacritics), numbers,
+    whitespace, and ZWJ/ZWNJ. Replace punctuation and other symbols with spaces.
+    """
     text = unicodedata.normalize("NFC", text).casefold()
-    text = re.sub(r"[^\w\s]", " ", text, flags=re.UNICODE)
-    return " ".join(text.split())
+    kept: list[str] = []
+    for character in text:
+        category = unicodedata.category(character)
+        if (
+            character.isspace()
+            or category[0] in {"L", "M", "N"}
+            or character in {"\u200c", "\u200d"}
+        ):
+            kept.append(character)
+        else:
+            kept.append(" ")
+    return " ".join("".join(kept).split())
 
 
 def score(reference: str, hypothesis: str) -> dict[str, float | int]:

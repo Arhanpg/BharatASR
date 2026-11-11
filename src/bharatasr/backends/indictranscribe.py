@@ -1,7 +1,7 @@
 """Adapter for the official Bodhan AI Indic-Transcribe Core/Flex inference.py CLI.
 
 The model repository bundles its own inference pipeline. Invoking that script
-avoids guessing or reimplementing its audio preprocessing and chunking logic.
+preserves its audio preprocessing and long-audio chunking implementation.
 """
 from __future__ import annotations
 
@@ -31,10 +31,15 @@ class IndicTranscribeBackend(ASRBackend):
                 "INDIC_TRANSCRIBE_MODEL must be bodhan-ai/indic-transcribe-core "
                 "or bodhan-ai/indic-transcribe-flex"
             )
+        self.device = os.getenv("INDIC_TRANSCRIBE_DEVICE", "cpu").strip().lower()
+        if self.device not in {"cpu", "cuda"}:
+            raise ValueError("INDIC_TRANSCRIBE_DEVICE must be 'cpu' or 'cuda'")
+
         try:
             from huggingface_hub import snapshot_download
         except ImportError as exc:
             raise RuntimeError("Install requirements-indictranscribe.txt first") from exc
+        # A gated model requires accepting its access terms and logging in to HF.
         self.model_dir = Path(snapshot_download(repo_id=self.model_id))
         self.inference_script = self.model_dir / "inference.py"
         if not self.inference_script.is_file():
@@ -46,14 +51,29 @@ class IndicTranscribeBackend(ASRBackend):
         path = Path(audio_path)
         if not path.is_file():
             raise FileNotFoundError(path)
+
         command = [sys.executable, str(self.inference_script), str(path)]
         if language.lower() not in {"auto", "none"}:
             command.extend(["--lang", language.lower()])
+        else:
+            command.append("--show-lang")
+
+        # Keep the 1.2B / ~4.6 GB checkpoint away from a 4 GB GPU by default.
+        # To deliberately try GPU inference, set INDIC_TRANSCRIBE_DEVICE=cuda.
+        child_env = os.environ.copy()
+        if self.device == "cpu":
+            child_env["CUDA_VISIBLE_DEVICES"] = ""
 
         started = time.perf_counter()
         process = subprocess.run(
-            command, cwd=str(self.model_dir), capture_output=True,
-            text=True, encoding="utf-8", errors="replace", check=False,
+            command,
+            cwd=str(self.model_dir),
+            env=child_env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            check=False,
         )
         elapsed = time.perf_counter() - started
         stdout = process.stdout.strip()
@@ -69,23 +89,32 @@ class IndicTranscribeBackend(ASRBackend):
                 "Indic-Transcribe returned no stdout transcript. "
                 f"stderr: {stderr[-2000:]}"
             )
-        # Upstream's documented multi-file output is path<TAB>transcript.
+
+        # The upstream CLI prints a path<TAB>transcript row for each input.
         last_line = lines[-1]
         transcript = last_line.split("\t", 1)[-1].strip()
-        transcript = re.sub(r"^transcript\s*:\s*", "", transcript, flags=re.IGNORECASE)
+        transcript = re.sub(
+            r"^transcript\s*:\s*", "", transcript, flags=re.IGNORECASE
+        )
         if not transcript:
-            raise RuntimeError("Could not parse transcript from Indic-Transcribe CLI output.")
+            raise RuntimeError(
+                "Could not parse transcript from Indic-Transcribe CLI output. "
+                f"Last stdout line: {last_line!r}"
+            )
 
         return TranscriptionResult(
-            backend=self.name, model=self.model_id, transcript=transcript,
+            backend=self.name,
+            model=self.model_id,
+            transcript=transcript,
             segments=[TranscriptSegment(index=0, start=None, end=None, text=transcript)],
             elapsed_seconds=elapsed,
             metadata={
                 "language_requested": language,
                 "runner": "official model-packaged inference.py",
+                "device_requested": self.device,
                 "model_directory": str(self.model_dir),
                 "stdout_last_line": last_line,
                 "stderr_tail": stderr[-2000:],
-                "note": "Utterance-level transcript; upstream CLI output is retained for audit.",
+                "note": "Utterance-level transcript; stdout/stderr tails are retained for audit.",
             },
         )

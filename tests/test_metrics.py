@@ -5,6 +5,15 @@ def test_normalize_text_unicode_and_punctuation():
     assert normalize_text(" नमस्ते, WORLD! ") == "नमस्ते world"
 
 
+def test_normalization_preserves_devanagari_vowel_signs_and_virama():
+    assert normalize_text("कि शक्ति") == "कि शक्ति"
+
+
+def test_normalization_preserves_zwj_and_zwnj():
+    text = "क्\u200dष क्\u200cष"
+    assert normalize_text(text) == text
+
+
 def test_score_identical_text():
     result = score("यह एक परीक्षण है", "यह एक परीक्षण है")
     assert result["wer"] == 0.0

@@ -38,16 +38,24 @@ class SraVaaniBackend(ASRBackend):
         if not path.is_file():
             raise FileNotFoundError(path)
         start = time.perf_counter()
-        hypotheses = self.model.transcribe(str(path), return_hypotheses=True)
-        text = " ".join(getattr(hyp, "text", str(hyp)) for hyp in hypotheses).strip()
+        # The official model card expects a list of input paths.
+        hypotheses = self.model.transcribe([str(path)], return_hypotheses=True)
+        text_parts = [
+            str(getattr(hypothesis, "text", hypothesis)).strip()
+            for hypothesis in hypotheses
+        ]
+        text = " ".join(part for part in text_parts if part).strip()
         elapsed = time.perf_counter() - start
         return TranscriptionResult(
-            backend=self.name, model=self.model_id, transcript=text,
+            backend=self.name,
+            model=self.model_id,
+            transcript=text,
             segments=[TranscriptSegment(index=0, start=None, end=None, text=text)] if text else [],
             elapsed_seconds=elapsed,
             metadata={
-                "device": self.device, "language_requested": language,
-                "note": "Official model-card API; current wrapper returns utterance-level text.",
+                "device": self.device,
+                "language_requested": language,
+                "note": "Official model-card API; this adapter returns utterance-level text.",
             },
         )
 
