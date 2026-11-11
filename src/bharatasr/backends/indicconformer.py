@@ -1,4 +1,4 @@
-"""AI4Bharat IndicConformer NeMo checkpoint adapter (CTC decoder)."""
+"""AI4Bharat IndicConformer NeMo hybrid RNNT/CTC checkpoint adapter."""
 from __future__ import annotations
 
 import os
@@ -11,7 +11,7 @@ from bharatasr.types import TranscriptSegment, TranscriptionResult
 
 class IndicConformerBackend(ASRBackend):
     name = "indicconformer"
-    model_id = "AI4Bharat IndicConformer NeMo checkpoint"
+    model_id = "AI4Bharat IndicConformer .nemo checkpoint"
 
     def __init__(self) -> None:
         checkpoint = os.getenv("INDICCONFORMER_CHECKPOINT")
@@ -25,11 +25,21 @@ class IndicConformerBackend(ASRBackend):
             import torch
         except ImportError as exc:
             raise RuntimeError(
-                "IndicConformer needs the AI4Bharat NeMo environment. "
+                "IndicConformer needs the AI4Bharat NeMo fork. "
                 "See https://github.com/AI4Bharat/IndicConformerASR"
             ) from exc
-        self.model = nemo_asr.models.EncDecCTCModel.restore_from(restore_path=checkpoint)
-        self.model.freeze()
+
+        checkpoint_path = Path(checkpoint)
+        if not checkpoint_path.is_file():
+            raise FileNotFoundError(f"IndicConformer checkpoint not found: {checkpoint_path}")
+
+        # The released IndicConformer checkpoints are hybrid RNNT/CTC models.
+        # NeMo's generic ASRModel loader restores the concrete class from the
+        # checkpoint metadata; forcing EncDecCTCModel would reject RNNT models.
+        self.model = nemo_asr.models.ASRModel.restore_from(
+            restore_path=str(checkpoint_path)
+        )
+        self.model.eval()
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.model = self.model.to(self.device)
 
@@ -38,18 +48,26 @@ class IndicConformerBackend(ASRBackend):
         if not path.is_file():
             raise FileNotFoundError(path)
         start = time.perf_counter()
-        self.model.cur_decoder = "ctc"
-        kwargs = {"batch_size": 1, "logprobs": False}
-        if language.lower() not in {"auto", "none"}:
-            kwargs["language_id"] = language.lower()
-        output = self.model.transcribe([str(path)], **kwargs)
-        text = str(output[0]).strip()
+
+        # Use the checkpoint's configured/default hybrid decoder.
+        outputs = self.model.transcribe(
+            audio=[str(path)], batch_size=1, return_hypotheses=False
+        )
+        first = outputs[0] if outputs else ""
+        text = str(getattr(first, "text", first)).strip()
         elapsed = time.perf_counter() - start
         return TranscriptionResult(
-            backend=self.name, model=self.model_id, transcript=text,
+            backend=self.name,
+            model=self.model_id,
+            transcript=text,
             segments=[TranscriptSegment(index=0, start=None, end=None, text=text)] if text else [],
             elapsed_seconds=elapsed,
-            metadata={"device": self.device, "decoder": "ctc", "language_requested": language},
+            metadata={
+                "device": self.device,
+                "language_requested": language,
+                "decoder": "checkpoint default hybrid decoder",
+                "checkpoint": str(checkpoint_path),
+            },
         )
 
     def close(self) -> None:

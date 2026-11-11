@@ -30,7 +30,7 @@ pip install -e .
 pip install -r requirements-whisper.txt
 ```
 
-Install FFmpeg and ensure `ffmpeg -version` works in a new terminal. Place an audio file in `data/audio/`.
+Install FFmpeg and ensure `ffmpeg -version` works in a new terminal. For current YouTube extraction, also install a supported JavaScript runtime (Deno is recommended by yt-dlp): `winget install -e --id DenoLand.Deno`, then verify `deno --version`. Place an audio file in `data/audio/`.
 
 ## First run — Whisper
 
@@ -92,14 +92,14 @@ Install the model runner dependencies:
 pip install -r requirements-indictranscribe.txt
 ```
 
-The backend downloads the official Hugging Face model repository on first use and invokes its bundled `inference.py`. Core is the default; set Flex to compare the flexible checkpoint:
+The backend downloads the official Hugging Face model repository on first use and invokes its bundled `inference.py`. Both checkpoints require agreeing to their gated Hugging Face terms and using the Indic Open Model License (plus the base model's terms); these are not MIT/Apache-licensed checkpoints. Core is the default; set Flex to compare the flexible checkpoint:
 
 ```powershell
 $env:INDIC_TRANSCRIBE_MODEL = "bodhan-ai/indic-transcribe-flex"
 python -m bharatasr run --audio data/audio/sample.wav --language hi --models indictranscribe
 ```
 
-Use `bodhan-ai/indic-transcribe-core` for the default Core model. The model script performs its own long-audio chunking. First download can be large and inference may be slow on CPU. Model card and usage: https://huggingface.co/bodhan-ai/indic-transcribe-core and https://huggingface.co/bodhan-ai/indic-transcribe-flex.
+Use `bodhan-ai/indic-transcribe-core` for the default Core model. Both Core and Flex are about 4.6 GB on disk and use a 1.2B-parameter architecture, so neither is a sensible GPU choice for your 4 GB RTX 3050. The runner forces CPU by default (`INDIC_TRANSCRIBE_DEVICE=cpu`). Only set `$env:INDIC_TRANSCRIBE_DEVICE = "cuda"` to explicitly try GPU inference on a machine with enough VRAM. The model script performs its own long-audio chunking. First download can be large and inference may be slow on CPU. Model card and usage: https://huggingface.co/bodhan-ai/indic-transcribe-core and https://huggingface.co/bodhan-ai/indic-transcribe-flex.
 
 ### 4. Sarvam Saaras v4 — optional hosted API
 
@@ -190,7 +190,7 @@ Runtime, audio duration, device, precision and model metadata are saved separate
 ## Current limitations
 
 - Whisper provides word timestamps; the other initial adapters may return utterance-level text only.
-- Indic-Transcribe uses its bundled CLI and the adapter records the resulting console output for traceability; if upstream output formatting changes, adjust the parser.
+- Indic-Transcribe uses its bundled CLI and the adapter records the resulting console output for traceability; if upstream output formatting changes, adjust the parser. Core/Flex checkpoints are ~4.6 GB and should run on CPU by default on a 4 GB GPU laptop.
 - The IndicConformer checkpoint must match the supplied language code.
 - Model-level language support is not identical; a language absent from a model should not be treated as a failed accuracy result.
 - A model output is not human-verified and must not be presented as ground truth.
