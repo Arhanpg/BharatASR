@@ -89,6 +89,7 @@ Then, from the Python environment where that fork is installed, run BharatASR:
 
 ```bash
 export INDICCONFORMER_CHECKPOINT="$HOME/models/indicconformer_hi.nemo"
+export INDICCONFORMER_LANGUAGE=hi
 export INDICCONFORMER_DEVICE=cpu
 python -m bharatasr run --audio data/audio/sample.wav --language hi --models indicconformer
 ```
