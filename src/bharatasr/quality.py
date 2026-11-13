@@ -4,11 +4,15 @@ from __future__ import annotations
 from collections import Counter
 from typing import Any
 
-_PUNCTUATION = ".,!?;:।॥()[]{}\\"'“”‘’"
+_PUNCTUATION = ".,!?;:।॥()[]{}" + '"' + "'“”‘’"
 
 
 def _tokens(text: str) -> list[str]:
-    return [token.strip(_PUNCTUATION) for token in text.split() if token.strip(_PUNCTUATION)]
+    return [
+        token.strip(_PUNCTUATION)
+        for token in text.split()
+        if token.strip(_PUNCTUATION)
+    ]
 
 
 def assess_transcript_quality(
@@ -18,7 +22,7 @@ def assess_transcript_quality(
 ) -> dict[str, Any]:
     """Flag suspicious output; this is not a semantic accuracy score.
 
-    Repetition may be genuine in a mantra/recitation. Low token yield may also
+    Repetition may be genuine in mantra/recitation. Low token yield may also
     be legitimate for slow speech, music or silence. Flags always need listening.
     """
     metadata = language_metadata or {}
@@ -40,7 +44,7 @@ def assess_transcript_quality(
         if current_run > longest_run:
             longest_token, longest_run = token, current_run
 
-    replacement_count = transcript.count("\\ufffd")
+    replacement_count = transcript.count(chr(0xFFFD))
     top_ratio = top_count / len(tokens) if tokens else 0.0
     duration = audio_duration_seconds
     if duration is None:
@@ -55,7 +59,9 @@ def assess_transcript_quality(
     if not transcript.strip():
         flags.append("EMPTY OUTPUT: the backend returned no transcript text.")
     if replacement_count:
-        flags.append(f"ENCODING WARNING: found {replacement_count} Unicode replacement character(s) (�).")
+        flags.append(
+            f"ENCODING WARNING: found {replacement_count} Unicode replacement character(s) (�)."
+        )
     if len(tokens) >= 30 and longest_run >= 10:
         flags.append(
             f"REPETITION WARNING: {longest_token!r} occurs {longest_run} times consecutively. "
@@ -67,10 +73,12 @@ def assess_transcript_quality(
             f"(ratio {unique_ratio:.3f}); inspect for loops or repeated output."
         )
     if len(tokens) >= 100 and top_ratio >= 0.12:
-        flags.append(f"TOKEN DOMINANCE: {top_token!r} accounts for {top_ratio:.1%} of tokens.")
+        flags.append(
+            f"TOKEN DOMINANCE: {top_token!r} accounts for {top_ratio:.1%} of tokens."
+        )
     if (
         tokens_per_minute is not None
-        and duration is not None
+        and isinstance(duration, (int, float))
         and duration >= 90
         and tokens_per_minute < 40
         and transcript.strip()
@@ -83,9 +91,15 @@ def assess_transcript_quality(
 
     probability = metadata.get("language_probability_initial")
     if isinstance(probability, (int, float)) and probability < 0.50:
-        flags.append(f"LOW LANGUAGE-DETECTION CONFIDENCE: {probability:.3f}; verify the language label.")
+        flags.append(
+            f"LOW LANGUAGE-DETECTION CONFIDENCE: {probability:.3f}; verify the language label."
+        )
 
-    status = "empty_output" if not transcript.strip() else ("needs_review" if flags else "no_automatic_flags")
+    status = (
+        "empty_output"
+        if not transcript.strip()
+        else ("needs_review" if flags else "no_automatic_flags")
+    )
     return {
         "status": status,
         "manual_review_required": True,
@@ -109,7 +123,11 @@ def assess_transcript_quality(
     }
 
 
-def review_flags(transcript: str, requested_language: str, metadata: dict[str, Any]) -> list[str]:
+def review_flags(
+    transcript: str,
+    requested_language: str,
+    metadata: dict[str, Any],
+) -> list[str]:
     flags = [
         "Machine-generated draft: verify against the original audio before quoting or publishing.",
         "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections.",
@@ -120,7 +138,9 @@ def review_flags(transcript: str, requested_language: str, metadata: dict[str, A
             "obtain review from someone familiar with the exact Prakrit variety."
         )
     if requested_language.strip().casefold() in {"auto", "detect"}:
-        flags.append("Automatically detected language(s) must be checked, especially in recitation and code-switching.")
+        flags.append(
+            "Automatically detected language(s) must be checked, especially in recitation and code-switching."
+        )
     flags.extend(
         assess_transcript_quality(
             transcript,
