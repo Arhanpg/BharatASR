@@ -204,53 +204,33 @@ Runtime, audio duration, device, precision and model metadata are saved separate
 7. Report model failures and unsupported languages instead of silently dropping them.
 8. Respect dataset licenses, privacy, consent and redistribution permissions.
 
-## Initial test report — 13 November 2026
+## Initial YouTube transcript audit — 13 November 2026
 
-**Honest result: Whisper ran, but the saved transcripts failed manual text-quality review. SraVaani and Indic-Transcribe did not reach inference because Hugging Face denied access.**
+The expanded audit covers **all 21 distinct YouTube video IDs** represented in the committed Whisper outputs (44 run folders and 22 transcript files; one video was run twice). I inspected saved transcript text from every video, including excerpts near the beginning, 20%, 45%, 70% and 90%, and checked language metadata, token diversity, repeated-token runs and Unicode replacement characters.
 
-The committed 12 November runs include two public Hindi Samavasaran lectures from SHIKSHAN BOARD JODHPUR:
+**The text-only audit found widespread problems:**
+- 1 video has an empty transcript even though the old run summary marked Whisper as successful.
+- 2 more have extremely low text yields and need coverage checks.
+- 17/21 contain a consecutive repeated-token sequence of at least 10 tokens.
+- 19/21 contain at least one Unicode replacement character (�).
 
-| Recording | Duration | Whisper language detection | Whisper elapsed | Real-time factor |
-|---|---:|---:|---:|---:|
-| [समवसरण का थोकडा (ग्यारहवीं) PART 2](https://www.youtube.com/watch?v=o1pKnYuV2KY) | 71.47 min | Hindi, 91.06% | 21.23 min | 0.297 |
-| [समवसरण का थोकडा (ग्यारहवीं)-PART 1](https://www.youtube.com/watch?v=3wlMq29K6TE) | 69.60 min | Hindi, 93.46% | 20.83 min | 0.299 |
+These checks show the saved outputs are not consistently reliable. Repeated ॐ may be a real chant, so repetition flags are not automatically treated as hallucinations.
 
-Both used faster-whisper \`small\` on CUDA with \`int8_float16\`, automatic language selection, VAD, word timestamps and the glossary prompt. Inspected Part 2 text had about 3,734 whitespace tokens, 617 unique tokens, 47 replacement characters (�), and a 74-token consecutive repetition run. Part 1 had about 4,530 whitespace tokens, 835 unique tokens, 72 replacement characters, and a 74-token consecutive repeated-fragment run. Sampled sections contained malformed Devanagari, repeated words/fragments and long non-lexical runs.
+**Important cross-verification limitation:** no independent YouTube caption files or original audio/video files are committed in the repository. Direct YouTube watch-page/timed-text retrieval was unavailable in this audit environment, so I cannot truthfully claim that all 21 Whisper transcripts have been checked against YouTube captions or spoken audio. No WER/CER is reported. The detailed report explicitly separates extracted-text review from source-audio verification.
 
-**Whisper verdict: not acceptable as a verified transcript in these runs.** Language detection was confident; transcript text was visibly corrupted. The original audio was not committed to the repository for direct listening, so this is a text-artifact review—not a claim that every spoken word was matched or mismatched. No human reference transcript was supplied, so no WER/CER is reported.
+- [Full 21-video audit and per-video findings](docs/INITIAL_TEST_REPORT.md)
+- [CSV inventory of all 21 videos and transcript diagnostics](docs/VIDEO_TRANSCRIPT_AUDIT.csv)
+- [All 21 source YouTube URLs](docs/youtube_video_urls.txt)
 
-| Other backend | What happened | Interpretation |
-|---|---|---|
-| SraVaani 1.0 | HTTP 403; account not on the authorized list | Access blocked before model download/inference |
-| Indic-Transcribe Core/Flex | Gated-repository HTTP 403 | Access blocked before model download/inference |
-| Indic-Transcribe retry | One separate closed-client error | Transient client error; no transcript produced |
+To check which YouTube caption tracks exist on your Windows machine, download them locally with:
 
-These are access/setup failures, **not model-quality failures**. The model weights were not downloaded and no audio was transcribed by these backends. A Hugging Face token/login cannot bypass model-owner approval.
+~~~powershell
+New-Item -ItemType Directory -Force data/references/youtube-captions | Out-Null
+yt-dlp --skip-download --write-subs --write-auto-subs --sub-langs "all" --sub-format vtt --ignore-errors -o "data/references/youtube-captions/%(id)s.%(language)s.%(ext)s" -a docs/youtube_video_urls.txt
+~~~
 
-See [docs/INITIAL_TEST_REPORT.md](docs/INITIAL_TEST_REPORT.md) for the detailed evidence, text inspection and limitations.
+Creator-provided captions and auto-generated captions must be labelled separately; auto captions are another ASR output, not human ground truth. Use human-verified reference text for WER/CER.
 
-### Try another public Hindi model now
-
-BharatASR now includes [ARTPARK-IISc Whisper-Small Vaani Hindi](https://huggingface.co/ARTPARK-IISc/whisper-small-vaani-hindi) as a separate backend. Its model card documents a 718-hour Hindi fine-tune, Apache-2.0 licence, and a Transformers pipeline with 30-second chunking. It is Hindi-only—not a Sanskrit or Prakrit recognizer.
-
-Install the matching PyTorch build first from [pytorch.org](https://pytorch.org/get-started/locally/), then:
-
-\`\`\`powershell
-pip install -r requirements-vaani-whisper.txt
-python -m bharatasr run --youtube-url "https://www.youtube.com/watch?v=o1pKnYuV2KY" --language hi --models whisper,vaani-whisper-hindi
-\`\`\`
-
-Repeat for Part 1. Compare both outputs with the same human-verified reference transcript before ranking either model.
-
-### Fix gated model access
-
-The SraVaani and Indic-Transcribe adapters now use \`HF_TOKEN\` if set, or the token saved by the Hugging Face CLI. This improves authentication handling but does not bypass gated access.
-
-1. Request/accept access and licence terms on the relevant Hugging Face model page.
-2. After approval, run \`hf auth login\` and \`hf auth whoami\` in the same environment.
-3. Retry the relevant BharatASR command.
-
-Until approval, BharatASR records \`blocked_access\` with an actionable error instead of implying inference ran.
 
 ## Current limitations
 
