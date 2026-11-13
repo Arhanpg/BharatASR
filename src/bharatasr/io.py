@@ -44,7 +44,10 @@ def get_audio_duration(path: Path) -> float | None:
 
 def write_json(path: Path, data: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2, default=str) + "\\n", encoding="utf-8")
+    path.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2, default=str) + chr(10),
+        encoding="utf-8",
+    )
 
 
 def summarize_run(rows: list[dict[str, Any]], run_dir: Path | str) -> dict[str, Any]:
@@ -87,6 +90,7 @@ def save_result(
     result: TranscriptionResult,
     requested_language: str = "auto",
 ) -> dict[str, Any]:
+    newline = chr(10)
     model_dir = run_dir / result.backend
     model_dir.mkdir(parents=True, exist_ok=True)
     quality = assess_transcript_quality(
@@ -101,7 +105,7 @@ def save_result(
 
     # Preserve the exact model output; never auto-correct or transliterate it.
     write_json(model_dir / "transcript.json", result.to_dict())
-    (model_dir / "transcript.txt").write_text(result.transcript + "\\n", encoding="utf-8")
+    (model_dir / "transcript.txt").write_text(result.transcript + newline, encoding="utf-8")
     write_json(model_dir / "segments.json", [
         {
             "index": segment.index,
@@ -129,15 +133,26 @@ def save_result(
         "transcript_quality": quality,
     })
 
-    notes = "\\n".join(f"- {flag}" for flag in flags)
-    review = (
-        f"# Transcript review — {result.backend}\\n\\n"
-        f"**Model:** {result.model}\\n\\n"
-        f"**Requested language:** {requested_language}\\n\\n"
-        f"**Automated screening status:** {quality['status']}\\n\\n"
-        "> This screening is heuristic only; it is not WER/CER or a human accuracy review.\\n\\n"
-        f"## Review notes\\n\\n{notes}\\n\\n"
-        f"## Unmodified model transcript\\n\\n{result.transcript}\\n"
-    )
+    notes = newline.join(f"- {flag}" for flag in flags)
+    review = newline.join([
+        f"# Transcript review — {result.backend}",
+        "",
+        f"**Model:** {result.model}",
+        "",
+        f"**Requested language:** {requested_language}",
+        "",
+        f"**Automated screening status:** {quality['status']}",
+        "",
+        "> This screening is heuristic only; it is not WER/CER or a human accuracy review.",
+        "",
+        "## Review notes",
+        "",
+        notes,
+        "",
+        "## Unmodified model transcript",
+        "",
+        result.transcript,
+        "",
+    ])
     (model_dir / "transcript.review.md").write_text(review, encoding="utf-8")
     return quality
