@@ -1,58 +1,62 @@
 """Project Vaani SraVaani 1.0 local backend (gated Hugging Face checkpoint)."""
 from __future__ import annotations
-import os
+
 import time
 from pathlib import Path
 
 from bharatasr.backends.base import ASRBackend
+from bharatasr.model_access import format_gated_access_error, get_huggingface_token, is_huggingface_access_error
 from bharatasr.types import TranscriptSegment, TranscriptionResult
 
 
 class SraVaaniBackend(ASRBackend):
     name = "sravaani"
     model_id = "ARTPARK-IISc/SraVaani-1.0"
+    model_url = "https://huggingface.co/ARTPARK-IISc/SraVaani-1.0"
 
     def __init__(self, device: str = "cpu") -> None:
-        token = os.getenv("HF_TOKEN")
-        if not token:
-            raise RuntimeError(
-                "SraVaani is gated. Accept access conditions and create a read token at "
-                "https://huggingface.co/ARTPARK-IISc/SraVaani-1.0, then set HF_TOKEN."
-            )
         try:
             import torch
             from transformers import AutoModel
         except ImportError as exc:
-            raise RuntimeError("Install requirements-sravaani.txt first") from exc
+            raise RuntimeError("Install requirements-sravaani.txt first.") from exc
         if device == "cuda" and not torch.cuda.is_available():
             raise RuntimeError("SRAVAANI_DEVICE=cuda requested, but CUDA is unavailable.")
         self.device = device
-        self.model = AutoModel.from_pretrained(
-            self.model_id, trust_remote_code=True, token=token
-        ).to(device).eval()
+        try:
+            self.model = AutoModel.from_pretrained(
+                self.model_id, trust_remote_code=True, token=get_huggingface_token()
+            ).to(device).eval()
+        except Exception as exc:
+            if is_huggingface_access_error(exc):
+                raise RuntimeError(format_gated_access_error(self.model_id, self.model_url, exc)) from exc
+            raise
 
     def transcribe(self, audio_path: Path, language: str = "auto") -> TranscriptionResult:
         path = Path(audio_path)
         if not path.is_file():
             raise FileNotFoundError(path)
-        start = time.perf_counter()
-        # Official model card uses a single file path string, not a list.
+        started = time.perf_counter()
+        # Exact path-based API shown in the current SraVaani model card.
         hypotheses = list(self.model.transcribe(str(path), return_hypotheses=True))
-        parts = []
-        for hypothesis in hypotheses:
-            text = str(getattr(hypothesis, "text", hypothesis)).strip()
-            if text:
-                parts.append(text)
-        text = " ".join(parts).strip()
+        text_parts = [
+            str(getattr(hypothesis, "text", hypothesis)).strip()
+            for hypothesis in hypotheses
+        ]
+        transcript = " ".join(part for part in text_parts if part).strip()
+        elapsed = time.perf_counter() - started
         return TranscriptionResult(
-            backend=self.name, model=self.model_id, transcript=text,
-            segments=[TranscriptSegment(index=0, start=None, end=None, text=text)] if text else [],
-            elapsed_seconds=time.perf_counter() - start,
+            backend=self.name,
+            model=self.model_id,
+            transcript=transcript,
+            segments=[TranscriptSegment(index=0, start=None, end=None, text=transcript)] if transcript else [],
+            elapsed_seconds=elapsed,
             metadata={
-                "device": self.device, "language_requested": language,
-                "language_detection": "automatic model inference; no language argument exposed by model card",
+                "device": self.device,
+                "language_requested": language,
+                "language_detection": "automatic model inference; model card exposes no language argument",
                 "hypothesis_count": len(hypotheses),
-                "note": "ASR draft; manually verify mantra spellings and Prakrit words.",
+                "note": "ASR draft; manually verify Sanskrit, mantra and Prakrit spellings.",
             },
         )
 

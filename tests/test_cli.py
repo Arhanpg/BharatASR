@@ -12,7 +12,8 @@ def test_cli_help_lists_run_and_compare():
     assert "compare" in result.stdout
 
 
-def test_run_function_exposes_playlist_cap_and_glossary():
+def test_run_has_playlist_glossary_options():
     parameters = inspect.signature(run).parameters
     assert "max_videos" in parameters
+    assert "use_glossary" in parameters
     assert "glossary" in parameters

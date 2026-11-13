@@ -16,6 +16,7 @@ from bharatasr.glossary import build_whisper_prompt, load_glossary
 from bharatasr.io import create_run_dir, get_audio_duration, save_result, write_json
 from bharatasr.languages import resolve_language
 from bharatasr.metrics import compare_run
+from bharatasr.model_access import is_huggingface_access_error
 from bharatasr.youtube import download_youtube_audio
 
 app = typer.Typer(help="Benchmark ASR models on Indian-language audio.")
@@ -26,6 +27,9 @@ def _backend(name: str, whisper_model: str, glossary_prompt: str | None):
     if name == "whisper":
         from bharatasr.backends.whisper import WhisperBackend
         return WhisperBackend(model_id=whisper_model, initial_prompt=glossary_prompt)
+    if name == "vaani-whisper-hindi":
+        from bharatasr.backends.vaani_whisper_hindi import VaaniWhisperHindiBackend
+        return VaaniWhisperHindiBackend()
     if name == "sravaani":
         from bharatasr.backends.sravaani import SraVaaniBackend
         return SraVaaniBackend(device=os.getenv("SRAVAANI_DEVICE", "cpu"))
@@ -68,8 +72,6 @@ def _run_one_audio(
         "audio_path": str(audio_path.resolve()),
         "audio_name": audio_path.name,
         "audio_duration_seconds": duration,
-        "sample_rate_hz": 16000 if source.get("normalized_audio") else None,
-        "channels": 1 if source.get("normalized_audio") else None,
         "source_metadata": source,
         "language_requested": requested_language,
         "backend_language_argument": backend_language,
@@ -77,6 +79,7 @@ def _run_one_audio(
         "glossary_prompt_enabled": bool(glossary_prompt),
         "created_at": datetime.now().astimezone().isoformat(),
     })
+
     rows = []
     for name in selected:
         started = time.perf_counter()
@@ -84,38 +87,64 @@ def _run_one_audio(
         try:
             if name == "indicconformer" and backend_language in {"auto", "prakrit"}:
                 raise RuntimeError(
-                    "Skipped: IndicConformer does not auto-detect language and has no "
-                    "dedicated Prakrit mode. Run it only with --language set to the "
-                    "language matching the checkpoint."
+                    "Skipped: IndicConformer does not auto-detect language or offer a "
+                    "dedicated Prakrit mode. Use a language-matched checkpoint and explicit code."
                 )
             if name == "indicconformer" and not os.getenv("INDICCONFORMER_LANGUAGE"):
-                raise RuntimeError("Skipped: set INDICCONFORMER_LANGUAGE to match the .nemo checkpoint.")
+                raise RuntimeError("Skipped: set INDICCONFORMER_LANGUAGE to match the checkpoint.")
+            if name == "vaani-whisper-hindi" and backend_language != "hi":
+                raise RuntimeError(
+                    "Skipped: Vaani Whisper-Small Hindi is monolingual. Specify --language hi."
+                )
+
             backend = _backend(name, whisper_model, glossary_prompt)
             result = backend.transcribe(audio_path, backend_language)
             result.metadata.setdefault("audio_duration_seconds", duration)
             result.metadata["source_metadata"] = source
             result.metadata["language_requested_by_user"] = requested_language
-            save_result(run_dir, result, requested_language=requested_language)
-            rows.append({
-                "backend": name, "status": "success",
-                "elapsed_seconds": result.elapsed_seconds, "model": result.model,
+            quality = save_result(run_dir, result, requested_language=requested_language)
+            status = "empty_output" if not result.transcript.strip() else "completed"
+            row = {
+                "backend": name,
+                "status": status,
+                "transcript_quality": quality["status"],
+                "elapsed_seconds": result.elapsed_seconds,
+                "model": result.model,
                 "language_detected": (
                     result.metadata.get("language_detected")
                     or result.metadata.get("language_detected_initial")
+                    or result.metadata.get("language")
                 ),
-                "review_required": result.metadata.get("review_required", True),
-            })
-            console.print(f"[green]✓[/green] {audio_path.name} | {name}: {result.elapsed_seconds:.2f}s")
+                "quality_flags": quality["flags"],
+                "review_required": True,
+            }
+            rows.append(row)
+            if status == "empty_output":
+                console.print(f"[red]✗[/red] {audio_path.name} | {name}: empty output")
+            elif quality["flags"]:
+                console.print(
+                    f"[yellow]![/yellow] {audio_path.name} | {name}: completed, "
+                    f"{len(quality['flags'])} quality warning(s)"
+                )
+            else:
+                console.print(f"[green]✓[/green] {audio_path.name} | {name}: completed; human review required")
         except Exception as exc:
+            if is_huggingface_access_error(exc) or "Hugging Face denied access" in str(exc):
+                error_status = "blocked_access"
+            elif str(exc).startswith("Skipped:"):
+                error_status = "skipped"
+            else:
+                error_status = "failed"
             error = {
                 "backend": name,
-                "status": "skipped" if str(exc).startswith("Skipped:") else "failed",
+                "status": error_status,
                 "elapsed_seconds": time.perf_counter() - started,
                 "error": f"{type(exc).__name__}: {exc}",
             }
             rows.append(error)
             write_json(run_dir / name / "error.json", error)
-            console.print(f"[yellow]![/yellow] {audio_path.name} | {name}: {exc}")
+            label = "ACCESS NOT APPROVED" if error_status == "blocked_access" else error_status.upper()
+            console.print(f"[yellow]![/yellow] {audio_path.name} | {name}: {label} — {exc}")
         finally:
             if backend is not None:
                 try:
@@ -124,9 +153,13 @@ def _run_one_audio(
                     pass
 
     write_json(run_dir / "run_summary.json", {
-        "models": rows, "run_dir": str(run_dir),
+        "models": rows,
+        "run_dir": str(run_dir),
         "manual_review_required": True,
-        "note": "Transcript text is stored unmodified. Review mantra, Sanskrit and Prakrit words manually.",
+        "note": (
+            "A completed backend is not proof of transcript correctness. Inspect quality.json "
+            "and transcript.review.md; calculate WER/CER only with a human-verified reference."
+        ),
     })
     console.print(f"Outputs: [bold]{run_dir.resolve()}[/bold]")
     return run_dir
@@ -137,11 +170,12 @@ def run(
     audio: Path | None = typer.Option(None, "--audio", exists=True, readable=True),
     youtube_url: str | None = typer.Option(None, "--youtube-url", help="Public YouTube video or playlist URL; audio only."),
     language: str = typer.Option("auto", "--language", help="auto, Sanskrit, Prakrit (experimental/review-only), or an Indian language/code."),
-    models: str = typer.Option("whisper", "--models", help="Comma-separated names or 'all' (local only)."),
+    models: str = typer.Option("whisper", "--models", help="Comma-separated backends or 'all' (local only)."),
     output: Path = typer.Option(Path("outputs"), "--output"),
     whisper_model: str = typer.Option("small", "--whisper-model"),
     max_videos: int = typer.Option(20, "--max-videos", min=1, max=100, help="Safety cap for a YouTube playlist."),
     glossary: Path = typer.Option(Path("configs/sacred_terms.json"), "--glossary", exists=True, dir_okay=False),
+    use_glossary: bool = typer.Option(False, "--use-glossary", help="Pass sacred-term hints to Whisper; this can bias decoding."),
     sarvam_opt_in: bool = typer.Option(False, "--enable-sarvam", help="Explicitly allow metered Sarvam API usage."),
     confirm_metered_api: bool = typer.Option(False, "--confirm-metered-api", help="Confirm possible consumption of paid credits."),
 ):
@@ -153,7 +187,9 @@ def run(
     except ValueError as exc:
         raise typer.BadParameter(str(exc)) from exc
 
-    local_models = ["whisper", "sravaani", "indicconformer", "indictranscribe"]
+    local_models = [
+        "whisper", "vaani-whisper-hindi", "sravaani", "indicconformer", "indictranscribe"
+    ]
     selected = local_models if models.strip().lower() == "all" else [
         item.strip().lower() for item in models.split(",") if item.strip()
     ]
@@ -169,13 +205,13 @@ def run(
     if not selected:
         raise typer.BadParameter("Select at least one backend.")
 
-    if audio is not None:
-        audio_paths = [audio]
-    else:
-        audio_paths = download_youtube_audio(
+    audio_paths = (
+        [audio] if audio is not None
+        else download_youtube_audio(
             youtube_url or "", Path(".cache") / "youtube_audio", max_videos=max_videos
         )
-    glossary_prompt = build_whisper_prompt(load_glossary(glossary))
+    )
+    glossary_prompt = build_whisper_prompt(load_glossary(glossary)) if use_glossary else None
     original_key = language_request.original.strip().casefold()
     backend_language = language_request.code or (
         "prakrit" if original_key in {"prakrit", "prākrit", "pali-prakrit"} else "auto"
@@ -188,8 +224,10 @@ def run(
             audio_path=audio_path,
             requested_language=language_request.original,
             backend_language=backend_language,
-            selected=selected, output=output,
-            whisper_model=whisper_model, glossary_prompt=glossary_prompt,
+            selected=selected,
+            output=output,
+            whisper_model=whisper_model,
+            glossary_prompt=glossary_prompt,
             source_url=youtube_url,
         )
 

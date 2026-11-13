@@ -1,2 +1,0 @@
-[console_scripts]
-bharatasr = bharatasr.cli:app

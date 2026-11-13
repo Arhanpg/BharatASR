@@ -10,10 +10,11 @@ BharatASR runs multiple local/self-hosted ASR systems against the same audio fil
 
 | Backend | Type | Availability | Notes |
 |---|---|---|---|
-| faster-whisper (Whisper) | Local | Implemented | Adapted from VidTrace: VAD, word timestamps, CUDA detection and CPU fallback. |
-| SraVaani 1.0 | Local | Implemented | Project Vaani FastConformer; model card reports 65 Indian languages/dialects. Gated Hugging Face access; accept conditions and set `HF_TOKEN`. |
+| faster-whisper (Whisper) | Local | Implemented; initial test quality poor | Adapted from VidTrace: VAD, word timestamps, CUDA detection and CPU fallback. See the initial test report. |
+| Vaani Whisper-Small Hindi | Local | Added as public comparison backend | Hindi-only, Apache-2.0, approximately 967 MB weights. Not a Sanskrit/Prakrit model. |
+| SraVaani 1.0 | Local | Access blocked in initial test | Gated Hugging Face checkpoint. The adapter supports cached CLI login or HF_TOKEN; owner approval is still required. |
 | AI4Bharat IndicConformer | Local | Implemented | Official NeMo CTC/RNNT checkpoint workflow; download a .nemo model and set its path. |
-| Indic-Transcribe Core / Flex | Local | Implemented | Runs the official model-packaged `inference.py` script; choose Core or Flex with `INDIC_TRANSCRIBE_MODEL`. |
+| Indic-Transcribe Core / Flex | Local | Access blocked in initial test | Official CLI adapter is present, but inference is unverified for this account until Hugging Face grants access. |
 | Sarvam Saaras v4 | Hosted API | Optional / disabled | Signup includes ₹100 credits; usage is metered. It is excluded from `all` and needs two explicit CLI confirmations. No payment method is needed for local backends. |
 
 ## Quick start — Windows PowerShell
@@ -202,6 +203,54 @@ Runtime, audio duration, device, precision and model metadata are saved separate
 6. Report CPU/GPU, RAM/VRAM, precision, and whether the model fell back to CPU.
 7. Report model failures and unsupported languages instead of silently dropping them.
 8. Respect dataset licenses, privacy, consent and redistribution permissions.
+
+## Initial test report — 13 November 2026
+
+**Honest result: Whisper ran, but the saved transcripts failed manual text-quality review. SraVaani and Indic-Transcribe did not reach inference because Hugging Face denied access.**
+
+The committed 12 November runs include two public Hindi Samavasaran lectures from SHIKSHAN BOARD JODHPUR:
+
+| Recording | Duration | Whisper language detection | Whisper elapsed | Real-time factor |
+|---|---:|---:|---:|---:|
+| [समवसरण का थोकडा (ग्यारहवीं) PART 2](https://www.youtube.com/watch?v=o1pKnYuV2KY) | 71.47 min | Hindi, 91.06% | 21.23 min | 0.297 |
+| [समवसरण का थोकडा (ग्यारहवीं)-PART 1](https://www.youtube.com/watch?v=3wlMq29K6TE) | 69.60 min | Hindi, 93.46% | 20.83 min | 0.299 |
+
+Both used faster-whisper \`small\` on CUDA with \`int8_float16\`, automatic language selection, VAD, word timestamps and the glossary prompt. Inspected Part 2 text had about 3,734 whitespace tokens, 617 unique tokens, 47 replacement characters (�), and a 74-token consecutive repetition run. Part 1 had about 4,530 whitespace tokens, 835 unique tokens, 72 replacement characters, and a 74-token consecutive repeated-fragment run. Sampled sections contained malformed Devanagari, repeated words/fragments and long non-lexical runs.
+
+**Whisper verdict: not acceptable as a verified transcript in these runs.** Language detection was confident; transcript text was visibly corrupted. The original audio was not committed to the repository for direct listening, so this is a text-artifact review—not a claim that every spoken word was matched or mismatched. No human reference transcript was supplied, so no WER/CER is reported.
+
+| Other backend | What happened | Interpretation |
+|---|---|---|
+| SraVaani 1.0 | HTTP 403; account not on the authorized list | Access blocked before model download/inference |
+| Indic-Transcribe Core/Flex | Gated-repository HTTP 403 | Access blocked before model download/inference |
+| Indic-Transcribe retry | One separate closed-client error | Transient client error; no transcript produced |
+
+These are access/setup failures, **not model-quality failures**. The model weights were not downloaded and no audio was transcribed by these backends. A Hugging Face token/login cannot bypass model-owner approval.
+
+See [docs/INITIAL_TEST_REPORT.md](docs/INITIAL_TEST_REPORT.md) for the detailed evidence, text inspection and limitations.
+
+### Try another public Hindi model now
+
+BharatASR now includes [ARTPARK-IISc Whisper-Small Vaani Hindi](https://huggingface.co/ARTPARK-IISc/whisper-small-vaani-hindi) as a separate backend. Its model card documents a 718-hour Hindi fine-tune, Apache-2.0 licence, and a Transformers pipeline with 30-second chunking. It is Hindi-only—not a Sanskrit or Prakrit recognizer.
+
+Install the matching PyTorch build first from [pytorch.org](https://pytorch.org/get-started/locally/), then:
+
+\`\`\`powershell
+pip install -r requirements-vaani-whisper.txt
+python -m bharatasr run --youtube-url "https://www.youtube.com/watch?v=o1pKnYuV2KY" --language hi --models whisper,vaani-whisper-hindi
+\`\`\`
+
+Repeat for Part 1. Compare both outputs with the same human-verified reference transcript before ranking either model.
+
+### Fix gated model access
+
+The SraVaani and Indic-Transcribe adapters now use \`HF_TOKEN\` if set, or the token saved by the Hugging Face CLI. This improves authentication handling but does not bypass gated access.
+
+1. Request/accept access and licence terms on the relevant Hugging Face model page.
+2. After approval, run \`hf auth login\` and \`hf auth whoami\` in the same environment.
+3. Retry the relevant BharatASR command.
+
+Until approval, BharatASR records \`blocked_access\` with an actionable error instead of implying inference ran.
 
 ## Current limitations
 
