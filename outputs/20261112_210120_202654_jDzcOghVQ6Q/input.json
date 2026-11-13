@@ -1,0 +1,36 @@
+{
+  "audio_path": "D:\\BharatASR\\BharatASR\\.cache\\youtube_audio\\jDzcOghVQ6Q.wav",
+  "audio_name": "jDzcOghVQ6Q.wav",
+  "audio_duration_seconds": 4373.76,
+  "sample_rate_hz": 16000,
+  "channels": 1,
+  "source_metadata": {
+    "source": "youtube",
+    "video_id": "jDzcOghVQ6Q",
+    "title": "Samosaran Se Divya Dhwani",
+    "webpage_url": "https://www.youtube.com/watch?v=jDzcOghVQ6Q",
+    "channel": "guruvani",
+    "channel_id": "UCBO15TDBTdNVahNWyI2k5Kg",
+    "upload_date": "20140408",
+    "duration_seconds": 4374,
+    "source_language_metadata": "hi",
+    "source_audio_language": null,
+    "source_availability": "public",
+    "extractor": "youtube",
+    "normalized_audio": {
+      "format": "WAV PCM signed 16-bit",
+      "sample_rate_hz": 16000,
+      "channels": 1,
+      "path": ".cache\\youtube_audio\\jDzcOghVQ6Q.wav"
+    }
+  },
+  "language_requested": "auto",
+  "backend_language_argument": "auto",
+  "selected_models": [
+    "whisper",
+    "sravaani",
+    "indictranscribe"
+  ],
+  "glossary_prompt_enabled": true,
+  "created_at": "2026-11-12T21:01:20.246749+05:30"
+}

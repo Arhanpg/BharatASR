@@ -1,0 +1,13 @@
+{
+  "models": [
+    {
+      "backend": "indictranscribe",
+      "status": "failed",
+      "elapsed_seconds": 2.337693000001309,
+      "error": "GatedRepoError: 403 Client Error. (Request ID: Root=1-6af5f487-17dd4d59111c8d7064ab3e26;a02e3820-98af-476b-aade-baaea4759752)\n\nCannot access gated repo for url https://huggingface.co/bodhan-ai/indic-transcribe-flex/resolve/ecba9bac9013c0340fe814b336897ee51ed80be9/.gitattributes.\nAccess to model bodhan-ai/indic-transcribe-flex is restricted and you are not in the authorized list. Visit https://huggingface.co/bodhan-ai/indic-transcribe-flex to ask for access."
+    }
+  ],
+  "run_dir": "outputs\\20261112_224632_707358_StfeLi9xP0Q",
+  "manual_review_required": true,
+  "note": "Transcript text is stored unmodified. Review mantra, Sanskrit and Prakrit words manually."
+}

@@ -1,0 +1,36 @@
+{
+  "audio_path": "D:\\BharatASR\\BharatASR\\.cache\\youtube_audio\\qr8A8HNk9jk.wav",
+  "audio_name": "qr8A8HNk9jk.wav",
+  "audio_duration_seconds": 171.78125,
+  "sample_rate_hz": 16000,
+  "channels": 1,
+  "source_metadata": {
+    "source": "youtube",
+    "video_id": "qr8A8HNk9jk",
+    "title": "समवशरण।।जैन प्रश्नोत्तरी।।समवशरण पर जैन प्रश्न उत्तर।।",
+    "webpage_url": "https://www.youtube.com/watch?v=qr8A8HNk9jk",
+    "channel": "Jain Gurukul",
+    "channel_id": "UCZ5i6LfadXWJlhBvAtbr4Cg",
+    "upload_date": "20230801",
+    "duration_seconds": 172,
+    "source_language_metadata": null,
+    "source_audio_language": null,
+    "source_availability": "public",
+    "extractor": "youtube",
+    "normalized_audio": {
+      "format": "WAV PCM signed 16-bit",
+      "sample_rate_hz": 16000,
+      "channels": 1,
+      "path": ".cache\\youtube_audio\\qr8A8HNk9jk.wav"
+    }
+  },
+  "language_requested": "auto",
+  "backend_language_argument": "auto",
+  "selected_models": [
+    "whisper",
+    "sravaani",
+    "indictranscribe"
+  ],
+  "glossary_prompt_enabled": true,
+  "created_at": "2026-11-12T18:47:39.381365+05:30"
+}

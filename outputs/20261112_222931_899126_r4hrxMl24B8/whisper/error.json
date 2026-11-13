@@ -1,0 +1,6 @@
+{
+  "backend": "whisper",
+  "status": "failed",
+  "elapsed_seconds": 411.01882639999894,
+  "error": "MemoryError: Unable to allocate 4.86 GiB for an array with shape (1, 1630655, 400) and data type float64"
+}

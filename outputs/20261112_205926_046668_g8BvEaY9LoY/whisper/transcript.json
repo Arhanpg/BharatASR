@@ -1,0 +1,1180 @@
+{
+  "backend": "whisper",
+  "model": "small",
+  "transcript": "श्री मंदब भ्हूमी, इसके आगे अती वेभव युक्त दिवारों पर रत्न मैगखंबों से खडा हूँँआ, वा स्प़्टिक मनी से निर्मित मनोर श्री मंदब बना है, श्प़्टिक से निर्मित सोले दिवारों के अन्तराल में भव्यों के लिए बारे कोटे होते है इन कोटों की उचाई जिनेंद्र प्रभू से बारेगुनी अरताद एक किस दनूश है तता इन कोटों का विस्तार, बारेइ सो पचास बता नोग धनूश है इन कोटों में पूर्वादी प्रदक्षना क्रम में बारेगुन बेटते है प्रत्छ्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्� नवम कोट में जोतिष देव, दस्मे कोट में कल्पवासी देव, गयार में कोट में मनुष्छे, वा बार में कोट में तर्यंच जीव प्रेम से परिपुरित होकर बैटते हैं। और प्रभू की कल्यान कारी दिव्वेद्वनी सुनते है।",
+  "segments": [
+    {
+      "index": 0,
+      "start": 13.46,
+      "end": 41.14,
+      "text": "श्री मंदब भ्हूमी, इसके आगे अती वेभव युक्त दिवारों पर रत्न मैगखंबों से खडा हूँँआ, वा स्प़्टिक मनी से निर्मित मनोर श्री मंदब बना है, श्प़्टिक से निर्मित सोले दिवारों के अन्तराल में भव्यों के लिए बारे कोटे होते है",
+      "words": [
+        {
+          "start": 13.46,
+          "end": 13.9,
+          "word": " श्री",
+          "probability": 0.68798828125
+        },
+        {
+          "start": 13.9,
+          "end": 14.36,
+          "word": " मंदब",
+          "probability": 0.5818074544270834
+        },
+        {
+          "start": 14.36,
+          "end": 15.02,
+          "word": " भ्हूमी,",
+          "probability": 0.676788330078125
+        },
+        {
+          "start": 16.07,
+          "end": 16.49,
+          "word": " इसके",
+          "probability": 0.87939453125
+        },
+        {
+          "start": 16.49,
+          "end": 17.11,
+          "word": " आगे",
+          "probability": 0.92724609375
+        },
+        {
+          "start": 17.11,
+          "end": 18.03,
+          "word": " अती",
+          "probability": 0.6844482421875
+        },
+        {
+          "start": 18.03,
+          "end": 18.59,
+          "word": " वेभव",
+          "probability": 0.6640276227678571
+        },
+        {
+          "start": 18.59,
+          "end": 19.11,
+          "word": " युक्त",
+          "probability": 0.7103445870535714
+        },
+        {
+          "start": 19.11,
+          "end": 20.27,
+          "word": " दिवारों",
+          "probability": 0.7970377604166666
+        },
+        {
+          "start": 20.27,
+          "end": 20.57,
+          "word": " पर",
+          "probability": 0.8863932291666666
+        },
+        {
+          "start": 20.57,
+          "end": 21.09,
+          "word": " रत्न",
+          "probability": 0.8404296875
+        },
+        {
+          "start": 21.09,
+          "end": 21.87,
+          "word": " मैगखंबों",
+          "probability": 0.6161443536931818
+        },
+        {
+          "start": 21.87,
+          "end": 22.05,
+          "word": " से",
+          "probability": 0.9423828125
+        },
+        {
+          "start": 22.05,
+          "end": 22.45,
+          "word": " खडा",
+          "probability": 0.744775390625
+        },
+        {
+          "start": 22.45,
+          "end": 23.05,
+          "word": " हूँँआ,",
+          "probability": 0.5351969401041666
+        },
+        {
+          "start": 23.43,
+          "end": 23.75,
+          "word": " वा",
+          "probability": 0.845703125
+        },
+        {
+          "start": 23.75,
+          "end": 24.43,
+          "word": " स्प़्टिक",
+          "probability": 0.6067144220525568
+        },
+        {
+          "start": 24.43,
+          "end": 24.79,
+          "word": " मनी",
+          "probability": 0.8330078125
+        },
+        {
+          "start": 24.79,
+          "end": 25.07,
+          "word": " से",
+          "probability": 0.93115234375
+        },
+        {
+          "start": 25.07,
+          "end": 25.57,
+          "word": " निर्मित",
+          "probability": 0.784881591796875
+        },
+        {
+          "start": 25.57,
+          "end": 26.75,
+          "word": " मनोर",
+          "probability": 0.5622100830078125
+        },
+        {
+          "start": 26.75,
+          "end": 27.27,
+          "word": " श्री",
+          "probability": 0.8201171875
+        },
+        {
+          "start": 27.27,
+          "end": 27.71,
+          "word": " मंदब",
+          "probability": 0.8805338541666666
+        },
+        {
+          "start": 27.71,
+          "end": 28.17,
+          "word": " बना",
+          "probability": 0.94921875
+        },
+        {
+          "start": 28.17,
+          "end": 28.37,
+          "word": " है,",
+          "probability": 0.886474609375
+        },
+        {
+          "start": 32.38,
+          "end": 32.96,
+          "word": " श्प़्टिक",
+          "probability": 0.75494384765625
+        },
+        {
+          "start": 32.96,
+          "end": 33.2,
+          "word": " से",
+          "probability": 0.98291015625
+        },
+        {
+          "start": 33.2,
+          "end": 33.9,
+          "word": " निर्मित",
+          "probability": 0.97137451171875
+        },
+        {
+          "start": 33.9,
+          "end": 34.72,
+          "word": " सोले",
+          "probability": 0.67364501953125
+        },
+        {
+          "start": 34.72,
+          "end": 35.3,
+          "word": " दिवारों",
+          "probability": 0.9576280381944444
+        },
+        {
+          "start": 35.3,
+          "end": 35.78,
+          "word": " के",
+          "probability": 0.930908203125
+        },
+        {
+          "start": 35.78,
+          "end": 36.78,
+          "word": " अन्तराल",
+          "probability": 0.750152587890625
+        },
+        {
+          "start": 36.78,
+          "end": 37.46,
+          "word": " में",
+          "probability": 0.729248046875
+        },
+        {
+          "start": 37.56,
+          "end": 38.24,
+          "word": " भव्यों",
+          "probability": 0.8134765625
+        },
+        {
+          "start": 38.24,
+          "end": 38.4,
+          "word": " के",
+          "probability": 0.915771484375
+        },
+        {
+          "start": 38.4,
+          "end": 38.94,
+          "word": " लिए",
+          "probability": 0.8578125
+        },
+        {
+          "start": 39.08,
+          "end": 40.0,
+          "word": " बारे",
+          "probability": 0.775244140625
+        },
+        {
+          "start": 40.0,
+          "end": 40.5,
+          "word": " कोटे",
+          "probability": 0.678466796875
+        },
+        {
+          "start": 40.5,
+          "end": 40.94,
+          "word": " होते",
+          "probability": 0.9288330078125
+        },
+        {
+          "start": 40.94,
+          "end": 41.14,
+          "word": " है",
+          "probability": 0.9453125
+        }
+      ],
+      "language": null
+    },
+    {
+      "index": 1,
+      "start": 41.85,
+      "end": 50.08,
+      "text": "इन कोटों की उचाई जिनेंद्र प्रभू से बारेगुनी अरताद एक किस दनूश है",
+      "words": [
+        {
+          "start": 41.85,
+          "end": 42.69,
+          "word": " इन",
+          "probability": 0.4394938151041667
+        },
+        {
+          "start": 42.69,
+          "end": 43.29,
+          "word": " कोटों",
+          "probability": 0.6035970052083334
+        },
+        {
+          "start": 43.29,
+          "end": 43.43,
+          "word": " की",
+          "probability": 0.81005859375
+        },
+        {
+          "start": 43.43,
+          "end": 44.01,
+          "word": " उचाई",
+          "probability": 0.7701590401785714
+        },
+        {
+          "start": 44.14,
+          "end": 45.48,
+          "word": " जिनेंद्र",
+          "probability": 0.797607421875
+        },
+        {
+          "start": 45.48,
+          "end": 45.84,
+          "word": " प्रभू",
+          "probability": 0.81268310546875
+        },
+        {
+          "start": 45.84,
+          "end": 46.28,
+          "word": " से",
+          "probability": 0.6805419921875
+        },
+        {
+          "start": 46.28,
+          "end": 47.3,
+          "word": " बारेगुनी",
+          "probability": 0.7964754971590909
+        },
+        {
+          "start": 47.3,
+          "end": 48.3,
+          "word": " अरताद",
+          "probability": 0.6602608816964286
+        },
+        {
+          "start": 48.34,
+          "end": 49.22,
+          "word": " एक",
+          "probability": 0.6783040364583334
+        },
+        {
+          "start": 49.22,
+          "end": 49.44,
+          "word": " किस",
+          "probability": 0.6695963541666666
+        },
+        {
+          "start": 49.44,
+          "end": 49.86,
+          "word": " दनूश",
+          "probability": 0.6513671875
+        },
+        {
+          "start": 49.86,
+          "end": 50.08,
+          "word": " है",
+          "probability": 0.892333984375
+        }
+      ],
+      "language": null
+    },
+    {
+      "index": 2,
+      "start": 50.51,
+      "end": 57.5,
+      "text": "तता इन कोटों का विस्तार, बारेइ सो पचास बता नोग धनूश है",
+      "words": [
+        {
+          "start": 50.51,
+          "end": 51.55,
+          "word": " तता",
+          "probability": 0.60247802734375
+        },
+        {
+          "start": 51.55,
+          "end": 51.89,
+          "word": " इन",
+          "probability": 0.9295247395833334
+        },
+        {
+          "start": 51.89,
+          "end": 52.43,
+          "word": " कोटों",
+          "probability": 0.9619954427083334
+        },
+        {
+          "start": 52.43,
+          "end": 52.59,
+          "word": " का",
+          "probability": 0.9619140625
+        },
+        {
+          "start": 52.59,
+          "end": 53.25,
+          "word": " विस्तार,",
+          "probability": 0.88165283203125
+        },
+        {
+          "start": 54.36,
+          "end": 54.84,
+          "word": " बारेइ",
+          "probability": 0.7623378208705357
+        },
+        {
+          "start": 54.84,
+          "end": 54.96,
+          "word": " सो",
+          "probability": 0.66357421875
+        },
+        {
+          "start": 54.96,
+          "end": 55.6,
+          "word": " पचास",
+          "probability": 0.7611490885416666
+        },
+        {
+          "start": 55.6,
+          "end": 56.06,
+          "word": " बता",
+          "probability": 0.77490234375
+        },
+        {
+          "start": 56.06,
+          "end": 56.88,
+          "word": " नोग",
+          "probability": 0.5831787109375
+        },
+        {
+          "start": 56.88,
+          "end": 57.28,
+          "word": " धनूश",
+          "probability": 0.8689662388392857
+        },
+        {
+          "start": 57.28,
+          "end": 57.5,
+          "word": " है",
+          "probability": 0.95703125
+        }
+      ],
+      "language": null
+    },
+    {
+      "index": 3,
+      "start": 57.66,
+      "end": 64.5,
+      "text": "इन कोटों में पूर्वादी प्रदक्षना क्रम में बारेगुन बेटते है",
+      "words": [
+        {
+          "start": 57.66,
+          "end": 58.5,
+          "word": " इन",
+          "probability": 0.8719075520833334
+        },
+        {
+          "start": 58.5,
+          "end": 59.1,
+          "word": " कोटों",
+          "probability": 0.93359375
+        },
+        {
+          "start": 59.1,
+          "end": 59.96,
+          "word": " में",
+          "probability": 0.8782552083333334
+        },
+        {
+          "start": 60.1,
+          "end": 60.8,
+          "word": " पूर्वादी",
+          "probability": 0.8670654296875
+        },
+        {
+          "start": 60.8,
+          "end": 61.6,
+          "word": " प्रदक्षना",
+          "probability": 0.8360188802083334
+        },
+        {
+          "start": 61.6,
+          "end": 61.92,
+          "word": " क्रम",
+          "probability": 0.8358154296875
+        },
+        {
+          "start": 61.92,
+          "end": 62.82,
+          "word": " में",
+          "probability": 0.9326171875
+        },
+        {
+          "start": 62.86,
+          "end": 63.7,
+          "word": " बारेगुन",
+          "probability": 0.8131591796875
+        },
+        {
+          "start": 63.7,
+          "end": 64.26,
+          "word": " बेटते",
+          "probability": 0.7058803013392857
+        },
+        {
+          "start": 64.26,
+          "end": 64.5,
+          "word": " है",
+          "probability": 0.96240234375
+        }
+      ],
+      "language": null
+    },
+    {
+      "index": 4,
+      "start": 143.66,
+      "end": 145.06,
+      "text": "प्रत्छ्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्�",
+      "words": [
+        {
+          "start": 143.66,
+          "end": 145.06,
+          "word": " प्रत्छ्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्ट्�",
+          "probability": 0.9257964403639994
+        }
+      ],
+      "language": null
+    },
+    {
+      "index": 5,
+      "start": 153.96,
+      "end": 184.86,
+      "text": "नवम कोट में जोतिष देव, दस्मे कोट में कल्पवासी देव, गयार में कोट में मनुष्छे, वा बार में कोट में तर्यंच जीव प्रेम से परिपुरित होकर बैटते हैं।",
+      "words": [
+        {
+          "start": 153.96,
+          "end": 155.34,
+          "word": " नवम",
+          "probability": 0.54339599609375
+        },
+        {
+          "start": 155.34,
+          "end": 155.72,
+          "word": " कोट",
+          "probability": 0.579803466796875
+        },
+        {
+          "start": 155.72,
+          "end": 156.58,
+          "word": " में",
+          "probability": 0.81005859375
+        },
+        {
+          "start": 156.68,
+          "end": 157.36,
+          "word": " जोतिष",
+          "probability": 0.7638462611607143
+        },
+        {
+          "start": 157.36,
+          "end": 157.74,
+          "word": " देव,",
+          "probability": 0.8830078125
+        },
+        {
+          "start": 163.85,
+          "end": 164.35,
+          "word": " दस्मे",
+          "probability": 0.7561442057291666
+        },
+        {
+          "start": 164.35,
+          "end": 164.71,
+          "word": " कोट",
+          "probability": 0.836669921875
+        },
+        {
+          "start": 164.71,
+          "end": 165.35,
+          "word": " में",
+          "probability": 0.9659830729166666
+        },
+        {
+          "start": 165.39,
+          "end": 166.55,
+          "word": " कल्पवासी",
+          "probability": 0.7158935546875
+        },
+        {
+          "start": 166.55,
+          "end": 166.93,
+          "word": " देव,",
+          "probability": 0.9357421875
+        },
+        {
+          "start": 171.85,
+          "end": 172.17,
+          "word": " गयार",
+          "probability": 0.5706787109375
+        },
+        {
+          "start": 172.17,
+          "end": 172.41,
+          "word": " में",
+          "probability": 0.87646484375
+        },
+        {
+          "start": 172.41,
+          "end": 172.67,
+          "word": " कोट",
+          "probability": 0.9510498046875
+        },
+        {
+          "start": 172.67,
+          "end": 173.35,
+          "word": " में",
+          "probability": 0.97265625
+        },
+        {
+          "start": 173.35,
+          "end": 174.49,
+          "word": " मनुष्छे,",
+          "probability": 0.68177490234375
+        },
+        {
+          "start": 177.39,
+          "end": 177.65,
+          "word": " वा",
+          "probability": 0.8224283854166666
+        },
+        {
+          "start": 177.65,
+          "end": 177.99,
+          "word": " बार",
+          "probability": 0.8656005859375
+        },
+        {
+          "start": 177.99,
+          "end": 178.23,
+          "word": " में",
+          "probability": 0.9249674479166666
+        },
+        {
+          "start": 178.23,
+          "end": 178.51,
+          "word": " कोट",
+          "probability": 0.9581298828125
+        },
+        {
+          "start": 178.51,
+          "end": 179.31,
+          "word": " में",
+          "probability": 0.9830729166666666
+        },
+        {
+          "start": 179.35,
+          "end": 179.99,
+          "word": " तर्यंच",
+          "probability": 0.6888427734375
+        },
+        {
+          "start": 179.99,
+          "end": 180.49,
+          "word": " जीव",
+          "probability": 0.92939453125
+        },
+        {
+          "start": 180.66,
+          "end": 181.7,
+          "word": " प्रेम",
+          "probability": 0.8483072916666666
+        },
+        {
+          "start": 181.7,
+          "end": 182.02,
+          "word": " से",
+          "probability": 0.9169921875
+        },
+        {
+          "start": 182.02,
+          "end": 182.88,
+          "word": " परिपुरित",
+          "probability": 0.7350186434659091
+        },
+        {
+          "start": 182.88,
+          "end": 183.34,
+          "word": " होकर",
+          "probability": 0.75946044921875
+        },
+        {
+          "start": 183.34,
+          "end": 184.12,
+          "word": " बैटते",
+          "probability": 0.7283412388392857
+        },
+        {
+          "start": 184.12,
+          "end": 184.86,
+          "word": " हैं।",
+          "probability": 0.7697265625
+        }
+      ],
+      "language": null
+    },
+    {
+      "index": 6,
+      "start": 185.28,
+      "end": 189.76,
+      "text": "और प्रभू की कल्यान कारी दिव्वेद्वनी सुनते है।",
+      "words": [
+        {
+          "start": 185.28,
+          "end": 185.56,
+          "word": " और",
+          "probability": 0.8134765625
+        },
+        {
+          "start": 185.56,
+          "end": 185.94,
+          "word": " प्रभू",
+          "probability": 0.885498046875
+        },
+        {
+          "start": 185.94,
+          "end": 186.28,
+          "word": " की",
+          "probability": 0.688232421875
+        },
+        {
+          "start": 186.28,
+          "end": 187.22,
+          "word": " कल्यान",
+          "probability": 0.77783203125
+        },
+        {
+          "start": 187.22,
+          "end": 187.66,
+          "word": " कारी",
+          "probability": 0.77923583984375
+        },
+        {
+          "start": 187.66,
+          "end": 188.76,
+          "word": " दिव्वेद्वनी",
+          "probability": 0.7428741455078125
+        },
+        {
+          "start": 188.76,
+          "end": 189.38,
+          "word": " सुनते",
+          "probability": 0.7723795572916666
+        },
+        {
+          "start": 189.38,
+          "end": 189.76,
+          "word": " है।",
+          "probability": 0.78521728515625
+        }
+      ],
+      "language": null
+    }
+  ],
+  "metadata": {
+    "language_detected_initial": "hi",
+    "language_probability_initial": 0.98388671875,
+    "language_probabilities_initial": [
+      {
+        "language": "hi",
+        "probability": 0.98388671875
+      },
+      {
+        "language": "ur",
+        "probability": 0.01042938232421875
+      },
+      {
+        "language": "sa",
+        "probability": 0.00377655029296875
+      },
+      {
+        "language": "pa",
+        "probability": 0.0009398460388183594
+      },
+      {
+        "language": "en",
+        "probability": 0.00020968914031982422
+      },
+      {
+        "language": "la",
+        "probability": 0.0001252889633178711
+      },
+      {
+        "language": "te",
+        "probability": 0.0001252889633178711
+      },
+      {
+        "language": "mr",
+        "probability": 0.00010967254638671875
+      },
+      {
+        "language": "ta",
+        "probability": 6.449222564697266e-05
+      },
+      {
+        "language": "gu",
+        "probability": 5.429983139038086e-05
+      },
+      {
+        "language": "de",
+        "probability": 5.3048133850097656e-05
+      },
+      {
+        "language": "sd",
+        "probability": 4.9054622650146484e-05
+      },
+      {
+        "language": "jw",
+        "probability": 4.500150680541992e-05
+      },
+      {
+        "language": "ne",
+        "probability": 4.1961669921875e-05
+      },
+      {
+        "language": "bn",
+        "probability": 4.1604042053222656e-05
+      },
+      {
+        "language": "ml",
+        "probability": 3.218650817871094e-05
+      },
+      {
+        "language": "th",
+        "probability": 3.141164779663086e-05
+      },
+      {
+        "language": "nn",
+        "probability": 2.753734588623047e-05
+      },
+      {
+        "language": "zh",
+        "probability": 2.110004425048828e-05
+      },
+      {
+        "language": "vi",
+        "probability": 1.8775463104248047e-05
+      },
+      {
+        "language": "cs",
+        "probability": 1.7881393432617188e-05
+      },
+      {
+        "language": "fa",
+        "probability": 1.5556812286376953e-05
+      },
+      {
+        "language": "ms",
+        "probability": 1.4722347259521484e-05
+      },
+      {
+        "language": "kn",
+        "probability": 1.424551010131836e-05
+      },
+      {
+        "language": "si",
+        "probability": 1.2993812561035156e-05
+      },
+      {
+        "language": "es",
+        "probability": 1.2099742889404297e-05
+      },
+      {
+        "language": "pt",
+        "probability": 9.298324584960938e-06
+      },
+      {
+        "language": "ar",
+        "probability": 8.52346420288086e-06
+      },
+      {
+        "language": "tl",
+        "probability": 6.67572021484375e-06
+      },
+      {
+        "language": "ja",
+        "probability": 5.424022674560547e-06
+      },
+      {
+        "language": "tr",
+        "probability": 4.0531158447265625e-06
+      },
+      {
+        "language": "ru",
+        "probability": 3.2782554626464844e-06
+      },
+      {
+        "language": "haw",
+        "probability": 3.159046173095703e-06
+      },
+      {
+        "language": "it",
+        "probability": 3.039836883544922e-06
+      },
+      {
+        "language": "id",
+        "probability": 2.86102294921875e-06
+      },
+      {
+        "language": "fr",
+        "probability": 2.7418136596679688e-06
+      },
+      {
+        "language": "as",
+        "probability": 2.4437904357910156e-06
+      },
+      {
+        "language": "km",
+        "probability": 2.3245811462402344e-06
+      },
+      {
+        "language": "ro",
+        "probability": 2.205371856689453e-06
+      },
+      {
+        "language": "hu",
+        "probability": 1.9669532775878906e-06
+      },
+      {
+        "language": "fi",
+        "probability": 1.7881393432617188e-06
+      },
+      {
+        "language": "pl",
+        "probability": 1.3113021850585938e-06
+      },
+      {
+        "language": "cy",
+        "probability": 1.2516975402832031e-06
+      },
+      {
+        "language": "uk",
+        "probability": 1.1920928955078125e-06
+      },
+      {
+        "language": "bo",
+        "probability": 1.1920928955078125e-06
+      },
+      {
+        "language": "nl",
+        "probability": 1.1324882507324219e-06
+      },
+      {
+        "language": "ps",
+        "probability": 1.1324882507324219e-06
+      },
+      {
+        "language": "mn",
+        "probability": 1.0728836059570312e-06
+      },
+      {
+        "language": "sv",
+        "probability": 1.0132789611816406e-06
+      },
+      {
+        "language": "sn",
+        "probability": 7.748603820800781e-07
+      },
+      {
+        "language": "sl",
+        "probability": 6.556510925292969e-07
+      },
+      {
+        "language": "br",
+        "probability": 5.960464477539062e-07
+      },
+      {
+        "language": "da",
+        "probability": 4.76837158203125e-07
+      },
+      {
+        "language": "ko",
+        "probability": 2.980232238769531e-07
+      },
+      {
+        "language": "bg",
+        "probability": 2.980232238769531e-07
+      },
+      {
+        "language": "no",
+        "probability": 2.980232238769531e-07
+      },
+      {
+        "language": "my",
+        "probability": 2.980232238769531e-07
+      },
+      {
+        "language": "el",
+        "probability": 2.980232238769531e-07
+      },
+      {
+        "language": "gl",
+        "probability": 2.384185791015625e-07
+      },
+      {
+        "language": "lo",
+        "probability": 1.7881393432617188e-07
+      },
+      {
+        "language": "yo",
+        "probability": 1.7881393432617188e-07
+      },
+      {
+        "language": "az",
+        "probability": 1.7881393432617188e-07
+      },
+      {
+        "language": "sk",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "sr",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "hy",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "bs",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "sw",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "eu",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "lt",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "oc",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "be",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "hr",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "he",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "fo",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "lv",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "et",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "ht",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "mi",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "af",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "ka",
+        "probability": 0.0
+      },
+      {
+        "language": "tg",
+        "probability": 0.0
+      },
+      {
+        "language": "am",
+        "probability": 0.0
+      },
+      {
+        "language": "yi",
+        "probability": 0.0
+      },
+      {
+        "language": "ca",
+        "probability": 0.0
+      },
+      {
+        "language": "uz",
+        "probability": 0.0
+      },
+      {
+        "language": "mk",
+        "probability": 0.0
+      },
+      {
+        "language": "sq",
+        "probability": 0.0
+      },
+      {
+        "language": "tk",
+        "probability": 0.0
+      },
+      {
+        "language": "kk",
+        "probability": 0.0
+      },
+      {
+        "language": "mt",
+        "probability": 0.0
+      },
+      {
+        "language": "lb",
+        "probability": 0.0
+      },
+      {
+        "language": "is",
+        "probability": 0.0
+      },
+      {
+        "language": "mg",
+        "probability": 0.0
+      },
+      {
+        "language": "tt",
+        "probability": 0.0
+      },
+      {
+        "language": "so",
+        "probability": 0.0
+      },
+      {
+        "language": "ln",
+        "probability": 0.0
+      },
+      {
+        "language": "ha",
+        "probability": 0.0
+      },
+      {
+        "language": "ba",
+        "probability": 0.0
+      },
+      {
+        "language": "su",
+        "probability": 0.0
+      }
+    ],
+    "language_detection": "automatic initial detection + multilingual per-segment decoding",
+    "audio_duration_seconds": 204.3008125,
+    "device": "cuda",
+    "compute_type": "int8_float16",
+    "cuda_retry_error": null,
+    "vad_filter": true,
+    "word_timestamps": true,
+    "glossary_prompt_used": true,
+    "source_metadata": {
+      "source": "youtube",
+      "video_id": "g8BvEaY9LoY",
+      "title": "Samavsharan (Part-10) | Samavsharan | Samavsharan Ki Rachna | 3d Animation | Crazy Mediaworks",
+      "webpage_url": "https://www.youtube.com/watch?v=g8BvEaY9LoY",
+      "channel": "Crazy MediaWorks Studios",
+      "channel_id": "UCWF4If7Lx7ZdFNAJyFLzFtg",
+      "upload_date": "20230330",
+      "duration_seconds": 204,
+      "source_language_metadata": "hi",
+      "source_audio_language": null,
+      "source_availability": "public",
+      "extractor": "youtube",
+      "normalized_audio": {
+        "format": "WAV PCM signed 16-bit",
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "path": ".cache\\youtube_audio\\g8BvEaY9LoY.wav"
+      }
+    },
+    "language_requested_by_user": "auto",
+    "review_required": true,
+    "review_flags": [
+      "Machine-generated draft: verify against the original audio before quoting or publishing.",
+      "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections.",
+      "Automatically detected language(s) must be checked, especially in recitation and code-switching."
+    ]
+  },
+  "elapsed_seconds": 24.25283980000131
+}

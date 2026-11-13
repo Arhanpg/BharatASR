@@ -1,0 +1,832 @@
+{
+  "backend": "whisper",
+  "model": "small",
+  "transcript": "तीर्थंकर देव को, केवलज्झान प्रगत होते ही, Indra ko Awadi Gyan से यह ज्यात हो जाता है, Aur Ve Tatkaal Aakar, समवसरण की रचना करते हैं, Samavasaraṇa ki rachna karte hai, उस में, बारे सबहाँ में, मुनी, आरी का, स्रावक, स्रावी का, Usme, Barasabhaa, Muni, Aari ka, Sravak, Sravika, आईये समो सरन यवम जिनेंदर भगवान की एक जलग देख हैं",
+  "segments": [
+    {
+      "index": 0,
+      "start": 0.88,
+      "end": 13.42,
+      "text": "तीर्थंकर देव को, केवलज्झान प्रगत होते ही, Indra ko Awadi Gyan से यह ज्यात हो जाता है, Aur Ve Tatkaal Aakar, समवसरण की रचना करते हैं, Samavasaraṇa ki rachna karte hai,",
+      "words": [
+        {
+          "start": 0.88,
+          "end": 1.8,
+          "word": " तीर्थंकर",
+          "probability": 0.5941864013671875
+        },
+        {
+          "start": 1.8,
+          "end": 2.12,
+          "word": " देव",
+          "probability": 0.795703125
+        },
+        {
+          "start": 2.12,
+          "end": 2.44,
+          "word": " को,",
+          "probability": 0.666748046875
+        },
+        {
+          "start": 3.14,
+          "end": 3.74,
+          "word": " केवलज्झान",
+          "probability": 0.4655679066975911
+        },
+        {
+          "start": 3.74,
+          "end": 4.08,
+          "word": " प्रगत",
+          "probability": 0.7830287388392857
+        },
+        {
+          "start": 4.08,
+          "end": 4.5,
+          "word": " होते",
+          "probability": 0.818603515625
+        },
+        {
+          "start": 4.5,
+          "end": 4.76,
+          "word": " ही,",
+          "probability": 0.856689453125
+        },
+        {
+          "start": 5.4,
+          "end": 5.72,
+          "word": " Indra",
+          "probability": 0.4534578323364258
+        },
+        {
+          "start": 5.72,
+          "end": 5.92,
+          "word": " ko",
+          "probability": 0.1646728515625
+        },
+        {
+          "start": 5.92,
+          "end": 6.36,
+          "word": " Awadi",
+          "probability": 0.184600830078125
+        },
+        {
+          "start": 6.36,
+          "end": 6.7,
+          "word": " Gyan",
+          "probability": 0.3695068359375
+        },
+        {
+          "start": 6.7,
+          "end": 7.46,
+          "word": " से",
+          "probability": 0.57391357421875
+        },
+        {
+          "start": 7.46,
+          "end": 7.68,
+          "word": " यह",
+          "probability": 0.8981119791666666
+        },
+        {
+          "start": 7.68,
+          "end": 8.12,
+          "word": " ज्यात",
+          "probability": 0.7248128255208334
+        },
+        {
+          "start": 8.12,
+          "end": 8.28,
+          "word": " हो",
+          "probability": 0.898681640625
+        },
+        {
+          "start": 8.28,
+          "end": 8.64,
+          "word": " जाता",
+          "probability": 0.79658203125
+        },
+        {
+          "start": 8.64,
+          "end": 8.78,
+          "word": " है,",
+          "probability": 0.963623046875
+        },
+        {
+          "start": 9.42,
+          "end": 9.64,
+          "word": " Aur",
+          "probability": 0.3837890625
+        },
+        {
+          "start": 9.64,
+          "end": 9.88,
+          "word": " Ve",
+          "probability": 0.1693115234375
+        },
+        {
+          "start": 9.88,
+          "end": 10.66,
+          "word": " Tatkaal",
+          "probability": 0.7135416666666666
+        },
+        {
+          "start": 10.66,
+          "end": 11.14,
+          "word": " Aakar,",
+          "probability": 0.6956380208333334
+        },
+        {
+          "start": 11.58,
+          "end": 12.18,
+          "word": " समवसरण",
+          "probability": 0.5308074951171875
+        },
+        {
+          "start": 12.18,
+          "end": 12.4,
+          "word": " की",
+          "probability": 0.890380859375
+        },
+        {
+          "start": 12.4,
+          "end": 12.86,
+          "word": " रचना",
+          "probability": 0.72003173828125
+        },
+        {
+          "start": 12.86,
+          "end": 13.24,
+          "word": " करते",
+          "probability": 0.9468994140625
+        },
+        {
+          "start": 13.24,
+          "end": 13.42,
+          "word": " हैं,",
+          "probability": 0.87890625
+        },
+        {
+          "start": 13.42,
+          "end": 13.42,
+          "word": " Samavasaraṇa",
+          "probability": 0.07544980943202972
+        },
+        {
+          "start": 13.42,
+          "end": 13.42,
+          "word": " ki",
+          "probability": 0.6083984375
+        },
+        {
+          "start": 13.42,
+          "end": 13.42,
+          "word": " rachna",
+          "probability": 0.6669108072916666
+        },
+        {
+          "start": 13.42,
+          "end": 13.42,
+          "word": " karte",
+          "probability": 0.7183837890625
+        },
+        {
+          "start": 13.42,
+          "end": 13.42,
+          "word": " hai,",
+          "probability": 0.442138671875
+        }
+      ],
+      "language": null
+    },
+    {
+      "index": 1,
+      "start": 14.2,
+      "end": 31.82,
+      "text": "उस में, बारे सबहाँ में, मुनी, आरी का, स्रावक, स्रावी का, Usme, Barasabhaa, Muni, Aari ka, Sravak, Sravika,",
+      "words": [
+        {
+          "start": 14.2,
+          "end": 14.42,
+          "word": " उस",
+          "probability": 0.6919759114583334
+        },
+        {
+          "start": 14.42,
+          "end": 15.2,
+          "word": " में,",
+          "probability": 0.7425130208333334
+        },
+        {
+          "start": 15.2,
+          "end": 15.64,
+          "word": " बारे",
+          "probability": 0.7287109375
+        },
+        {
+          "start": 15.64,
+          "end": 16.14,
+          "word": " सबहाँ",
+          "probability": 0.723876953125
+        },
+        {
+          "start": 16.14,
+          "end": 16.98,
+          "word": " में,",
+          "probability": 0.83349609375
+        },
+        {
+          "start": 16.98,
+          "end": 17.48,
+          "word": " मुनी,",
+          "probability": 0.597894287109375
+        },
+        {
+          "start": 18.02,
+          "end": 18.26,
+          "word": " आरी",
+          "probability": 0.823486328125
+        },
+        {
+          "start": 18.26,
+          "end": 18.7,
+          "word": " का,",
+          "probability": 0.82373046875
+        },
+        {
+          "start": 18.98,
+          "end": 19.42,
+          "word": " स्रावक,",
+          "probability": 0.8129185267857143
+        },
+        {
+          "start": 19.78,
+          "end": 20.2,
+          "word": " स्रावी",
+          "probability": 0.9372209821428571
+        },
+        {
+          "start": 20.2,
+          "end": 20.94,
+          "word": " का,",
+          "probability": 0.967041015625
+        },
+        {
+          "start": 21.34,
+          "end": 23.76,
+          "word": " Usme,",
+          "probability": 0.40148162841796875
+        },
+        {
+          "start": 23.88,
+          "end": 26.54,
+          "word": " Barasabhaa,",
+          "probability": 0.522509765625
+        },
+        {
+          "start": 27.78,
+          "end": 28.76,
+          "word": " Muni,",
+          "probability": 0.8291015625
+        },
+        {
+          "start": 28.84,
+          "end": 29.14,
+          "word": " Aari",
+          "probability": 0.5128173828125
+        },
+        {
+          "start": 29.14,
+          "end": 29.52,
+          "word": " ka,",
+          "probability": 0.73291015625
+        },
+        {
+          "start": 30.48,
+          "end": 30.88,
+          "word": " Sravak,",
+          "probability": 0.7747395833333334
+        },
+        {
+          "start": 31.02,
+          "end": 31.82,
+          "word": " Sravika,",
+          "probability": 0.8981119791666666
+        }
+      ],
+      "language": null
+    },
+    {
+      "index": 2,
+      "start": 50.17,
+      "end": 55.53,
+      "text": "आईये समो सरन यवम जिनेंदर भगवान की एक जलग देख हैं",
+      "words": [
+        {
+          "start": 50.17,
+          "end": 51.09,
+          "word": " आईये",
+          "probability": 0.5458170572916666
+        },
+        {
+          "start": 51.09,
+          "end": 51.45,
+          "word": " समो",
+          "probability": 0.8250325520833334
+        },
+        {
+          "start": 51.45,
+          "end": 51.91,
+          "word": " सरन",
+          "probability": 0.5366617838541666
+        },
+        {
+          "start": 51.91,
+          "end": 52.55,
+          "word": " यवम",
+          "probability": 0.5806640625
+        },
+        {
+          "start": 52.55,
+          "end": 53.11,
+          "word": " जिनेंदर",
+          "probability": 0.7311469184027778
+        },
+        {
+          "start": 53.11,
+          "end": 53.57,
+          "word": " भगवान",
+          "probability": 0.740753173828125
+        },
+        {
+          "start": 53.57,
+          "end": 54.19,
+          "word": " की",
+          "probability": 0.87890625
+        },
+        {
+          "start": 54.19,
+          "end": 54.55,
+          "word": " एक",
+          "probability": 0.8515625
+        },
+        {
+          "start": 54.55,
+          "end": 54.97,
+          "word": " जलग",
+          "probability": 0.80576171875
+        },
+        {
+          "start": 54.97,
+          "end": 55.31,
+          "word": " देख",
+          "probability": 0.8609375
+        },
+        {
+          "start": 55.31,
+          "end": 55.53,
+          "word": " हैं",
+          "probability": 0.8069661458333334
+        }
+      ],
+      "language": null
+    }
+  ],
+  "metadata": {
+    "language_detected_initial": "hi",
+    "language_probability_initial": 0.9189453125,
+    "language_probabilities_initial": [
+      {
+        "language": "hi",
+        "probability": 0.9189453125
+      },
+      {
+        "language": "ur",
+        "probability": 0.05023193359375
+      },
+      {
+        "language": "sa",
+        "probability": 0.0196685791015625
+      },
+      {
+        "language": "pa",
+        "probability": 0.002349853515625
+      },
+      {
+        "language": "en",
+        "probability": 0.001888275146484375
+      },
+      {
+        "language": "ar",
+        "probability": 0.00079345703125
+      },
+      {
+        "language": "te",
+        "probability": 0.0007567405700683594
+      },
+      {
+        "language": "sd",
+        "probability": 0.000705718994140625
+      },
+      {
+        "language": "ta",
+        "probability": 0.0004963874816894531
+      },
+      {
+        "language": "la",
+        "probability": 0.00042128562927246094
+      },
+      {
+        "language": "bn",
+        "probability": 0.00040841102600097656
+      },
+      {
+        "language": "jw",
+        "probability": 0.0003466606140136719
+      },
+      {
+        "language": "de",
+        "probability": 0.0003204345703125
+      },
+      {
+        "language": "tr",
+        "probability": 0.00028061866760253906
+      },
+      {
+        "language": "ml",
+        "probability": 0.00023818016052246094
+      },
+      {
+        "language": "mr",
+        "probability": 0.00018548965454101562
+      },
+      {
+        "language": "ne",
+        "probability": 0.00017976760864257812
+      },
+      {
+        "language": "zh",
+        "probability": 0.00016117095947265625
+      },
+      {
+        "language": "kn",
+        "probability": 0.00014901161193847656
+      },
+      {
+        "language": "fa",
+        "probability": 0.00014448165893554688
+      },
+      {
+        "language": "ms",
+        "probability": 0.000141143798828125
+      },
+      {
+        "language": "es",
+        "probability": 0.00011974573135375977
+      },
+      {
+        "language": "pl",
+        "probability": 0.00010991096496582031
+      },
+      {
+        "language": "vi",
+        "probability": 9.930133819580078e-05
+      },
+      {
+        "language": "ja",
+        "probability": 9.548664093017578e-05
+      },
+      {
+        "language": "th",
+        "probability": 9.328126907348633e-05
+      },
+      {
+        "language": "si",
+        "probability": 6.413459777832031e-05
+      },
+      {
+        "language": "fr",
+        "probability": 6.264448165893555e-05
+      },
+      {
+        "language": "nn",
+        "probability": 5.27501106262207e-05
+      },
+      {
+        "language": "gu",
+        "probability": 4.9948692321777344e-05
+      },
+      {
+        "language": "cs",
+        "probability": 4.369020462036133e-05
+      },
+      {
+        "language": "pt",
+        "probability": 4.076957702636719e-05
+      },
+      {
+        "language": "el",
+        "probability": 4.011392593383789e-05
+      },
+      {
+        "language": "id",
+        "probability": 3.737211227416992e-05
+      },
+      {
+        "language": "km",
+        "probability": 3.6835670471191406e-05
+      },
+      {
+        "language": "tl",
+        "probability": 2.6524066925048828e-05
+      },
+      {
+        "language": "nl",
+        "probability": 2.5928020477294922e-05
+      },
+      {
+        "language": "ru",
+        "probability": 2.4139881134033203e-05
+      },
+      {
+        "language": "it",
+        "probability": 2.1636486053466797e-05
+      },
+      {
+        "language": "hu",
+        "probability": 1.8537044525146484e-05
+      },
+      {
+        "language": "ps",
+        "probability": 1.5437602996826172e-05
+      },
+      {
+        "language": "cy",
+        "probability": 1.531839370727539e-05
+      },
+      {
+        "language": "fi",
+        "probability": 1.4185905456542969e-05
+      },
+      {
+        "language": "br",
+        "probability": 1.4066696166992188e-05
+      },
+      {
+        "language": "haw",
+        "probability": 1.33514404296875e-05
+      },
+      {
+        "language": "as",
+        "probability": 1.1980533599853516e-05
+      },
+      {
+        "language": "gl",
+        "probability": 1.0907649993896484e-05
+      },
+      {
+        "language": "bo",
+        "probability": 1.049041748046875e-05
+      },
+      {
+        "language": "ro",
+        "probability": 8.52346420288086e-06
+      },
+      {
+        "language": "sv",
+        "probability": 7.987022399902344e-06
+      },
+      {
+        "language": "uk",
+        "probability": 7.748603820800781e-06
+      },
+      {
+        "language": "sn",
+        "probability": 7.450580596923828e-06
+      },
+      {
+        "language": "mn",
+        "probability": 7.092952728271484e-06
+      },
+      {
+        "language": "ko",
+        "probability": 7.033348083496094e-06
+      },
+      {
+        "language": "da",
+        "probability": 3.6954879760742188e-06
+      },
+      {
+        "language": "my",
+        "probability": 3.516674041748047e-06
+      },
+      {
+        "language": "sl",
+        "probability": 3.2782554626464844e-06
+      },
+      {
+        "language": "be",
+        "probability": 2.4437904357910156e-06
+      },
+      {
+        "language": "sr",
+        "probability": 2.3245811462402344e-06
+      },
+      {
+        "language": "yo",
+        "probability": 1.9669532775878906e-06
+      },
+      {
+        "language": "lo",
+        "probability": 1.9073486328125e-06
+      },
+      {
+        "language": "az",
+        "probability": 1.9073486328125e-06
+      },
+      {
+        "language": "sw",
+        "probability": 1.7881393432617188e-06
+      },
+      {
+        "language": "no",
+        "probability": 1.5497207641601562e-06
+      },
+      {
+        "language": "eu",
+        "probability": 1.5497207641601562e-06
+      },
+      {
+        "language": "he",
+        "probability": 1.1324882507324219e-06
+      },
+      {
+        "language": "bg",
+        "probability": 1.0728836059570312e-06
+      },
+      {
+        "language": "oc",
+        "probability": 1.0132789611816406e-06
+      },
+      {
+        "language": "bs",
+        "probability": 8.940696716308594e-07
+      },
+      {
+        "language": "hy",
+        "probability": 8.940696716308594e-07
+      },
+      {
+        "language": "ht",
+        "probability": 8.344650268554688e-07
+      },
+      {
+        "language": "sk",
+        "probability": 8.344650268554688e-07
+      },
+      {
+        "language": "lt",
+        "probability": 7.152557373046875e-07
+      },
+      {
+        "language": "hr",
+        "probability": 6.556510925292969e-07
+      },
+      {
+        "language": "so",
+        "probability": 5.364418029785156e-07
+      },
+      {
+        "language": "mi",
+        "probability": 4.76837158203125e-07
+      },
+      {
+        "language": "lv",
+        "probability": 4.172325134277344e-07
+      },
+      {
+        "language": "et",
+        "probability": 3.5762786865234375e-07
+      },
+      {
+        "language": "yi",
+        "probability": 2.980232238769531e-07
+      },
+      {
+        "language": "af",
+        "probability": 2.384185791015625e-07
+      },
+      {
+        "language": "fo",
+        "probability": 1.7881393432617188e-07
+      },
+      {
+        "language": "kk",
+        "probability": 1.7881393432617188e-07
+      },
+      {
+        "language": "ca",
+        "probability": 1.7881393432617188e-07
+      },
+      {
+        "language": "mk",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "sq",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "is",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "mt",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "ln",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "tk",
+        "probability": 0.0
+      },
+      {
+        "language": "ka",
+        "probability": 0.0
+      },
+      {
+        "language": "mg",
+        "probability": 0.0
+      },
+      {
+        "language": "tg",
+        "probability": 0.0
+      },
+      {
+        "language": "tt",
+        "probability": 0.0
+      },
+      {
+        "language": "am",
+        "probability": 0.0
+      },
+      {
+        "language": "lb",
+        "probability": 0.0
+      },
+      {
+        "language": "ha",
+        "probability": 0.0
+      },
+      {
+        "language": "ba",
+        "probability": 0.0
+      },
+      {
+        "language": "uz",
+        "probability": 0.0
+      },
+      {
+        "language": "su",
+        "probability": 0.0
+      }
+    ],
+    "language_detection": "automatic initial detection + multilingual per-segment decoding",
+    "audio_duration_seconds": 509.9915,
+    "device": "cuda",
+    "compute_type": "int8_float16",
+    "cuda_retry_error": null,
+    "vad_filter": true,
+    "word_timestamps": true,
+    "glossary_prompt_used": true,
+    "source_metadata": {
+      "source": "youtube",
+      "video_id": "x9XAer5p6-k",
+      "title": "कल्पद्रुम यह समवशरण है ।। kalpdrum yah samvsharan hain",
+      "webpage_url": "https://www.youtube.com/watch?v=x9XAer5p6-k",
+      "channel": "Sarvodaya Ahimsa",
+      "channel_id": "UCFlYjf8iXEdCsDlWQ-NQDiw",
+      "upload_date": "20200522",
+      "duration_seconds": 510,
+      "source_language_metadata": "hi",
+      "source_audio_language": null,
+      "source_availability": "public",
+      "extractor": "youtube",
+      "normalized_audio": {
+        "format": "WAV PCM signed 16-bit",
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "path": ".cache\\youtube_audio\\x9XAer5p6-k.wav"
+      }
+    },
+    "language_requested_by_user": "auto",
+    "review_required": true,
+    "review_flags": [
+      "Machine-generated draft: verify against the original audio before quoting or publishing.",
+      "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections.",
+      "Automatically detected language(s) must be checked, especially in recitation and code-switching."
+    ]
+  },
+  "elapsed_seconds": 6.279116699999577
+}

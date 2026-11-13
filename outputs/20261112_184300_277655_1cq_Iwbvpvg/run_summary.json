@@ -1,0 +1,27 @@
+{
+  "models": [
+    {
+      "backend": "whisper",
+      "status": "success",
+      "elapsed_seconds": 83.08871700000009,
+      "model": "small",
+      "language_detected": "hi",
+      "review_required": true
+    },
+    {
+      "backend": "sravaani",
+      "status": "failed",
+      "elapsed_seconds": 5.859059800000068,
+      "error": "OSError: You are trying to access a gated repo.\nMake sure to have access to it at https://huggingface.co/ARTPARK-IISc/SraVaani-1.0.\n403 Client Error. (Request ID: Root=1-6af5bbd9-405130ca340cfa3109298f91;8910f143-23b9-429a-9d16-4161d6fd67ba)\n\nCannot access gated repo for url https://huggingface.co/ARTPARK-IISc/SraVaani-1.0/resolve/main/config.json.\nAccess to model ARTPARK-IISc/SraVaani-1.0 is restricted and you are not in the authorized list. Visit https://huggingface.co/ARTPARK-IISc/SraVaani-1.0 to ask for access."
+    },
+    {
+      "backend": "indictranscribe",
+      "status": "failed",
+      "elapsed_seconds": 1.5837338999999702,
+      "error": "GatedRepoError: 403 Client Error. (Request ID: Root=1-6af5bbda-784d50a309f4a7f9253c77fe;550cb6b1-7e23-41ca-8b80-c09c2d49dd66)\n\nCannot access gated repo for url https://huggingface.co/bodhan-ai/indic-transcribe-core/resolve/e083ab7dfeeddcb5c0b4a2d7df53f53e7b0f1537/.gitattributes.\nAccess to model bodhan-ai/indic-transcribe-core is restricted and you are not in the authorized list. Visit https://huggingface.co/bodhan-ai/indic-transcribe-core to ask for access."
+    }
+  ],
+  "run_dir": "outputs\\20261112_184300_277655_1cq_Iwbvpvg",
+  "manual_review_required": true,
+  "note": "Transcript text is stored unmodified. Review mantra, Sanskrit and Prakrit words manually."
+}

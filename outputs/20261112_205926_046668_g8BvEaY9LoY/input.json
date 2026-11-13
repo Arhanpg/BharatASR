@@ -1,0 +1,36 @@
+{
+  "audio_path": "D:\\BharatASR\\BharatASR\\.cache\\youtube_audio\\g8BvEaY9LoY.wav",
+  "audio_name": "g8BvEaY9LoY.wav",
+  "audio_duration_seconds": 204.300813,
+  "sample_rate_hz": 16000,
+  "channels": 1,
+  "source_metadata": {
+    "source": "youtube",
+    "video_id": "g8BvEaY9LoY",
+    "title": "Samavsharan (Part-10) | Samavsharan | Samavsharan Ki Rachna | 3d Animation | Crazy Mediaworks",
+    "webpage_url": "https://www.youtube.com/watch?v=g8BvEaY9LoY",
+    "channel": "Crazy MediaWorks Studios",
+    "channel_id": "UCWF4If7Lx7ZdFNAJyFLzFtg",
+    "upload_date": "20230330",
+    "duration_seconds": 204,
+    "source_language_metadata": "hi",
+    "source_audio_language": null,
+    "source_availability": "public",
+    "extractor": "youtube",
+    "normalized_audio": {
+      "format": "WAV PCM signed 16-bit",
+      "sample_rate_hz": 16000,
+      "channels": 1,
+      "path": ".cache\\youtube_audio\\g8BvEaY9LoY.wav"
+    }
+  },
+  "language_requested": "auto",
+  "backend_language_argument": "auto",
+  "selected_models": [
+    "whisper",
+    "sravaani",
+    "indictranscribe"
+  ],
+  "glossary_prompt_enabled": true,
+  "created_at": "2026-11-12T20:59:26.091256+05:30"
+}

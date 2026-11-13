@@ -1,0 +1,36 @@
+{
+  "audio_path": "D:\\BharatASR\\BharatASR\\.cache\\youtube_audio\\053fJPHt4PU.wav",
+  "audio_name": "053fJPHt4PU.wav",
+  "audio_duration_seconds": 11191.9485,
+  "sample_rate_hz": 16000,
+  "channels": 1,
+  "source_metadata": {
+    "source": "youtube",
+    "video_id": "053fJPHt4PU",
+    "title": "Samosaran 05 may | Live | श्री १००८ मज्जिनेन्द्र पंचकल्याणक एवं मानसतंभ प्रतिष्ठा महामहोत्सव खरगापुर",
+    "webpage_url": "https://www.youtube.com/watch?v=053fJPHt4PU",
+    "channel": "Jain Dharam Prabhavna",
+    "channel_id": "UCdQgh7tylEaPcS65l_v2RLw",
+    "upload_date": "20230506",
+    "duration_seconds": 11192,
+    "source_language_metadata": "hi",
+    "source_audio_language": null,
+    "source_availability": "public",
+    "extractor": "youtube",
+    "normalized_audio": {
+      "format": "WAV PCM signed 16-bit",
+      "sample_rate_hz": 16000,
+      "channels": 1,
+      "path": ".cache\\youtube_audio\\053fJPHt4PU.wav"
+    }
+  },
+  "language_requested": "auto",
+  "backend_language_argument": "auto",
+  "selected_models": [
+    "whisper",
+    "sravaani",
+    "indictranscribe"
+  ],
+  "glossary_prompt_enabled": true,
+  "created_at": "2026-11-12T20:01:41.385321+05:30"
+}

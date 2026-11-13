@@ -1,0 +1,389 @@
+[
+  {
+    "index": 0,
+    "start": 0.88,
+    "end": 13.42,
+    "text": "तीर्थंकर देव को, केवलज्झान प्रगत होते ही, Indra ko Awadi Gyan से यह ज्यात हो जाता है, Aur Ve Tatkaal Aakar, समवसरण की रचना करते हैं, Samavasaraṇa ki rachna karte hai,",
+    "words": [
+      {
+        "start": 0.88,
+        "end": 1.8,
+        "word": " तीर्थंकर",
+        "probability": 0.5941864013671875
+      },
+      {
+        "start": 1.8,
+        "end": 2.12,
+        "word": " देव",
+        "probability": 0.795703125
+      },
+      {
+        "start": 2.12,
+        "end": 2.44,
+        "word": " को,",
+        "probability": 0.666748046875
+      },
+      {
+        "start": 3.14,
+        "end": 3.74,
+        "word": " केवलज्झान",
+        "probability": 0.4655679066975911
+      },
+      {
+        "start": 3.74,
+        "end": 4.08,
+        "word": " प्रगत",
+        "probability": 0.7830287388392857
+      },
+      {
+        "start": 4.08,
+        "end": 4.5,
+        "word": " होते",
+        "probability": 0.818603515625
+      },
+      {
+        "start": 4.5,
+        "end": 4.76,
+        "word": " ही,",
+        "probability": 0.856689453125
+      },
+      {
+        "start": 5.4,
+        "end": 5.72,
+        "word": " Indra",
+        "probability": 0.4534578323364258
+      },
+      {
+        "start": 5.72,
+        "end": 5.92,
+        "word": " ko",
+        "probability": 0.1646728515625
+      },
+      {
+        "start": 5.92,
+        "end": 6.36,
+        "word": " Awadi",
+        "probability": 0.184600830078125
+      },
+      {
+        "start": 6.36,
+        "end": 6.7,
+        "word": " Gyan",
+        "probability": 0.3695068359375
+      },
+      {
+        "start": 6.7,
+        "end": 7.46,
+        "word": " से",
+        "probability": 0.57391357421875
+      },
+      {
+        "start": 7.46,
+        "end": 7.68,
+        "word": " यह",
+        "probability": 0.8981119791666666
+      },
+      {
+        "start": 7.68,
+        "end": 8.12,
+        "word": " ज्यात",
+        "probability": 0.7248128255208334
+      },
+      {
+        "start": 8.12,
+        "end": 8.28,
+        "word": " हो",
+        "probability": 0.898681640625
+      },
+      {
+        "start": 8.28,
+        "end": 8.64,
+        "word": " जाता",
+        "probability": 0.79658203125
+      },
+      {
+        "start": 8.64,
+        "end": 8.78,
+        "word": " है,",
+        "probability": 0.963623046875
+      },
+      {
+        "start": 9.42,
+        "end": 9.64,
+        "word": " Aur",
+        "probability": 0.3837890625
+      },
+      {
+        "start": 9.64,
+        "end": 9.88,
+        "word": " Ve",
+        "probability": 0.1693115234375
+      },
+      {
+        "start": 9.88,
+        "end": 10.66,
+        "word": " Tatkaal",
+        "probability": 0.7135416666666666
+      },
+      {
+        "start": 10.66,
+        "end": 11.14,
+        "word": " Aakar,",
+        "probability": 0.6956380208333334
+      },
+      {
+        "start": 11.58,
+        "end": 12.18,
+        "word": " समवसरण",
+        "probability": 0.5308074951171875
+      },
+      {
+        "start": 12.18,
+        "end": 12.4,
+        "word": " की",
+        "probability": 0.890380859375
+      },
+      {
+        "start": 12.4,
+        "end": 12.86,
+        "word": " रचना",
+        "probability": 0.72003173828125
+      },
+      {
+        "start": 12.86,
+        "end": 13.24,
+        "word": " करते",
+        "probability": 0.9468994140625
+      },
+      {
+        "start": 13.24,
+        "end": 13.42,
+        "word": " हैं,",
+        "probability": 0.87890625
+      },
+      {
+        "start": 13.42,
+        "end": 13.42,
+        "word": " Samavasaraṇa",
+        "probability": 0.07544980943202972
+      },
+      {
+        "start": 13.42,
+        "end": 13.42,
+        "word": " ki",
+        "probability": 0.6083984375
+      },
+      {
+        "start": 13.42,
+        "end": 13.42,
+        "word": " rachna",
+        "probability": 0.6669108072916666
+      },
+      {
+        "start": 13.42,
+        "end": 13.42,
+        "word": " karte",
+        "probability": 0.7183837890625
+      },
+      {
+        "start": 13.42,
+        "end": 13.42,
+        "word": " hai,",
+        "probability": 0.442138671875
+      }
+    ],
+    "language": null
+  },
+  {
+    "index": 1,
+    "start": 14.2,
+    "end": 31.82,
+    "text": "उस में, बारे सबहाँ में, मुनी, आरी का, स्रावक, स्रावी का, Usme, Barasabhaa, Muni, Aari ka, Sravak, Sravika,",
+    "words": [
+      {
+        "start": 14.2,
+        "end": 14.42,
+        "word": " उस",
+        "probability": 0.6919759114583334
+      },
+      {
+        "start": 14.42,
+        "end": 15.2,
+        "word": " में,",
+        "probability": 0.7425130208333334
+      },
+      {
+        "start": 15.2,
+        "end": 15.64,
+        "word": " बारे",
+        "probability": 0.7287109375
+      },
+      {
+        "start": 15.64,
+        "end": 16.14,
+        "word": " सबहाँ",
+        "probability": 0.723876953125
+      },
+      {
+        "start": 16.14,
+        "end": 16.98,
+        "word": " में,",
+        "probability": 0.83349609375
+      },
+      {
+        "start": 16.98,
+        "end": 17.48,
+        "word": " मुनी,",
+        "probability": 0.597894287109375
+      },
+      {
+        "start": 18.02,
+        "end": 18.26,
+        "word": " आरी",
+        "probability": 0.823486328125
+      },
+      {
+        "start": 18.26,
+        "end": 18.7,
+        "word": " का,",
+        "probability": 0.82373046875
+      },
+      {
+        "start": 18.98,
+        "end": 19.42,
+        "word": " स्रावक,",
+        "probability": 0.8129185267857143
+      },
+      {
+        "start": 19.78,
+        "end": 20.2,
+        "word": " स्रावी",
+        "probability": 0.9372209821428571
+      },
+      {
+        "start": 20.2,
+        "end": 20.94,
+        "word": " का,",
+        "probability": 0.967041015625
+      },
+      {
+        "start": 21.34,
+        "end": 23.76,
+        "word": " Usme,",
+        "probability": 0.40148162841796875
+      },
+      {
+        "start": 23.88,
+        "end": 26.54,
+        "word": " Barasabhaa,",
+        "probability": 0.522509765625
+      },
+      {
+        "start": 27.78,
+        "end": 28.76,
+        "word": " Muni,",
+        "probability": 0.8291015625
+      },
+      {
+        "start": 28.84,
+        "end": 29.14,
+        "word": " Aari",
+        "probability": 0.5128173828125
+      },
+      {
+        "start": 29.14,
+        "end": 29.52,
+        "word": " ka,",
+        "probability": 0.73291015625
+      },
+      {
+        "start": 30.48,
+        "end": 30.88,
+        "word": " Sravak,",
+        "probability": 0.7747395833333334
+      },
+      {
+        "start": 31.02,
+        "end": 31.82,
+        "word": " Sravika,",
+        "probability": 0.8981119791666666
+      }
+    ],
+    "language": null
+  },
+  {
+    "index": 2,
+    "start": 50.17,
+    "end": 55.53,
+    "text": "आईये समो सरन यवम जिनेंदर भगवान की एक जलग देख हैं",
+    "words": [
+      {
+        "start": 50.17,
+        "end": 51.09,
+        "word": " आईये",
+        "probability": 0.5458170572916666
+      },
+      {
+        "start": 51.09,
+        "end": 51.45,
+        "word": " समो",
+        "probability": 0.8250325520833334
+      },
+      {
+        "start": 51.45,
+        "end": 51.91,
+        "word": " सरन",
+        "probability": 0.5366617838541666
+      },
+      {
+        "start": 51.91,
+        "end": 52.55,
+        "word": " यवम",
+        "probability": 0.5806640625
+      },
+      {
+        "start": 52.55,
+        "end": 53.11,
+        "word": " जिनेंदर",
+        "probability": 0.7311469184027778
+      },
+      {
+        "start": 53.11,
+        "end": 53.57,
+        "word": " भगवान",
+        "probability": 0.740753173828125
+      },
+      {
+        "start": 53.57,
+        "end": 54.19,
+        "word": " की",
+        "probability": 0.87890625
+      },
+      {
+        "start": 54.19,
+        "end": 54.55,
+        "word": " एक",
+        "probability": 0.8515625
+      },
+      {
+        "start": 54.55,
+        "end": 54.97,
+        "word": " जलग",
+        "probability": 0.80576171875
+      },
+      {
+        "start": 54.97,
+        "end": 55.31,
+        "word": " देख",
+        "probability": 0.8609375
+      },
+      {
+        "start": 55.31,
+        "end": 55.53,
+        "word": " हैं",
+        "probability": 0.8069661458333334
+      }
+    ],
+    "language": null
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "backend": "indictranscribe",
+  "status": "failed",
+  "elapsed_seconds": 1.4914141000008385,
+  "error": "GatedRepoError: 403 Client Error. (Request ID: Root=1-6af5f47e-297d41f7575b2b1b7e36b9f5;b698493b-baac-4e9c-8a70-40ced3bf0547)\n\nCannot access gated repo for url https://huggingface.co/bodhan-ai/indic-transcribe-flex/resolve/ecba9bac9013c0340fe814b336897ee51ed80be9/.gitattributes.\nAccess to model bodhan-ai/indic-transcribe-flex is restricted and you are not in the authorized list. Visit https://huggingface.co/bodhan-ai/indic-transcribe-flex to ask for access."
+}

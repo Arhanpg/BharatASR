@@ -1,0 +1,445 @@
+{
+  "backend": "whisper",
+  "model": "small",
+  "elapsed_seconds": 24.25283980000131,
+  "audio_duration_seconds": 204.3008125,
+  "real_time_factor": 0.11871142117949879,
+  "device": "cuda",
+  "metadata": {
+    "language_detected_initial": "hi",
+    "language_probability_initial": 0.98388671875,
+    "language_probabilities_initial": [
+      {
+        "language": "hi",
+        "probability": 0.98388671875
+      },
+      {
+        "language": "ur",
+        "probability": 0.01042938232421875
+      },
+      {
+        "language": "sa",
+        "probability": 0.00377655029296875
+      },
+      {
+        "language": "pa",
+        "probability": 0.0009398460388183594
+      },
+      {
+        "language": "en",
+        "probability": 0.00020968914031982422
+      },
+      {
+        "language": "la",
+        "probability": 0.0001252889633178711
+      },
+      {
+        "language": "te",
+        "probability": 0.0001252889633178711
+      },
+      {
+        "language": "mr",
+        "probability": 0.00010967254638671875
+      },
+      {
+        "language": "ta",
+        "probability": 6.449222564697266e-05
+      },
+      {
+        "language": "gu",
+        "probability": 5.429983139038086e-05
+      },
+      {
+        "language": "de",
+        "probability": 5.3048133850097656e-05
+      },
+      {
+        "language": "sd",
+        "probability": 4.9054622650146484e-05
+      },
+      {
+        "language": "jw",
+        "probability": 4.500150680541992e-05
+      },
+      {
+        "language": "ne",
+        "probability": 4.1961669921875e-05
+      },
+      {
+        "language": "bn",
+        "probability": 4.1604042053222656e-05
+      },
+      {
+        "language": "ml",
+        "probability": 3.218650817871094e-05
+      },
+      {
+        "language": "th",
+        "probability": 3.141164779663086e-05
+      },
+      {
+        "language": "nn",
+        "probability": 2.753734588623047e-05
+      },
+      {
+        "language": "zh",
+        "probability": 2.110004425048828e-05
+      },
+      {
+        "language": "vi",
+        "probability": 1.8775463104248047e-05
+      },
+      {
+        "language": "cs",
+        "probability": 1.7881393432617188e-05
+      },
+      {
+        "language": "fa",
+        "probability": 1.5556812286376953e-05
+      },
+      {
+        "language": "ms",
+        "probability": 1.4722347259521484e-05
+      },
+      {
+        "language": "kn",
+        "probability": 1.424551010131836e-05
+      },
+      {
+        "language": "si",
+        "probability": 1.2993812561035156e-05
+      },
+      {
+        "language": "es",
+        "probability": 1.2099742889404297e-05
+      },
+      {
+        "language": "pt",
+        "probability": 9.298324584960938e-06
+      },
+      {
+        "language": "ar",
+        "probability": 8.52346420288086e-06
+      },
+      {
+        "language": "tl",
+        "probability": 6.67572021484375e-06
+      },
+      {
+        "language": "ja",
+        "probability": 5.424022674560547e-06
+      },
+      {
+        "language": "tr",
+        "probability": 4.0531158447265625e-06
+      },
+      {
+        "language": "ru",
+        "probability": 3.2782554626464844e-06
+      },
+      {
+        "language": "haw",
+        "probability": 3.159046173095703e-06
+      },
+      {
+        "language": "it",
+        "probability": 3.039836883544922e-06
+      },
+      {
+        "language": "id",
+        "probability": 2.86102294921875e-06
+      },
+      {
+        "language": "fr",
+        "probability": 2.7418136596679688e-06
+      },
+      {
+        "language": "as",
+        "probability": 2.4437904357910156e-06
+      },
+      {
+        "language": "km",
+        "probability": 2.3245811462402344e-06
+      },
+      {
+        "language": "ro",
+        "probability": 2.205371856689453e-06
+      },
+      {
+        "language": "hu",
+        "probability": 1.9669532775878906e-06
+      },
+      {
+        "language": "fi",
+        "probability": 1.7881393432617188e-06
+      },
+      {
+        "language": "pl",
+        "probability": 1.3113021850585938e-06
+      },
+      {
+        "language": "cy",
+        "probability": 1.2516975402832031e-06
+      },
+      {
+        "language": "uk",
+        "probability": 1.1920928955078125e-06
+      },
+      {
+        "language": "bo",
+        "probability": 1.1920928955078125e-06
+      },
+      {
+        "language": "nl",
+        "probability": 1.1324882507324219e-06
+      },
+      {
+        "language": "ps",
+        "probability": 1.1324882507324219e-06
+      },
+      {
+        "language": "mn",
+        "probability": 1.0728836059570312e-06
+      },
+      {
+        "language": "sv",
+        "probability": 1.0132789611816406e-06
+      },
+      {
+        "language": "sn",
+        "probability": 7.748603820800781e-07
+      },
+      {
+        "language": "sl",
+        "probability": 6.556510925292969e-07
+      },
+      {
+        "language": "br",
+        "probability": 5.960464477539062e-07
+      },
+      {
+        "language": "da",
+        "probability": 4.76837158203125e-07
+      },
+      {
+        "language": "ko",
+        "probability": 2.980232238769531e-07
+      },
+      {
+        "language": "bg",
+        "probability": 2.980232238769531e-07
+      },
+      {
+        "language": "no",
+        "probability": 2.980232238769531e-07
+      },
+      {
+        "language": "my",
+        "probability": 2.980232238769531e-07
+      },
+      {
+        "language": "el",
+        "probability": 2.980232238769531e-07
+      },
+      {
+        "language": "gl",
+        "probability": 2.384185791015625e-07
+      },
+      {
+        "language": "lo",
+        "probability": 1.7881393432617188e-07
+      },
+      {
+        "language": "yo",
+        "probability": 1.7881393432617188e-07
+      },
+      {
+        "language": "az",
+        "probability": 1.7881393432617188e-07
+      },
+      {
+        "language": "sk",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "sr",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "hy",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "bs",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "sw",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "eu",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "lt",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "oc",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "be",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "hr",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "he",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "fo",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "lv",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "et",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "ht",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "mi",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "af",
+        "probability": 5.960464477539063e-08
+      },
+      {
+        "language": "ka",
+        "probability": 0.0
+      },
+      {
+        "language": "tg",
+        "probability": 0.0
+      },
+      {
+        "language": "am",
+        "probability": 0.0
+      },
+      {
+        "language": "yi",
+        "probability": 0.0
+      },
+      {
+        "language": "ca",
+        "probability": 0.0
+      },
+      {
+        "language": "uz",
+        "probability": 0.0
+      },
+      {
+        "language": "mk",
+        "probability": 0.0
+      },
+      {
+        "language": "sq",
+        "probability": 0.0
+      },
+      {
+        "language": "tk",
+        "probability": 0.0
+      },
+      {
+        "language": "kk",
+        "probability": 0.0
+      },
+      {
+        "language": "mt",
+        "probability": 0.0
+      },
+      {
+        "language": "lb",
+        "probability": 0.0
+      },
+      {
+        "language": "is",
+        "probability": 0.0
+      },
+      {
+        "language": "mg",
+        "probability": 0.0
+      },
+      {
+        "language": "tt",
+        "probability": 0.0
+      },
+      {
+        "language": "so",
+        "probability": 0.0
+      },
+      {
+        "language": "ln",
+        "probability": 0.0
+      },
+      {
+        "language": "ha",
+        "probability": 0.0
+      },
+      {
+        "language": "ba",
+        "probability": 0.0
+      },
+      {
+        "language": "su",
+        "probability": 0.0
+      }
+    ],
+    "language_detection": "automatic initial detection + multilingual per-segment decoding",
+    "audio_duration_seconds": 204.3008125,
+    "device": "cuda",
+    "compute_type": "int8_float16",
+    "cuda_retry_error": null,
+    "vad_filter": true,
+    "word_timestamps": true,
+    "glossary_prompt_used": true,
+    "source_metadata": {
+      "source": "youtube",
+      "video_id": "g8BvEaY9LoY",
+      "title": "Samavsharan (Part-10) | Samavsharan | Samavsharan Ki Rachna | 3d Animation | Crazy Mediaworks",
+      "webpage_url": "https://www.youtube.com/watch?v=g8BvEaY9LoY",
+      "channel": "Crazy MediaWorks Studios",
+      "channel_id": "UCWF4If7Lx7ZdFNAJyFLzFtg",
+      "upload_date": "20230330",
+      "duration_seconds": 204,
+      "source_language_metadata": "hi",
+      "source_audio_language": null,
+      "source_availability": "public",
+      "extractor": "youtube",
+      "normalized_audio": {
+        "format": "WAV PCM signed 16-bit",
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "path": ".cache\\youtube_audio\\g8BvEaY9LoY.wav"
+      }
+    },
+    "language_requested_by_user": "auto",
+    "review_required": true,
+    "review_flags": [
+      "Machine-generated draft: verify against the original audio before quoting or publishing.",
+      "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections.",
+      "Automatically detected language(s) must be checked, especially in recitation and code-switching."
+    ]
+  }
+}

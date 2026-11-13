@@ -1,0 +1,13 @@
+{
+  "models": [
+    {
+      "backend": "indictranscribe",
+      "status": "failed",
+      "elapsed_seconds": 66.8522383999989,
+      "error": "RuntimeError: Cannot send a request, as the client has been closed."
+    }
+  ],
+  "run_dir": "outputs\\20261112_224155_693341_qr8A8HNk9jk",
+  "manual_review_required": true,
+  "note": "Transcript text is stored unmodified. Review mantra, Sanskrit and Prakrit words manually."
+}

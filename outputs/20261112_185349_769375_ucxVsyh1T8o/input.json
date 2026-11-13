@@ -1,0 +1,36 @@
+{
+  "audio_path": "D:\\BharatASR\\BharatASR\\.cache\\youtube_audio\\ucxVsyh1T8o.wav",
+  "audio_name": "ucxVsyh1T8o.wav",
+  "audio_duration_seconds": 2974.580688,
+  "sample_rate_hz": 16000,
+  "channels": 1,
+  "source_metadata": {
+    "source": "youtube",
+    "video_id": "ucxVsyh1T8o",
+    "title": "Jain Videos : समवशरण देशना (Samosharan Deshna)  : Complete (जिन समवशरण ) Samavsharan Description",
+    "webpage_url": "https://www.youtube.com/watch?v=ucxVsyh1T8o",
+    "channel": "Jainism",
+    "channel_id": "UCFMxNLWXT-7XJGGRogVkijQ",
+    "upload_date": "20140306",
+    "duration_seconds": 2975,
+    "source_language_metadata": null,
+    "source_audio_language": null,
+    "source_availability": "public",
+    "extractor": "youtube",
+    "normalized_audio": {
+      "format": "WAV PCM signed 16-bit",
+      "sample_rate_hz": 16000,
+      "channels": 1,
+      "path": ".cache\\youtube_audio\\ucxVsyh1T8o.wav"
+    }
+  },
+  "language_requested": "auto",
+  "backend_language_argument": "auto",
+  "selected_models": [
+    "whisper",
+    "sravaani",
+    "indictranscribe"
+  ],
+  "glossary_prompt_enabled": true,
+  "created_at": "2026-11-12T18:53:49.818186+05:30"
+}

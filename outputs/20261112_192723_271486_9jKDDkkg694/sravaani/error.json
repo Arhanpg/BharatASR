@@ -1,0 +1,6 @@
+{
+  "backend": "sravaani",
+  "status": "failed",
+  "elapsed_seconds": 8.404424399999698,
+  "error": "OSError: You are trying to access a gated repo.\nMake sure to have access to it at https://huggingface.co/ARTPARK-IISc/SraVaani-1.0.\n403 Client Error. (Request ID: Root=1-6af5cdaa-5392225c08e486800dceaa52;d0716465-14ce-46b5-95f5-cb694bd6c651)\n\nCannot access gated repo for url https://huggingface.co/ARTPARK-IISc/SraVaani-1.0/resolve/main/config.json.\nAccess to model ARTPARK-IISc/SraVaani-1.0 is restricted and you are not in the authorized list. Visit https://huggingface.co/ARTPARK-IISc/SraVaani-1.0 to ask for access."
+}

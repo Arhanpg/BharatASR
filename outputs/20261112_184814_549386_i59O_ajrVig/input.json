@@ -1,0 +1,36 @@
+{
+  "audio_path": "D:\\BharatASR\\BharatASR\\.cache\\youtube_audio\\i59O_ajrVig.wav",
+  "audio_name": "i59O_ajrVig.wav",
+  "audio_duration_seconds": 505.719,
+  "sample_rate_hz": 16000,
+  "channels": 1,
+  "source_metadata": {
+    "source": "youtube",
+    "video_id": "i59O_ajrVig",
+    "title": "what is samavasaran ? समवसरण क्या है ?उसकी रचना कौन करते हैं ?",
+    "webpage_url": "https://www.youtube.com/watch?v=i59O_ajrVig",
+    "channel": "Jain Pathshala ke sang ",
+    "channel_id": "UCXRm-cQHGAiKld9VLrbYCNA",
+    "upload_date": "20210124",
+    "duration_seconds": 506,
+    "source_language_metadata": "hi",
+    "source_audio_language": null,
+    "source_availability": "public",
+    "extractor": "youtube",
+    "normalized_audio": {
+      "format": "WAV PCM signed 16-bit",
+      "sample_rate_hz": 16000,
+      "channels": 1,
+      "path": ".cache\\youtube_audio\\i59O_ajrVig.wav"
+    }
+  },
+  "language_requested": "auto",
+  "backend_language_argument": "auto",
+  "selected_models": [
+    "whisper",
+    "sravaani",
+    "indictranscribe"
+  ],
+  "glossary_prompt_enabled": true,
+  "created_at": "2026-11-12T18:48:14.593841+05:30"
+}

@@ -1,0 +1,445 @@
+{
+  "backend": "whisper",
+  "model": "small",
+  "elapsed_seconds": 1407.2571092999988,
+  "audio_duration_seconds": 4364.92,
+  "real_time_factor": 0.3224015810828145,
+  "device": "cuda",
+  "metadata": {
+    "language_detected_initial": "hi",
+    "language_probability_initial": 0.8154296875,
+    "language_probabilities_initial": [
+      {
+        "language": "hi",
+        "probability": 0.8154296875
+      },
+      {
+        "language": "te",
+        "probability": 0.043212890625
+      },
+      {
+        "language": "sa",
+        "probability": 0.040924072265625
+      },
+      {
+        "language": "en",
+        "probability": 0.017730712890625
+      },
+      {
+        "language": "pa",
+        "probability": 0.0173187255859375
+      },
+      {
+        "language": "ta",
+        "probability": 0.017059326171875
+      },
+      {
+        "language": "ur",
+        "probability": 0.01328277587890625
+      },
+      {
+        "language": "bn",
+        "probability": 0.00688934326171875
+      },
+      {
+        "language": "ml",
+        "probability": 0.004520416259765625
+      },
+      {
+        "language": "sd",
+        "probability": 0.0038661956787109375
+      },
+      {
+        "language": "mr",
+        "probability": 0.0025959014892578125
+      },
+      {
+        "language": "kn",
+        "probability": 0.0020046234130859375
+      },
+      {
+        "language": "es",
+        "probability": 0.0019435882568359375
+      },
+      {
+        "language": "jw",
+        "probability": 0.0013895034790039062
+      },
+      {
+        "language": "ru",
+        "probability": 0.0009851455688476562
+      },
+      {
+        "language": "ar",
+        "probability": 0.0009474754333496094
+      },
+      {
+        "language": "fa",
+        "probability": 0.0007853507995605469
+      },
+      {
+        "language": "gu",
+        "probability": 0.0007205009460449219
+      },
+      {
+        "language": "ne",
+        "probability": 0.0006117820739746094
+      },
+      {
+        "language": "fr",
+        "probability": 0.0005927085876464844
+      },
+      {
+        "language": "pt",
+        "probability": 0.0005354881286621094
+      },
+      {
+        "language": "cs",
+        "probability": 0.0005068778991699219
+      },
+      {
+        "language": "vi",
+        "probability": 0.0004992485046386719
+      },
+      {
+        "language": "zh",
+        "probability": 0.00045800209045410156
+      },
+      {
+        "language": "de",
+        "probability": 0.0004475116729736328
+      },
+      {
+        "language": "la",
+        "probability": 0.0003948211669921875
+      },
+      {
+        "language": "si",
+        "probability": 0.00036525726318359375
+      },
+      {
+        "language": "it",
+        "probability": 0.0003457069396972656
+      },
+      {
+        "language": "tr",
+        "probability": 0.0003352165222167969
+      },
+      {
+        "language": "th",
+        "probability": 0.0003273487091064453
+      },
+      {
+        "language": "ja",
+        "probability": 0.00028228759765625
+      },
+      {
+        "language": "uk",
+        "probability": 0.0002734661102294922
+      },
+      {
+        "language": "km",
+        "probability": 0.00022149085998535156
+      },
+      {
+        "language": "ko",
+        "probability": 0.00021636486053466797
+      },
+      {
+        "language": "as",
+        "probability": 0.00020968914031982422
+      },
+      {
+        "language": "ro",
+        "probability": 0.0001633167266845703
+      },
+      {
+        "language": "ps",
+        "probability": 0.00015461444854736328
+      },
+      {
+        "language": "nn",
+        "probability": 0.00012814998626708984
+      },
+      {
+        "language": "haw",
+        "probability": 0.00012624263763427734
+      },
+      {
+        "language": "tl",
+        "probability": 0.00011223554611206055
+      },
+      {
+        "language": "id",
+        "probability": 0.00010460615158081055
+      },
+      {
+        "language": "sn",
+        "probability": 9.98377799987793e-05
+      },
+      {
+        "language": "el",
+        "probability": 8.952617645263672e-05
+      },
+      {
+        "language": "pl",
+        "probability": 8.744001388549805e-05
+      },
+      {
+        "language": "yo",
+        "probability": 7.712841033935547e-05
+      },
+      {
+        "language": "ms",
+        "probability": 7.081031799316406e-05
+      },
+      {
+        "language": "my",
+        "probability": 5.733966827392578e-05
+      },
+      {
+        "language": "be",
+        "probability": 4.5359134674072266e-05
+      },
+      {
+        "language": "sv",
+        "probability": 4.500150680541992e-05
+      },
+      {
+        "language": "sw",
+        "probability": 4.3272972106933594e-05
+      },
+      {
+        "language": "br",
+        "probability": 3.546476364135742e-05
+      },
+      {
+        "language": "nl",
+        "probability": 3.2782554626464844e-05
+      },
+      {
+        "language": "bg",
+        "probability": 3.069639205932617e-05
+      },
+      {
+        "language": "bo",
+        "probability": 2.9265880584716797e-05
+      },
+      {
+        "language": "gl",
+        "probability": 2.872943878173828e-05
+      },
+      {
+        "language": "sl",
+        "probability": 2.378225326538086e-05
+      },
+      {
+        "language": "eu",
+        "probability": 2.110004425048828e-05
+      },
+      {
+        "language": "hr",
+        "probability": 1.9490718841552734e-05
+      },
+      {
+        "language": "no",
+        "probability": 1.8417835235595703e-05
+      },
+      {
+        "language": "hy",
+        "probability": 1.6689300537109375e-05
+      },
+      {
+        "language": "lt",
+        "probability": 1.4722347259521484e-05
+      },
+      {
+        "language": "hu",
+        "probability": 1.4007091522216797e-05
+      },
+      {
+        "language": "he",
+        "probability": 1.2040138244628906e-05
+      },
+      {
+        "language": "cy",
+        "probability": 1.1086463928222656e-05
+      },
+      {
+        "language": "mn",
+        "probability": 1.1086463928222656e-05
+      },
+      {
+        "language": "da",
+        "probability": 1.0967254638671875e-05
+      },
+      {
+        "language": "bs",
+        "probability": 1.0788440704345703e-05
+      },
+      {
+        "language": "fi",
+        "probability": 1.055002212524414e-05
+      },
+      {
+        "language": "sk",
+        "probability": 9.119510650634766e-06
+      },
+      {
+        "language": "lo",
+        "probability": 7.927417755126953e-06
+      },
+      {
+        "language": "sr",
+        "probability": 7.331371307373047e-06
+      },
+      {
+        "language": "mi",
+        "probability": 7.271766662597656e-06
+      },
+      {
+        "language": "lv",
+        "probability": 5.841255187988281e-06
+      },
+      {
+        "language": "ht",
+        "probability": 3.5762786865234375e-06
+      },
+      {
+        "language": "sq",
+        "probability": 2.86102294921875e-06
+      },
+      {
+        "language": "so",
+        "probability": 2.7418136596679688e-06
+      },
+      {
+        "language": "yi",
+        "probability": 2.3245811462402344e-06
+      },
+      {
+        "language": "mk",
+        "probability": 2.2649765014648438e-06
+      },
+      {
+        "language": "oc",
+        "probability": 2.086162567138672e-06
+      },
+      {
+        "language": "az",
+        "probability": 1.9669532775878906e-06
+      },
+      {
+        "language": "kk",
+        "probability": 1.1920928955078125e-06
+      },
+      {
+        "language": "ca",
+        "probability": 9.5367431640625e-07
+      },
+      {
+        "language": "et",
+        "probability": 6.556510925292969e-07
+      },
+      {
+        "language": "am",
+        "probability": 6.556510925292969e-07
+      },
+      {
+        "language": "af",
+        "probability": 5.960464477539062e-07
+      },
+      {
+        "language": "fo",
+        "probability": 4.76837158203125e-07
+      },
+      {
+        "language": "is",
+        "probability": 4.172325134277344e-07
+      },
+      {
+        "language": "ka",
+        "probability": 2.980232238769531e-07
+      },
+      {
+        "language": "ln",
+        "probability": 2.980232238769531e-07
+      },
+      {
+        "language": "mt",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "tg",
+        "probability": 1.1920928955078125e-07
+      },
+      {
+        "language": "tk",
+        "probability": 0.0
+      },
+      {
+        "language": "uz",
+        "probability": 0.0
+      },
+      {
+        "language": "lb",
+        "probability": 0.0
+      },
+      {
+        "language": "mg",
+        "probability": 0.0
+      },
+      {
+        "language": "tt",
+        "probability": 0.0
+      },
+      {
+        "language": "ha",
+        "probability": 0.0
+      },
+      {
+        "language": "ba",
+        "probability": 0.0
+      },
+      {
+        "language": "su",
+        "probability": 0.0
+      }
+    ],
+    "language_detection": "automatic initial detection + multilingual per-segment decoding",
+    "audio_duration_seconds": 4364.92,
+    "device": "cuda",
+    "compute_type": "int8_float16",
+    "cuda_retry_error": null,
+    "vad_filter": true,
+    "word_timestamps": true,
+    "glossary_prompt_used": true,
+    "source_metadata": {
+      "source": "youtube",
+      "video_id": "StfeLi9xP0Q",
+      "title": "Samosaran Se Divya Dhwani 2",
+      "webpage_url": "https://www.youtube.com/watch?v=StfeLi9xP0Q",
+      "channel": "guruvani",
+      "channel_id": "UCBO15TDBTdNVahNWyI2k5Kg",
+      "upload_date": "20140408",
+      "duration_seconds": 4365,
+      "source_language_metadata": "hi",
+      "source_audio_language": null,
+      "source_availability": "public",
+      "extractor": "youtube",
+      "normalized_audio": {
+        "format": "WAV PCM signed 16-bit",
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "path": ".cache\\youtube_audio\\StfeLi9xP0Q.wav"
+      }
+    },
+    "language_requested_by_user": "auto",
+    "review_required": true,
+    "review_flags": [
+      "Machine-generated draft: verify against the original audio before quoting or publishing.",
+      "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections.",
+      "Automatically detected language(s) must be checked, especially in recitation and code-switching."
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "audio_path": "D:\\BharatASR\\BharatASR\\.cache\\youtube_audio\\1cq_Iwbvpvg.wav",
+  "audio_name": "1cq_Iwbvpvg.wav",
+  "audio_duration_seconds": 236.855188,
+  "sample_rate_hz": 16000,
+  "channels": 1,
+  "source_metadata": {
+    "source": "youtube",
+    "video_id": "1cq_Iwbvpvg",
+    "title": "समवसरण के बारे में जानकारी | जैन प्रश्नोत्तरी | Jain Prashnottari |Jain Que Ans| Jain GK| Samosharan",
+    "webpage_url": "https://www.youtube.com/watch?v=1cq_Iwbvpvg",
+    "channel": "Jain sangrah",
+    "channel_id": "UCA6172iqDubn-0DsWisv_RQ",
+    "upload_date": "20220914",
+    "duration_seconds": 237,
+    "source_language_metadata": "hi",
+    "source_audio_language": null,
+    "source_availability": "public",
+    "extractor": "youtube",
+    "normalized_audio": {
+      "format": "WAV PCM signed 16-bit",
+      "sample_rate_hz": 16000,
+      "channels": 1,
+      "path": ".cache\\youtube_audio\\1cq_Iwbvpvg.wav"
+    }
+  },
+  "language_requested": "auto",
+  "backend_language_argument": "auto",
+  "selected_models": [
+    "indictranscribe"
+  ],
+  "glossary_prompt_enabled": true,
+  "created_at": "2026-11-12T22:39:04.922177+05:30"
+}

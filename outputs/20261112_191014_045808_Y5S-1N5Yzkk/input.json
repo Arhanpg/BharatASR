@@ -1,0 +1,36 @@
+{
+  "audio_path": "D:\\BharatASR\\BharatASR\\.cache\\youtube_audio\\Y5S-1N5Yzkk.wav",
+  "audio_name": "Y5S-1N5Yzkk.wav",
+  "audio_duration_seconds": 1674.890188,
+  "sample_rate_hz": 16000,
+  "channels": 1,
+  "source_metadata": {
+    "source": "youtube",
+    "video_id": "Y5S-1N5Yzkk",
+    "title": "समवशरण का सम्पूर्ण वर्णन सचित्र परिचय (जैनधर्म) #jaineducation #jainism",
+    "webpage_url": "https://www.youtube.com/watch?v=Y5S-1N5Yzkk",
+    "channel": "Acharya Amritansh (Jain darshan + Sarva darshan)",
+    "channel_id": "UCVUZX2xlmhd_ULPGQLUKMlA",
+    "upload_date": "20240613",
+    "duration_seconds": 1675,
+    "source_language_metadata": "hi",
+    "source_audio_language": null,
+    "source_availability": "public",
+    "extractor": "youtube",
+    "normalized_audio": {
+      "format": "WAV PCM signed 16-bit",
+      "sample_rate_hz": 16000,
+      "channels": 1,
+      "path": ".cache\\youtube_audio\\Y5S-1N5Yzkk.wav"
+    }
+  },
+  "language_requested": "auto",
+  "backend_language_argument": "auto",
+  "selected_models": [
+    "whisper",
+    "sravaani",
+    "indictranscribe"
+  ],
+  "glossary_prompt_enabled": true,
+  "created_at": "2026-11-12T19:10:14.091233+05:30"
+}

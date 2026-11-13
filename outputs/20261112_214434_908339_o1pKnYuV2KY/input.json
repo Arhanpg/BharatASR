@@ -1,0 +1,36 @@
+{
+  "audio_path": "D:\\BharatASR\\BharatASR\\.cache\\youtube_audio\\o1pKnYuV2KY.wav",
+  "audio_name": "o1pKnYuV2KY.wav",
+  "audio_duration_seconds": 4288.249625,
+  "sample_rate_hz": 16000,
+  "channels": 1,
+  "source_metadata": {
+    "source": "youtube",
+    "video_id": "o1pKnYuV2KY",
+    "title": "समवसरण का थोकडा (ग्यारहवीं) PART 2",
+    "webpage_url": "https://www.youtube.com/watch?v=o1pKnYuV2KY",
+    "channel": "SHIKSHAN BOARD JODHPUR",
+    "channel_id": "UCaEK5U49zajkse47FjLt6zQ",
+    "upload_date": "20211222",
+    "duration_seconds": 4288,
+    "source_language_metadata": "hi",
+    "source_audio_language": null,
+    "source_availability": "public",
+    "extractor": "youtube",
+    "normalized_audio": {
+      "format": "WAV PCM signed 16-bit",
+      "sample_rate_hz": 16000,
+      "channels": 1,
+      "path": ".cache\\youtube_audio\\o1pKnYuV2KY.wav"
+    }
+  },
+  "language_requested": "auto",
+  "backend_language_argument": "auto",
+  "selected_models": [
+    "whisper",
+    "sravaani",
+    "indictranscribe"
+  ],
+  "glossary_prompt_enabled": true,
+  "created_at": "2026-11-12T21:44:34.978771+05:30"
+}

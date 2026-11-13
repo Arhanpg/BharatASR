@@ -1,0 +1,15 @@
+{
+  "models": [
+    {
+      "backend": "whisper",
+      "status": "success",
+      "elapsed_seconds": 91.22519360000024,
+      "model": "small",
+      "language_detected": "hi",
+      "review_required": true
+    }
+  ],
+  "run_dir": "outputs\\20261112_183450_981402_R_Dd4slDghA",
+  "manual_review_required": true,
+  "note": "Transcript text is stored unmodified. Review mantra, Sanskrit and Prakrit words manually."
+}

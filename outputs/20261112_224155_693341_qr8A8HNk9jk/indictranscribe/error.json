@@ -1,0 +1,6 @@
+{
+  "backend": "indictranscribe",
+  "status": "failed",
+  "elapsed_seconds": 66.8522383999989,
+  "error": "RuntimeError: Cannot send a request, as the client has been closed."
+}
