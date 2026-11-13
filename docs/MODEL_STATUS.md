@@ -1,25 +1,12 @@
 # Model integration status
 
-| Model | Adapter | Language behavior | Credentials / setup |
+| Model | Adapter | Test evidence | Access |
 |---|---|---|---|
-| faster-whisper | Local, implemented | Automatic initial detection and multilingual per-segment decoding; Sanskrit language token; glossary prompt | Install requirements-whisper.txt |
-| Indic-Transcribe Core / Flex | Local, implemented | Core documents automatic language ID, native script, code-mixing, and Sanskrit; 25 language coverage | Hugging Face access/model terms; install requirements-indictranscribe.txt |
-| SraVaani 1.0 | Local, implemented | Model card supports 65 Indic languages and dialects including Sanskrit; path-based API | Gated Hugging Face access; HF_TOKEN |
-| AI4Bharat IndicConformer | Local, implemented | Checkpoint-specific; no auto language detection in this adapter | AI4Bharat NeMo environment + .nemo checkpoint + INDICCONFORMER_LANGUAGE |
-| Sarvam Saaras v4 | Hosted API, optional | Hosted speech-to-text; opt-in only | SARVAM_API_KEY; metered; explicit confirmation flags |
+| faster-whisper | Local | Ran on two Hindi lectures; language ID succeeded, but inspected transcripts showed serious repetition and replacement characters | Public weights |
+| ARTPARK Vaani Whisper-Small Hindi | Local | Added as a public Hindi-only comparison backend; not yet run on the user's test videos | Public, Apache-2.0 |
+| SraVaani 1.0 | Local | No inference; user's runs received HTTP 403 | Gated; owner approval and accepted conditions required |
+| Indic-Transcribe Core / Flex | Local | No inference; user's runs received gated HTTP 403 | Gated; owner approval and accepted conditions required |
+| AI4Bharat IndicConformer | Local | Not part of the observed successful test runs | AI4Bharat NeMo environment and checkpoint required |
+| Sarvam Saaras | Hosted API | Not part of the initial test | Optional, metered, explicit opt-in |
 
-## Sanskrit / Prakrit safety
-
-- Sanskrit is included in Indic-Transcribe Core and SraVaani's documented language coverage.
-- The current integrated models do not document a dedicated Prakrit mode. BharatASR's Prakrit setting therefore uses automatic multilingual inference and marks the result for expert review.
-- `configs/sacred_terms.json` supplies optional prompt hints. It never changes transcript text.
-- Every successful model output includes `transcript.review.md`; do not quote mantras or scriptural passages before checking the audio and an authoritative text.
-
-## Source references
-
-- Whisper / faster-whisper: https://github.com/SYSTRAN/faster-whisper
-- SraVaani 1.0: https://huggingface.co/ARTPARK-IISc/SraVaani-1.0
-- IndicConformer: https://github.com/AI4Bharat/IndicConformerASR
-- Indic-Transcribe Core: https://huggingface.co/bodhan-ai/indic-transcribe-core
-- Indic-Transcribe Flex: https://huggingface.co/bodhan-ai/indic-transcribe-flex
-- Sarvam STT: https://docs.sarvam.ai/api-reference/speech-to-text/transcribe
+See [INITIAL_TEST_REPORT.md](INITIAL_TEST_REPORT.md) for evidence and limitations.
