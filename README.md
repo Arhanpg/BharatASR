@@ -10,7 +10,7 @@ BharatASR runs multiple local/self-hosted ASR systems against the same audio fil
 
 | Backend | Type | Availability | Notes |
 |---|---|---|---|
-| faster-whisper (Whisper) | Local | Implemented; initial test quality poor | Adapted from VidTrace: VAD, word timestamps, CUDA detection and CPU fallback. See the initial test report. |
+| faster-whisper (Whisper) | Local | Implemented; reliability fixes added | CUDA/CPU fallback, word timestamps, per-segment diagnostics, and one no-VAD recovery retry when VAD returns no text. Test with and without VAD. |
 | Vaani Whisper-Small Hindi | Local | Added as public comparison backend | Hindi-only, Apache-2.0, approximately 967 MB weights. Not a Sanskrit/Prakrit model. |
 | SraVaani 1.0 | Local | Access blocked in initial test | Gated Hugging Face checkpoint. The adapter supports cached CLI login or HF_TOKEN; owner approval is still required. |
 | AI4Bharat IndicConformer | Local | Implemented | Official NeMo CTC/RNNT checkpoint workflow; download a .nemo model and set its path. |
@@ -128,7 +128,7 @@ The synchronous Sarvam REST endpoint supports audio up to 30 seconds; longer rec
 
 ## Output structure
 
-Every execution gets a unique timestamped run directory. Each model writes to its own folder:
+Every execution gets a unique timestamped run directory. Each model writes to its own folder. The run summary distinguishes completed, completed_needs_review, empty_output, blocked_access, skipped and failed:
 
 ```text
 outputs/
@@ -139,6 +139,8 @@ outputs/
       transcript.json
       segments.json
       metrics.json
+      quality.json
+      transcript.review.md
     sravaani/
       transcript.txt
       transcript.json
@@ -175,6 +177,18 @@ Downloaded audio is cached under `.cache/youtube_audio/`, normalized to mono 16 
 ## Sanskrit, Prakrit and mantra preservation
 
 BharatASR includes `configs/sacred_terms.json` as an optional Whisper vocabulary hint file. It contains forms such as OM/ॐ, HRIM/ह्रीं, KLIEM/क्लीं, and selected Jain terminology. These are hints only: transcript text is never rewritten, transliterated or corrected automatically. Each backend saves `transcript.review.md` with manual-review warnings. For Prakrit, use `--language Prakrit`; automatic multilingual recognition is attempted, but no integrated model currently documents a dedicated Prakrit mode. See [the transcription policy](docs/TRANSCRIPTION_POLICY.md) for the review rules.
+
+## Testing and model comparisons
+
+Follow the staged [BharatASR testing protocol](docs/TESTING.md) for unit tests, per-model smoke tests, VAD ablation, multi-model comparisons, human reference preparation, and WER/CER scoring.
+
+Recommended first Hindi comparison on the same WAV:
+
+~~~powershell
+python -m bharatasr run --audio data/audio/hi_jain_lecture_01.wav --language hi --models whisper,vaani-whisper-hindi
+~~~
+
+Then repeat with --no-whisper-vad to check whether VAD is suppressing quiet speech or chant. Do not change the audio, language or glossary setting between the two passes.
 
 ## Accuracy evaluation (WER / CER)
 

@@ -4,18 +4,22 @@ from __future__ import annotations
 from collections import Counter
 from typing import Any
 
-_PUNCTUATION = ".,!?;:।॥()[]{}\"'“”‘’"
+_PUNCTUATION = ".,!?;:।॥()[]{}\\"'“”‘’"
 
 
 def _tokens(text: str) -> list[str]:
     return [token.strip(_PUNCTUATION) for token in text.split() if token.strip(_PUNCTUATION)]
 
 
-def assess_transcript_quality(transcript: str, language_metadata: dict[str, Any] | None = None) -> dict[str, Any]:
-    """Detect empty output, replacement characters and suspicious repetition.
+def assess_transcript_quality(
+    transcript: str,
+    language_metadata: dict[str, Any] | None = None,
+    audio_duration_seconds: float | None = None,
+) -> dict[str, Any]:
+    """Flag suspicious output; this is not a semantic accuracy score.
 
-    These heuristics are not semantic accuracy, WER or CER. Repetition can be
-    genuine in recitation, so every warning still requires listening.
+    Repetition may be genuine in a mantra/recitation. Low token yield may also
+    be legitimate for slow speech, music or silence. Flags always need listening.
     """
     metadata = language_metadata or {}
     tokens = _tokens(transcript)
@@ -36,8 +40,17 @@ def assess_transcript_quality(transcript: str, language_metadata: dict[str, Any]
         if current_run > longest_run:
             longest_token, longest_run = token, current_run
 
-    replacement_count = transcript.count("\ufffd")
+    replacement_count = transcript.count("\\ufffd")
     top_ratio = top_count / len(tokens) if tokens else 0.0
+    duration = audio_duration_seconds
+    if duration is None:
+        duration = metadata.get("audio_duration_seconds")
+    tokens_per_minute = (
+        len(tokens) / (float(duration) / 60.0)
+        if isinstance(duration, (int, float)) and duration > 0
+        else None
+    )
+
     flags: list[str] = []
     if not transcript.strip():
         flags.append("EMPTY OUTPUT: the backend returned no transcript text.")
@@ -55,6 +68,18 @@ def assess_transcript_quality(transcript: str, language_metadata: dict[str, Any]
         )
     if len(tokens) >= 100 and top_ratio >= 0.12:
         flags.append(f"TOKEN DOMINANCE: {top_token!r} accounts for {top_ratio:.1%} of tokens.")
+    if (
+        tokens_per_minute is not None
+        and duration is not None
+        and duration >= 90
+        and tokens_per_minute < 40
+        and transcript.strip()
+    ):
+        flags.append(
+            f"LOW TEXT YIELD: {tokens_per_minute:.1f} whitespace tokens/minute over "
+            f"{duration / 60:.1f} minutes. Check silence, VAD clipping, partial decoding "
+            "or unusually slow/chant-like speech."
+        )
 
     probability = metadata.get("language_probability_initial")
     if isinstance(probability, (int, float)) and probability < 0.50:
@@ -63,10 +88,12 @@ def assess_transcript_quality(transcript: str, language_metadata: dict[str, Any]
     status = "empty_output" if not transcript.strip() else ("needs_review" if flags else "no_automatic_flags")
     return {
         "status": status,
+        "manual_review_required": True,
         "character_count": len(transcript),
         "whitespace_token_count": len(tokens),
         "unique_token_count": unique_count,
         "unique_token_ratio": round(unique_ratio, 4),
+        "tokens_per_minute": round(tokens_per_minute, 2) if tokens_per_minute is not None else None,
         "most_frequent_token": top_token,
         "most_frequent_token_count": top_count,
         "most_frequent_token_ratio": round(top_ratio, 4),
@@ -94,5 +121,11 @@ def review_flags(transcript: str, requested_language: str, metadata: dict[str, A
         )
     if requested_language.strip().casefold() in {"auto", "detect"}:
         flags.append("Automatically detected language(s) must be checked, especially in recitation and code-switching.")
-    flags.extend(assess_transcript_quality(transcript, metadata)["flags"])
+    flags.extend(
+        assess_transcript_quality(
+            transcript,
+            metadata,
+            audio_duration_seconds=metadata.get("audio_duration_seconds"),
+        )["flags"]
+    )
     return flags
