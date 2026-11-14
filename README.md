@@ -229,32 +229,64 @@ Runtime, audio duration, device, precision and model metadata are saved separate
 7. Report model failures and unsupported languages instead of silently dropping them.
 8. Respect dataset licenses, privacy, consent and redistribution permissions.
 
-## Initial YouTube transcript audit — 13 November 2026
+## Latest benchmark review — 14 November 2026
 
-The expanded audit covers **all 21 distinct YouTube video IDs** represented in the committed Whisper outputs (44 run folders and 22 transcript files; one video was run twice). I inspected saved transcript text from every video, including excerpts near the beginning, 20%, 45%, 70% and 90%, and checked language metadata, token diversity, repeated-token runs and Unicode replacement characters.
+The latest \`main\` snapshot reviewed is \`609c7632ee058d665dec4ef9f8141c5d1760046b\` ("adding the new model test"). The YouTube corpus now contains **22 distinct video IDs**, including the new 5.28-hour recording \`r4hrxMl24B8\`.
 
-**The text-only audit found widespread problems:**
-- 1 video has an empty transcript even though the old run summary marked Whisper as successful.
-- 2 more have extremely low text yields and need coverage checks.
-- 17/21 contain a consecutive repeated-token sequence of at least 10 tokens.
-- 19/21 contain at least one Unicode replacement character (�).
+### Updated test inventory
 
-These checks show the saved outputs are not consistently reliable. Repeated ॐ may be a real chant, so repetition flags are not automatically treated as hallucinations.
+| Repository artifact | Count |
+|---|---:|
+| Distinct YouTube video IDs | 22 |
+| Output run directories | 71 |
+| Saved \`transcript.txt\` files across repeated runs | 70 |
+| Whisper transcript files across all runs | 48 |
+| Vaani Hindi transcript files across all runs | 22 |
+| Latest videos with a Whisper transcript | 22/22 |
+| Latest videos with a Vaani transcript | 21/22 |
+| Latest Vaani run failed before inference | 1 |
+| SraVaani transcript files | 0 |
+| Indic-Transcribe transcript files | 0 |
+| IndicConformer transcript files | 0 |
 
-**Important cross-verification limitation:** no independent YouTube caption files or original audio/video files are committed in the repository. Direct YouTube watch-page/timed-text retrieval was unavailable in this audit environment, so I cannot truthfully claim that all 21 Whisper transcripts have been checked against YouTube captions or spoken audio. No WER/CER is reported. The detailed report explicitly separates extracted-text review from source-audio verification.
+The 70 transcript files include repeated runs; they are not 70 separate videos.
 
-- [Full 21-video audit and per-video findings](docs/INITIAL_TEST_REPORT.md)
-- [CSV inventory of all 21 videos and transcript diagnostics](docs/VIDEO_TRANSCRIPT_AUDIT.csv)
-- [All 21 source YouTube URLs](docs/youtube_video_urls.txt)
+### Actual model-test outcome
 
-To check which YouTube caption tracks exist on your Windows machine, download them locally with:
+The latest per-video run summaries show:
+- **Whisper Small:** 22/22 non-empty outputs; 1 run had no configured heuristic flags and 21 were marked for review.
+- **Vaani Whisper Hindi:** 21/22 non-empty outputs; 4 had no configured heuristic flags, 17 were marked for review, and the Vaani run for \`3wlMq29K6TE\` failed while loading the feature extractor.
+- **SraVaani:** 39 error artifacts and no transcript files. Recorded attempts include Hugging Face 403 gated-model access denials; inference was not reached.
+- **Indic-Transcribe:** 60 error artifacts and no transcript files. Recorded attempts include Hugging Face 403 gated-model access denials; inference was not reached.
+- **IndicConformer:** no transcript or backend error artifact is present in this snapshot; do not count it as tested.
+
+A \`completed\` status means text was returned without a configured heuristic warning; it does **not** certify correctness. The Whisper transcript for \`R_Dd4slDghA\`, for example, was marked completed even though sampled text contains conspicuous phonetic spelling errors.
+
+### Comparison observations
+
+Vaani is often more readable than Whisper on sampled short and medium Hindi explanations, but it is not consistently clean. Both models still show repeated phrases, corrupted characters, phonetic misspellings, mixed-script fragments and suspiciously short outputs. The new five-hour \`r4hrxMl24B8\` output is especially large and repetitive in both models.
+
+Vaani's median per-video elapsed-time ratio was approximately **2.09×** Whisper's in this batch. On \`r4hrxMl24B8\`, Whisper took about 82 minutes and Vaani about 174 minutes. These timings describe this machine/run set; they do not establish model accuracy.
+
+### Source-audio verification limitation
+
+I inspected the latest saved transcripts at multiple positions and reviewed full-file text diagnostics, but I could not retrieve/play the original YouTube videos from this environment. Watch, mobile, embed, oEmbed and timed-text retrieval attempts failed; direct network DNS resolution for youtube.com also failed. The repository contains no VTT/SRT captions, no human reference transcripts and no WER/CER comparison outputs.
+
+Therefore this is a **text-level transcript review**, not sentence-by-sentence verification against original video audio. No WER, CER or accuracy winner is claimed. YouTube auto-captions, if retrieved locally, must be labelled as machine-generated and human-corrected before accuracy scoring.
+
+**Detailed 22-video review:** [MODEL_BENCHMARK_REVIEW_2026-11-14.md](docs/MODEL_BENCHMARK_REVIEW_2026-11-14.md)  
+**Machine-readable statistics:** [MODEL_BENCHMARK_REVIEW_2026-11-14.csv](docs/MODEL_BENCHMARK_REVIEW_2026-11-14.csv)  
+**All video inputs:** [youtube_video_urls.txt](docs/youtube_video_urls.txt)  
+**Historical report:** [13 November 21-video initial audit](docs/INITIAL_TEST_REPORT.md)
+
+On Windows, check which subtitle tracks YouTube exposes:
 
 ~~~powershell
-New-Item -ItemType Directory -Force data/references/youtube-captions | Out-Null
-yt-dlp --skip-download --write-subs --write-auto-subs --sub-langs "all" --sub-format vtt --ignore-errors -o "data/references/youtube-captions/%(id)s.%(language)s.%(ext)s" -a docs/youtube_video_urls.txt
+New-Item -ItemType Directory -Force .local-reference\youtube-captions | Out-Null
+yt-dlp --skip-download --write-subs --write-auto-subs --sub-langs "all" --sub-format vtt --ignore-errors -o ".local-reference/youtube-captions/%(id)s.%(language)s.%(ext)s" -a docs/youtube_video_urls.txt
 ~~~
 
-Creator-provided captions and auto-generated captions must be labelled separately; auto captions are another ASR output, not human ground truth. Use human-verified reference text for WER/CER.
+Creator captions and automatic captions must be labelled separately. WER/CER requires a human-corrected reference transcript from the source audio.
 
 
 ## Current limitations
