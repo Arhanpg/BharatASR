@@ -229,64 +229,68 @@ Runtime, audio duration, device, precision and model metadata are saved separate
 7. Report model failures and unsupported languages instead of silently dropping them.
 8. Respect dataset licenses, privacy, consent and redistribution permissions.
 
-## Latest benchmark review — 14 November 2026
+## Deep transcript review and benchmark — 14 November 2026
 
-The latest \`main\` snapshot reviewed is \`609c7632ee058d665dec4ef9f8141c5d1760046b\` ("adding the new model test"). The YouTube corpus now contains **22 distinct video IDs**, including the new 5.28-hour recording \`r4hrxMl24B8\`.
+The latest output batch contains **22 unique YouTube videos**, approximately **18.17 hours** of normalized Hindi audio and **43 latest non-empty transcript outputs**: 22 Whisper Small and 21 Vaani Hindi. Vaani failed to load its feature extractor on 3wlMq29K6TE.
 
-### Updated test inventory
+### Full-file statistics
 
-| Repository artifact | Count |
-|---|---:|
-| Distinct YouTube video IDs | 22 |
-| Output run directories | 71 |
-| Saved \`transcript.txt\` files across repeated runs | 70 |
-| Whisper transcript files across all runs | 48 |
-| Vaani Hindi transcript files across all runs | 22 |
-| Latest videos with a Whisper transcript | 22/22 |
-| Latest videos with a Vaani transcript | 21/22 |
-| Latest Vaani run failed before inference | 1 |
-| SraVaani transcript files | 0 |
-| Indic-Transcribe transcript files | 0 |
-| IndicConformer transcript files | 0 |
+| Measure | Whisper Small | Vaani Hindi |
+|---|---:|---:|
+| Latest transcripts | 22 | 21 |
+| Content tokens | 90,064 | 149,408 |
+| Median unique-token ratio | 0.3719 | 0.2985 |
+| U+FFFD replacement characters | 738 | 319 |
+| Files with U+FFFD | 19/22 | 17/21 |
+| Files with a repeated identical-token run of 10+ | 18/22 | 6/21 |
 
-The 70 transcript files include repeated runs; they are not 70 separate videos.
+On the matched 21 videos, Vaani produces approximately **1.76× more content tokens**, but it also has long multiword loops. Examples include बहुत अच्छा ×55, देखने के लिए ×133, जी जी ×54 and ओ ओ ×107. The extra output must not be interpreted as better coverage.
 
-### Actual model-test outcome
+### Runtime comparison
 
-The latest per-video run summaries show:
-- **Whisper Small:** 22/22 non-empty outputs; 1 run had no configured heuristic flags and 21 were marked for review.
-- **Vaani Whisper Hindi:** 21/22 non-empty outputs; 4 had no configured heuristic flags, 17 were marked for review, and the Vaani run for \`3wlMq29K6TE\` failed while loading the feature extractor.
-- **SraVaani:** 39 error artifacts and no transcript files. Recorded attempts include Hugging Face 403 gated-model access denials; inference was not reached.
-- **Indic-Transcribe:** 60 error artifacts and no transcript files. Recorded attempts include Hugging Face 403 gated-model access denials; inference was not reached.
-- **IndicConformer:** no transcript or backend error artifact is present in this snapshot; do not count it as tested.
+| Measure | Whisper | Vaani |
+|---|---:|---:|
+| Median inference time over matched videos | 156.5 s | 321.4 s |
+| Median real-time factor | 0.260 | 0.549 |
+| Median paired Vaani/Whisper inference-time ratio | — | 2.09× slower |
 
-A \`completed\` status means text was returned without a configured heuristic warning; it does **not** certify correctness. The Whisper transcript for \`R_Dd4slDghA\`, for example, was marked completed even though sampled text contains conspicuous phonetic spelling errors.
+### Per-video comparison
 
-### Comparison observations
+| Video ID | Duration | Whisper tokens / unique ratio / U+FFFD | Vaani tokens / unique ratio / U+FFFD | Main text finding |
+|---|---:|---:|---:|---|
+| [R_Dd4slDghA](https://www.youtube.com/watch?v=R_Dd4slDghA) | 7.2m | 1,090 / 0.488 / 0 | 1,154 / 0.383 / 1 | Both openings render a likely ordinary Hindi word (विश्वास) phonetically incorrectly. Vaani's surrounding sentence is more readable, but neither is source-verified. |
+| [1cq_Iwbvpvg](https://www.youtube.com/watch?v=1cq_Iwbvpvg) | 3.9m | 459 / 0.266 / 1 | 443 / 0.368 / 0 | Whisper has long contiguous ॐ, तो and standalone ौ blocks (max run 74). Vaani retains the question/answer structure and has no long single-token loop, but still misses specialist spellings. |
+| [zerBj1bH2KY](https://www.youtube.com/watch?v=zerBj1bH2KY) | 6.9m | 911 / 0.454 / 1 | 1,050 / 0.359 / 0 | Whisper repeats तो 74 times consecutively. Vaani is easier to follow in sampled passages and avoids a long single-token run, but technical vocabulary is still phonetically distorted. |
+| [qr8A8HNk9jk](https://www.youtube.com/watch?v=qr8A8HNk9jk) | 2.9m | 64 / 0.109 / 3 | 496 / 0.020 / 3 | Both fail. Whisper has no Devanagari and contains Sinhala, Georgian and Tibetan-script fragments. Vaani repeats बहुत अच्छा ×55, देखने में ×42 and दिखाई दे रहा है ×21; its unique-token ratio is only 0.0202. |
+| [i59O_ajrVig](https://www.youtube.com/watch?v=i59O_ajrVig) | 8.4m | 1,000 / 0.457 / 1 | 1,030 / 0.404 / 4 | Vaani is more readable in sampled explanation passages, but replacement characters and term errors remain. Whisper repeats तो 74 times. |
+| [KgJJJU_TzUM](https://www.youtube.com/watch?v=KgJJJU_TzUM) | 4.3m | 450 / 0.429 / 0 | 574 / 0.411 / 2 | Whisper has a 73-token standalone-ौ block. Vaani keeps a more readable question/answer sequence and has no long identical-token loop, though spellings remain inaccurate. |
+| [ucxVsyh1T8o](https://www.youtube.com/watch?v=ucxVsyh1T8o) | 49.6m | 5,143 / 0.379 / 5 | 6,587 / 0.298 / 10 | Both contain long devotional and Prakrit/Sanskrit passages. The mantra opening differs between models and requires expert review. Whisper has an ॐ/ौ loop; Vaani has 10 replacement characters and lower lexical diversity. |
+| [gKDuNYi5j3c](https://www.youtube.com/watch?v=gKDuNYi5j3c) | 7.2m | 821 / 0.505 / 2 | 927 / 0.429 / 1 | Vaani is more readable in the sampled passages. Whisper has a 69-token standalone-ौ block; Vaani avoids that loop, but specialist terms remain distorted. |
+| [Y5S-1N5Yzkk](https://www.youtube.com/watch?v=Y5S-1N5Yzkk) | 27.9m | 2,385 / 0.138 / 30 | 5,670 / 0.154 / 4 | Both are degraded. Whisper has 30 replacements, repeated-token runs and 13.8% unique tokens. Vaani is longer but still has only 15.4% unique tokens. Extra text does not prove coverage. |
+| [rTqsO5M9zbY](https://www.youtube.com/watch?v=rTqsO5M9zbY) | 9.0m | 997 / 0.463 / 2 | 1,093 / 0.419 / 1 | Vaani is clearer in sampled sections; Whisper has a 73-token standalone-ौ block. Vaani still has phonetic spelling issues. |
+| [PHyJ0uol4m0](https://www.youtube.com/watch?v=PHyJ0uol4m0) | 16.3m | 1,405 / 0.404 / 25 | 2,086 / 0.261 / 3 | Vaani's sampled narrative is substantially more readable. Whisper has 25 replacement characters and a 74-token run; Vaani reduces these symptoms, but references and Jain terminology still need human checking. |
+| [9jKDDkkg694](https://www.youtube.com/watch?v=9jKDDkkg694) | 112.7m | 12,236 / 0.321 / 36 | 19,353 / 0.169 / 32 | Both long outputs are poor. Vaani has जी जी ×54, a 109-token जी run and 16.9% unique tokens. Whisper is more diverse but has its own 74-token तो run and 36 replacement characters. |
+| [053fJPHt4PU](https://www.youtube.com/watch?v=053fJPHt4PU) | 186.5m | 13,439 / 0.276 / 131 | 21,640 / 0.164 / 40 | Both contain substantial loops. Vaani repeats देखने के लिए 133 times and ओह 142 times; Whisper has standalone-ौ ×148 and 131 replacements. Neither is reliable. |
+| [6fTqRoPGdzk](https://www.youtube.com/watch?v=6fTqRoPGdzk) | 8.4m | 1,305 / 0.488 / 2 | 1,657 / 0.388 / 1 | Vaani is more readable in the inspected passages and avoids long identical-token runs. Whisper has ॐ repeated 74 times. Both still need terminology review. |
+| [2Y_sQBapWBM](https://www.youtube.com/watch?v=2Y_sQBapWBM) | 23.7m | 3,494 / 0.365 / 1 | 3,773 / 0.262 / 0 | Both have comparatively coherent dialogue structure and no long identical-token run. Vaani is conversational in sampled text, but its unique-token ratio is lower. Neither is reference-scored. |
+| [g8BvEaY9LoY](https://www.youtube.com/watch?v=g8BvEaY9LoY) | 3.4m | 113 / 0.690 / 1 | 154 / 0.643 / 0 | Both outputs are unusually short for a 3.4-minute source. Whisper has 72 punctuation-only tokens; after excluding them it has 113 content tokens. Coverage needs audio-boundary inspection. |
+| [x9XAer5p6-k](https://www.youtube.com/watch?v=x9XAer5p6-k) | 8.5m | 109 / 0.780 / 0 | 640 / 0.391 / 3 | Whisper returns only 109 tokens for 8.5 minutes in 9.2 seconds, a serious coverage anomaly. Vaani has far more text, but an apparent devotional/refrain sequence repeats; only audio can determine whether that repetition is genuine. |
+| [jDzcOghVQ6Q](https://www.youtube.com/watch?v=jDzcOghVQ6Q) | 72.9m | 5,888 / 0.282 / 20 | 9,495 / 0.184 / 16 | Both show major phrase repetition. Vaani contains देखने के लिए ×80 and a 124-token ए run. Whisper's raw output had a 214-token punctuation-only run; after excluding punctuation-only tokens, its largest content run is 74 तो. |
+| [StfeLi9xP0Q](https://www.youtube.com/watch?v=StfeLi9xP0Q) | 72.7m | 6,317 / 0.286 / 28 | 11,333 / 0.170 / 15 | Vaani has देखने के लिए ×40 and ए repeated 60 times; Whisper has a 74-token तो run and 28 replacement characters. The longer output is not necessarily better. |
+| [o1pKnYuV2KY](https://www.youtube.com/watch?v=o1pKnYuV2KY) | 71.5m | 4,217 / 0.152 / 49 | 10,252 / 0.137 / 25 | Both are severe failures. Whisper has 15.2% unique tokens, 49 replacements and an ॐ run of 148. Vaani produces 2.4× the tokens but only 13.7% unique tokens; के लिए देखने ×97 and जी जी ×68. Neither is usable verbatim. |
+| [3wlMq29K6TE](https://www.youtube.com/watch?v=3wlMq29K6TE) | 69.6m | 4,968 / 0.157 / 68 | failed before inference | Whisper has 68 replacements, 15.7% unique tokens and a 74-token तो run. Vaani failed before inference because its feature extractor / preprocessor_config.json could not be loaded. |
+| [r4hrxMl24B8](https://www.youtube.com/watch?v=r4hrxMl24B8) | 316.8m | 23,253 / 0.255 / 332 | 50,001 / 0.180 / 158 | 5.28-hour stress test. Whisper has 332 replacements and mixed-script contamination (Bengali 1,517; Tamil 517; Telugu 953; Tibetan 129; Latin 16,196 characters); Bengali-script র repeats 222 times. Vaani is twice as long but has 18% unique tokens, 158 replacements, ओ ×214 and हे ×90. |
 
-Vaani is often more readable than Whisper on sampled short and medium Hindi explanations, but it is not consistently clean. Both models still show repeated phrases, corrupted characters, phonetic misspellings, mixed-script fragments and suspiciously short outputs. The new five-hour \`r4hrxMl24B8\` output is especially large and repetitive in both models.
+### What this means
 
-Vaani's median per-video elapsed-time ratio was approximately **2.09×** Whisper's in this batch. On \`r4hrxMl24B8\`, Whisper took about 82 minutes and Vaani about 174 minutes. These timings describe this machine/run set; they do not establish model accuracy.
+Vaani often looks more readable on short and medium Hindi explanations, but long-form phrase loops and low token diversity undermine that advantage. Whisper produces more single-token loops and severe script anomalies in selected files. Neither model is ready for unreviewed sacred-text transcription.
 
-### Source-audio verification limitation
+**Detailed report:** [MODEL_BENCHMARK_REVIEW_2026-11-14.md](docs/MODEL_BENCHMARK_REVIEW_2026-11-14.md)  
+**Per-video/per-model statistics:** [MODEL_BENCHMARK_REVIEW_2026-11-14.csv](docs/MODEL_BENCHMARK_REVIEW_2026-11-14.csv)
 
-I inspected the latest saved transcripts at multiple positions and reviewed full-file text diagnostics, but I could not retrieve/play the original YouTube videos from this environment. Watch, mobile, embed, oEmbed and timed-text retrieval attempts failed; direct network DNS resolution for youtube.com also failed. The repository contains no VTT/SRT captions, no human reference transcripts and no WER/CER comparison outputs.
+**Verification boundary:** this is a full-file text-statistics audit with multi-position manual inspection. The original YouTube audio and captions were inaccessible from this environment, and the repository contains no human references. Therefore no sentence-by-sentence source verification, WER/CER or accuracy winner is claimed. See the detailed report for the source-access attempts and local reference-building procedure.
 
-Therefore this is a **text-level transcript review**, not sentence-by-sentence verification against original video audio. No WER, CER or accuracy winner is claimed. YouTube auto-captions, if retrieved locally, must be labelled as machine-generated and human-corrected before accuracy scoring.
-
-**Detailed 22-video review:** [MODEL_BENCHMARK_REVIEW_2026-11-14.md](docs/MODEL_BENCHMARK_REVIEW_2026-11-14.md)  
-**Machine-readable statistics:** [MODEL_BENCHMARK_REVIEW_2026-11-14.csv](docs/MODEL_BENCHMARK_REVIEW_2026-11-14.csv)  
-**All video inputs:** [youtube_video_urls.txt](docs/youtube_video_urls.txt)  
-**Historical report:** [13 November 21-video initial audit](docs/INITIAL_TEST_REPORT.md)
-
-On Windows, check which subtitle tracks YouTube exposes:
-
-~~~powershell
-New-Item -ItemType Directory -Force .local-reference\youtube-captions | Out-Null
-yt-dlp --skip-download --write-subs --write-auto-subs --sub-langs "all" --sub-format vtt --ignore-errors -o ".local-reference/youtube-captions/%(id)s.%(language)s.%(ext)s" -a docs/youtube_video_urls.txt
-~~~
-
-Creator captions and automatic captions must be labelled separately. WER/CER requires a human-corrected reference transcript from the source audio.
+SraVaani and Indic-Transcribe have no transcript outputs in this snapshot because recorded attempts were blocked by Hugging Face access errors. IndicConformer also has no completed inference output here.
 
 
 ## Current limitations
