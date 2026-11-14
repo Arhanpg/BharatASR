@@ -1,4 +1,3 @@
-from pathlib import Path
 from types import SimpleNamespace
 
 from bharatasr.backends.whisper import WhisperBackend

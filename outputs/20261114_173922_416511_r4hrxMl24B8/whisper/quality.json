@@ -1,0 +1,21 @@
+{
+  "status": "needs_review",
+  "manual_review_required": true,
+  "character_count": 117642,
+  "whitespace_token_count": 23253,
+  "unique_token_count": 5964,
+  "unique_token_ratio": 0.2565,
+  "tokens_per_minute": 73.41,
+  "most_frequent_token": "ौ",
+  "most_frequent_token_count": 1530,
+  "most_frequent_token_ratio": 0.0658,
+  "longest_consecutive_token": "র",
+  "longest_consecutive_token_count": 222,
+  "unicode_replacement_character_count": 332,
+  "language_probability_initial": 1.0,
+  "flags": [
+    "ENCODING WARNING: found 332 Unicode replacement character(s) (�).",
+    "REPETITION WARNING: 'র' occurs 222 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat."
+  ],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}

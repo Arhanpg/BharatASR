@@ -1,0 +1,81 @@
+{
+  "backend": "vaani-whisper-hindi",
+  "model": "ARTPARK-IISc/whisper-small-vaani-hindi",
+  "elapsed_seconds": 819.0458455999906,
+  "audio_duration_seconds": 1423.76,
+  "real_time_factor": 0.5752695999325663,
+  "device": "cuda:0",
+  "compute_type": null,
+  "metadata": {
+    "device": "cuda:0",
+    "language_requested": "hi",
+    "language": "hi",
+    "language_detection": "not performed; Hindi is forced by this monolingual checkpoint",
+    "long_audio_chunk_length_seconds": 30,
+    "licence": "Apache-2.0",
+    "note": "Hindi-only Vaani fine-tune; not suitable for Sanskrit or Prakrit.",
+    "audio_duration_seconds": 1423.76,
+    "source_metadata": {
+      "source": "youtube",
+      "video_id": "2Y_sQBapWBM",
+      "title": "Ep25: Samavasaran ka Rahasya | जहाँ शेर और हिरण साथ बैठते हैं | Jain Dharma ki Divya Sabha",
+      "webpage_url": "https://www.youtube.com/watch?v=2Y_sQBapWBM",
+      "channel": "JINVANI SHORTS 🇮🇳",
+      "channel_id": "UCUf4XpTQG-RUkosDkW3oNPg",
+      "upload_date": "20250913",
+      "duration_seconds": 1424,
+      "source_language_metadata": "hi",
+      "source_audio_language": null,
+      "source_availability": "public",
+      "extractor": "youtube",
+      "normalized_audio": {
+        "format": "WAV PCM signed 16-bit",
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "path": ".cache\\youtube_audio\\2Y_sQBapWBM.wav"
+      }
+    },
+    "language_requested_by_user": "hi",
+    "review_required": true,
+    "review_flags": [
+      "Machine-generated draft: verify against the original audio before quoting or publishing.",
+      "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections."
+    ],
+    "transcript_quality": {
+      "status": "no_automatic_flags",
+      "manual_review_required": true,
+      "character_count": 17785,
+      "whitespace_token_count": 3773,
+      "unique_token_count": 993,
+      "unique_token_ratio": 0.2632,
+      "tokens_per_minute": 159.0,
+      "most_frequent_token": "है",
+      "most_frequent_token_count": 234,
+      "most_frequent_token_ratio": 0.062,
+      "longest_consecutive_token": "है",
+      "longest_consecutive_token_count": 2,
+      "unicode_replacement_character_count": 0,
+      "language_probability_initial": null,
+      "flags": [],
+      "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+    }
+  },
+  "transcript_quality": {
+    "status": "no_automatic_flags",
+    "manual_review_required": true,
+    "character_count": 17785,
+    "whitespace_token_count": 3773,
+    "unique_token_count": 993,
+    "unique_token_ratio": 0.2632,
+    "tokens_per_minute": 159.0,
+    "most_frequent_token": "है",
+    "most_frequent_token_count": 234,
+    "most_frequent_token_ratio": 0.062,
+    "longest_consecutive_token": "है",
+    "longest_consecutive_token_count": 2,
+    "unicode_replacement_character_count": 0,
+    "language_probability_initial": null,
+    "flags": [],
+    "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+  }
+}

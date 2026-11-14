@@ -1,0 +1,22 @@
+{
+  "status": "needs_review",
+  "manual_review_required": true,
+  "character_count": 251790,
+  "whitespace_token_count": 50001,
+  "unique_token_count": 9026,
+  "unique_token_ratio": 0.1805,
+  "tokens_per_minute": 157.85,
+  "most_frequent_token": "में",
+  "most_frequent_token_count": 1361,
+  "most_frequent_token_ratio": 0.0272,
+  "longest_consecutive_token": "ओ",
+  "longest_consecutive_token_count": 214,
+  "unicode_replacement_character_count": 158,
+  "language_probability_initial": null,
+  "flags": [
+    "ENCODING WARNING: found 158 Unicode replacement character(s) (�).",
+    "REPETITION WARNING: 'ओ' occurs 214 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat.",
+    "LOW VOCABULARY DIVERSITY: 9026 unique tokens across 50001 (ratio 0.181); inspect for loops or repeated output."
+  ],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}

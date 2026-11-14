@@ -1,0 +1,7 @@
+{
+  "backend": "vaani-whisper-hindi",
+  "status": "failed",
+  "elapsed_seconds": 3.5873364999988553,
+  "error_type": "OSError",
+  "error": "OSError: Can't load feature extractor for 'ARTPARK-IISc/whisper-small-vaani-hindi'. If you were trying to load it from 'https://huggingface.co/models', make sure you don't have a local directory with the same name. Otherwise, make sure 'ARTPARK-IISc/whisper-small-vaani-hindi' is the correct path to a directory containing a preprocessor_config.json file"
+}

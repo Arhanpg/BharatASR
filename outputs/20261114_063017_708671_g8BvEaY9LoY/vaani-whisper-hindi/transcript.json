@@ -1,0 +1,70 @@
+{
+  "backend": "vaani-whisper-hindi",
+  "model": "ARTPARK-IISc/whisper-small-vaani-hindi",
+  "transcript": "श्रीमंडप भूमि इसके आगे अति वैभव युक्त दीवारों पर रत्नमय खंबों से खड़ा हुआ व स्फटिक मणि से निर्मित मनोहर श्री मंडप बना है स्फटिक से निर्मित सोलह दिवारों के अंतराल में भव्यों के लिए बारह कोठे होते हैं इन कोठों की ऊँचाई जिनेद्र प्रभु से बारह गुनि अर्थात इक्कीस धनोष है तथा इन कोठों का विस्तार बारह सौ पचास बटा नौ धनोष है इन कोठों में पूर्वादी प्रदक्षणा क्रम में बारह गण बैठते हैं प्रथम कोट में गण धरादी मुनी द्वितीय कोट में कल्पवासनी देवियां तीसे कूठे में आरिये का व इश्टाविकाएँ चतुर्थ कूठ में ज्योतिष देवियाँ पंचम कोट में व्यंतर देवियाँ छटे कोट में भवन वासनी देवियाँ सप्तम कोट में भवन वासी देव अष्टम कोट में व्यंतर देव नवम कोठ में जोतिष देव दसमें कोठ में कल्पवासी देव ग्यारहवें कोठ में मनुष्य वह बारहवें कोठ में त्रियंच जीव प्रेम से परिपूरित होकर बैठते हैं और प्रभु की कल्याणकारी दिव्य धोनी सुनते हैं",
+  "segments": [
+    {
+      "index": 0,
+      "start": null,
+      "end": null,
+      "text": "श्रीमंडप भूमि इसके आगे अति वैभव युक्त दीवारों पर रत्नमय खंबों से खड़ा हुआ व स्फटिक मणि से निर्मित मनोहर श्री मंडप बना है स्फटिक से निर्मित सोलह दिवारों के अंतराल में भव्यों के लिए बारह कोठे होते हैं इन कोठों की ऊँचाई जिनेद्र प्रभु से बारह गुनि अर्थात इक्कीस धनोष है तथा इन कोठों का विस्तार बारह सौ पचास बटा नौ धनोष है इन कोठों में पूर्वादी प्रदक्षणा क्रम में बारह गण बैठते हैं प्रथम कोट में गण धरादी मुनी द्वितीय कोट में कल्पवासनी देवियां तीसे कूठे में आरिये का व इश्टाविकाएँ चतुर्थ कूठ में ज्योतिष देवियाँ पंचम कोट में व्यंतर देवियाँ छटे कोट में भवन वासनी देवियाँ सप्तम कोट में भवन वासी देव अष्टम कोट में व्यंतर देव नवम कोठ में जोतिष देव दसमें कोठ में कल्पवासी देव ग्यारहवें कोठ में मनुष्य वह बारहवें कोठ में त्रियंच जीव प्रेम से परिपूरित होकर बैठते हैं और प्रभु की कल्याणकारी दिव्य धोनी सुनते हैं",
+      "words": [],
+      "language": null
+    }
+  ],
+  "metadata": {
+    "device": "cuda:0",
+    "language_requested": "hi",
+    "language": "hi",
+    "language_detection": "not performed; Hindi is forced by this monolingual checkpoint",
+    "long_audio_chunk_length_seconds": 30,
+    "licence": "Apache-2.0",
+    "note": "Hindi-only Vaani fine-tune; not suitable for Sanskrit or Prakrit.",
+    "audio_duration_seconds": 204.300813,
+    "source_metadata": {
+      "source": "youtube",
+      "video_id": "g8BvEaY9LoY",
+      "title": "Samavsharan (Part-10) | Samavsharan | Samavsharan Ki Rachna | 3d Animation | Crazy Mediaworks",
+      "webpage_url": "https://www.youtube.com/watch?v=g8BvEaY9LoY",
+      "channel": "Crazy MediaWorks Studios",
+      "channel_id": "UCWF4If7Lx7ZdFNAJyFLzFtg",
+      "upload_date": "20230330",
+      "duration_seconds": 204,
+      "source_language_metadata": "hi",
+      "source_audio_language": null,
+      "source_availability": "public",
+      "extractor": "youtube",
+      "normalized_audio": {
+        "format": "WAV PCM signed 16-bit",
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "path": ".cache\\youtube_audio\\g8BvEaY9LoY.wav"
+      }
+    },
+    "language_requested_by_user": "hi",
+    "review_required": true,
+    "review_flags": [
+      "Machine-generated draft: verify against the original audio before quoting or publishing.",
+      "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections."
+    ],
+    "transcript_quality": {
+      "status": "no_automatic_flags",
+      "manual_review_required": true,
+      "character_count": 797,
+      "whitespace_token_count": 154,
+      "unique_token_count": 99,
+      "unique_token_ratio": 0.6429,
+      "tokens_per_minute": 45.23,
+      "most_frequent_token": "में",
+      "most_frequent_token_count": 15,
+      "most_frequent_token_ratio": 0.0974,
+      "longest_consecutive_token": "श्रीमंडप",
+      "longest_consecutive_token_count": 1,
+      "unicode_replacement_character_count": 0,
+      "language_probability_initial": null,
+      "flags": [],
+      "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+    }
+  },
+  "elapsed_seconds": 40.39169320001383
+}

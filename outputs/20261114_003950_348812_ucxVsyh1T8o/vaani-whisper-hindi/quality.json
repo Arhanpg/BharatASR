@@ -1,0 +1,20 @@
+{
+  "status": "needs_review",
+  "manual_review_required": true,
+  "character_count": 34264,
+  "whitespace_token_count": 6587,
+  "unique_token_count": 1968,
+  "unique_token_ratio": 0.2988,
+  "tokens_per_minute": 132.87,
+  "most_frequent_token": "के",
+  "most_frequent_token_count": 242,
+  "most_frequent_token_ratio": 0.0367,
+  "longest_consecutive_token": "जय",
+  "longest_consecutive_token_count": 4,
+  "unicode_replacement_character_count": 10,
+  "language_probability_initial": null,
+  "flags": [
+    "ENCODING WARNING: found 10 Unicode replacement character(s) (�)."
+  ],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}

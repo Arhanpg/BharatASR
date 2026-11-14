@@ -1,0 +1,22 @@
+{
+  "status": "needs_review",
+  "manual_review_required": true,
+  "character_count": 1804,
+  "whitespace_token_count": 459,
+  "unique_token_count": 122,
+  "unique_token_ratio": 0.2658,
+  "tokens_per_minute": 116.27,
+  "most_frequent_token": "ॐ",
+  "most_frequent_token_count": 75,
+  "most_frequent_token_ratio": 0.1634,
+  "longest_consecutive_token": "ॐ",
+  "longest_consecutive_token_count": 74,
+  "unicode_replacement_character_count": 1,
+  "language_probability_initial": 1.0,
+  "flags": [
+    "ENCODING WARNING: found 1 Unicode replacement character(s) (�).",
+    "REPETITION WARNING: 'ॐ' occurs 74 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat.",
+    "TOKEN DOMINANCE: 'ॐ' accounts for 16.3% of tokens."
+  ],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}

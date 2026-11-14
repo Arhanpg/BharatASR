@@ -1,0 +1,40 @@
+{
+  "overall_status": "completed_needs_review",
+  "backend_count": 2,
+  "transcripts_generated": 2,
+  "status_counts": {
+    "completed": 1,
+    "completed_needs_review": 1,
+    "empty_output": 0,
+    "blocked_access": 0,
+    "skipped": 0,
+    "failed": 0
+  },
+  "models": [
+    {
+      "backend": "whisper",
+      "status": "completed",
+      "transcript_quality": "no_automatic_flags",
+      "elapsed_seconds": 81.73675759999605,
+      "model": "small",
+      "language_detected": "hi",
+      "quality_flags": [],
+      "review_required": true
+    },
+    {
+      "backend": "vaani-whisper-hindi",
+      "status": "completed_needs_review",
+      "transcript_quality": "needs_review",
+      "elapsed_seconds": 236.22188120000646,
+      "model": "ARTPARK-IISc/whisper-small-vaani-hindi",
+      "language_detected": "hi",
+      "quality_flags": [
+        "ENCODING WARNING: found 1 Unicode replacement character(s) (�)."
+      ],
+      "review_required": true
+    }
+  ],
+  "run_dir": "outputs\\20261113_235305_812985_R_Dd4slDghA",
+  "manual_review_required": true,
+  "note": "Backend completion only means text was returned and saved. It does not establish transcript correctness. Inspect quality.json and transcript.review.md; calculate WER/CER only against a human-verified reference transcript."
+}

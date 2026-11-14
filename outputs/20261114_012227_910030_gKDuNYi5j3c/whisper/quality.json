@@ -1,0 +1,21 @@
+{
+  "status": "needs_review",
+  "manual_review_required": true,
+  "character_count": 4104,
+  "whitespace_token_count": 821,
+  "unique_token_count": 415,
+  "unique_token_ratio": 0.5055,
+  "tokens_per_minute": 114.52,
+  "most_frequent_token": "ौ",
+  "most_frequent_token_count": 70,
+  "most_frequent_token_ratio": 0.0853,
+  "longest_consecutive_token": "ौ",
+  "longest_consecutive_token_count": 69,
+  "unicode_replacement_character_count": 2,
+  "language_probability_initial": 1.0,
+  "flags": [
+    "ENCODING WARNING: found 2 Unicode replacement character(s) (�).",
+    "REPETITION WARNING: 'ौ' occurs 69 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat."
+  ],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}

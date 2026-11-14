@@ -1,0 +1,21 @@
+{
+  "status": "needs_review",
+  "manual_review_required": true,
+  "character_count": 29583,
+  "whitespace_token_count": 6317,
+  "unique_token_count": 1804,
+  "unique_token_ratio": 0.2856,
+  "tokens_per_minute": 86.83,
+  "most_frequent_token": "तो",
+  "most_frequent_token_count": 560,
+  "most_frequent_token_ratio": 0.0886,
+  "longest_consecutive_token": "तो",
+  "longest_consecutive_token_count": 74,
+  "unicode_replacement_character_count": 28,
+  "language_probability_initial": 1.0,
+  "flags": [
+    "ENCODING WARNING: found 28 Unicode replacement character(s) (�).",
+    "REPETITION WARNING: 'तो' occurs 74 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat."
+  ],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}

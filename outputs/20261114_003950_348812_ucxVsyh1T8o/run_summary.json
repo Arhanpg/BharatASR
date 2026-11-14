@@ -1,0 +1,57 @@
+{
+  "overall_status": "partial",
+  "backend_count": 4,
+  "transcripts_generated": 2,
+  "status_counts": {
+    "completed": 0,
+    "completed_needs_review": 2,
+    "empty_output": 0,
+    "blocked_access": 2,
+    "skipped": 0,
+    "failed": 0
+  },
+  "models": [
+    {
+      "backend": "whisper",
+      "status": "completed_needs_review",
+      "transcript_quality": "needs_review",
+      "elapsed_seconds": 742.7145081000053,
+      "model": "small",
+      "language_detected": "hi",
+      "quality_flags": [
+        "ENCODING WARNING: found 5 Unicode replacement character(s) (�).",
+        "REPETITION WARNING: 'ॐ' occurs 74 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat."
+      ],
+      "review_required": true
+    },
+    {
+      "backend": "vaani-whisper-hindi",
+      "status": "completed_needs_review",
+      "transcript_quality": "needs_review",
+      "elapsed_seconds": 1769.404994299999,
+      "model": "ARTPARK-IISc/whisper-small-vaani-hindi",
+      "language_detected": "hi",
+      "quality_flags": [
+        "ENCODING WARNING: found 10 Unicode replacement character(s) (�)."
+      ],
+      "review_required": true
+    },
+    {
+      "backend": "sravaani",
+      "status": "blocked_access",
+      "elapsed_seconds": 2.9283116000005975,
+      "error_type": "RuntimeError",
+      "error": "RuntimeError: ARTPARK-IISc/SraVaani-1.0 could not be downloaded because Hugging Face denied access. The model did not reach inference; this is not a transcription-quality failure. Open https://huggingface.co/ARTPARK-IISc/SraVaani-1.0, sign in, request/accept access and licence terms, then authenticate in this environment with the Hugging Face CLI login or HF_TOKEN from an approved account. A token cannot bypass model-owner approval. Original error: OSError: You are trying to access a gated repo.\nMake sure to have access to it at https://huggingface.co/ARTPARK-IISc/SraVaani-1.0.\n403 Client Error. (Request ID: Root=1-6af76a70-74a733bc6ffa2e465ea15547;25aa3205-91ad-4610-9602-c38b43d928de)\n\nCannot access gated repo for url https://huggingface.co/ARTPARK-IISc/SraVaani-1.0/resolve/main/config.json.\nAccess to model ARTPARK-IISc/SraVaani-1.0 is restricted and you are not in the authorized list. Visit https://huggingface.co/ARTPARK-IISc/SraVaani-1.0 to ask for access."
+    },
+    {
+      "backend": "indictranscribe",
+      "status": "blocked_access",
+      "elapsed_seconds": 1.0371596000040881,
+      "error_type": "RuntimeError",
+      "error": "RuntimeError: bodhan-ai/indic-transcribe-flex could not be downloaded because Hugging Face denied access. The model did not reach inference; this is not a transcription-quality failure. Open https://huggingface.co/bodhan-ai/indic-transcribe-flex, sign in, request/accept access and licence terms, then authenticate in this environment with the Hugging Face CLI login or HF_TOKEN from an approved account. A token cannot bypass model-owner approval. Original error: GatedRepoError: 403 Client Error. (Request ID: Root=1-6af76a71-2b21226617050fd92522de4a;1fa453d5-0b7e-49af-8068-5c3476f070f4)\n\nCannot access gated repo for url https://huggingface.co/bodhan-ai/indic-transcribe-flex/resolve/ecba9bac9013c0340fe814b336897ee51ed80be9/.gitattributes.\nAccess to model bodhan-ai/indic-transcribe-flex is restricted and you are not in the authorized list. Visit https://huggingface.co/bodhan-ai/indic-transcribe-flex to ask for access."
+    }
+  ],
+  "run_dir": "outputs\\20261114_003950_348812_ucxVsyh1T8o",
+  "manual_review_required": true,
+  "note": "Backend completion only means text was returned and saved. It does not establish transcript correctness. Inspect quality.json and transcript.review.md; calculate WER/CER only against a human-verified reference transcript."
+}

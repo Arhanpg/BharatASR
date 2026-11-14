@@ -1,0 +1,86 @@
+{
+  "backend": "vaani-whisper-hindi",
+  "model": "ARTPARK-IISc/whisper-small-vaani-hindi",
+  "elapsed_seconds": 1769.404994299999,
+  "audio_duration_seconds": 2974.580688,
+  "real_time_factor": 0.5948418213827922,
+  "device": "cuda:0",
+  "compute_type": null,
+  "metadata": {
+    "device": "cuda:0",
+    "language_requested": "hi",
+    "language": "hi",
+    "language_detection": "not performed; Hindi is forced by this monolingual checkpoint",
+    "long_audio_chunk_length_seconds": 30,
+    "licence": "Apache-2.0",
+    "note": "Hindi-only Vaani fine-tune; not suitable for Sanskrit or Prakrit.",
+    "audio_duration_seconds": 2974.580688,
+    "source_metadata": {
+      "source": "youtube",
+      "video_id": "ucxVsyh1T8o",
+      "title": "Jain Videos : समवशरण देशना (Samosharan Deshna)  : Complete (जिन समवशरण ) Samavsharan Description",
+      "webpage_url": "https://www.youtube.com/watch?v=ucxVsyh1T8o",
+      "channel": "Jainism",
+      "channel_id": "UCFMxNLWXT-7XJGGRogVkijQ",
+      "upload_date": "20140306",
+      "duration_seconds": 2975,
+      "source_language_metadata": null,
+      "source_audio_language": null,
+      "source_availability": "public",
+      "extractor": "youtube",
+      "normalized_audio": {
+        "format": "WAV PCM signed 16-bit",
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "path": ".cache\\youtube_audio\\ucxVsyh1T8o.wav"
+      }
+    },
+    "language_requested_by_user": "hi",
+    "review_required": true,
+    "review_flags": [
+      "Machine-generated draft: verify against the original audio before quoting or publishing.",
+      "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections.",
+      "ENCODING WARNING: found 10 Unicode replacement character(s) (�)."
+    ],
+    "transcript_quality": {
+      "status": "needs_review",
+      "manual_review_required": true,
+      "character_count": 34264,
+      "whitespace_token_count": 6587,
+      "unique_token_count": 1968,
+      "unique_token_ratio": 0.2988,
+      "tokens_per_minute": 132.87,
+      "most_frequent_token": "के",
+      "most_frequent_token_count": 242,
+      "most_frequent_token_ratio": 0.0367,
+      "longest_consecutive_token": "जय",
+      "longest_consecutive_token_count": 4,
+      "unicode_replacement_character_count": 10,
+      "language_probability_initial": null,
+      "flags": [
+        "ENCODING WARNING: found 10 Unicode replacement character(s) (�)."
+      ],
+      "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+    }
+  },
+  "transcript_quality": {
+    "status": "needs_review",
+    "manual_review_required": true,
+    "character_count": 34264,
+    "whitespace_token_count": 6587,
+    "unique_token_count": 1968,
+    "unique_token_ratio": 0.2988,
+    "tokens_per_minute": 132.87,
+    "most_frequent_token": "के",
+    "most_frequent_token_count": 242,
+    "most_frequent_token_ratio": 0.0367,
+    "longest_consecutive_token": "जय",
+    "longest_consecutive_token_count": 4,
+    "unicode_replacement_character_count": 10,
+    "language_probability_initial": null,
+    "flags": [
+      "ENCODING WARNING: found 10 Unicode replacement character(s) (�)."
+    ],
+    "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "status": "no_automatic_flags",
+  "manual_review_required": true,
+  "character_count": 5302,
+  "whitespace_token_count": 1087,
+  "unique_token_count": 531,
+  "unique_token_ratio": 0.4885,
+  "tokens_per_minute": 151.48,
+  "most_frequent_token": "है",
+  "most_frequent_token_count": 48,
+  "most_frequent_token_ratio": 0.0442,
+  "longest_consecutive_token": "अपनी",
+  "longest_consecutive_token_count": 2,
+  "unicode_replacement_character_count": 0,
+  "language_probability_initial": 1.0,
+  "flags": [],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}

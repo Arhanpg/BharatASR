@@ -1,0 +1,175 @@
+{
+  "backend": "whisper",
+  "model": "small",
+  "elapsed_seconds": 9.161084799998207,
+  "audio_duration_seconds": 509.9915,
+  "real_time_factor": 0.017963210759391494,
+  "device": "cuda",
+  "compute_type": "int8_float16",
+  "metadata": {
+    "language_detected_initial": "hi",
+    "language_probability_initial": 1.0,
+    "language_probabilities_initial": null,
+    "language_detection": "requested language hint + multilingual per-segment decoding",
+    "audio_duration_seconds": 509.9915,
+    "audio_duration_after_vad_seconds": 53.656,
+    "device": "cuda",
+    "compute_type": "int8_float16",
+    "cuda_retry_error": null,
+    "vad_filter_requested": true,
+    "vad_fallback_without_vad": false,
+    "vad_min_silence_duration_ms": 500,
+    "word_timestamps": true,
+    "glossary_prompt_used": false,
+    "segment_diagnostics": [
+      {
+        "start": 0.88,
+        "end": 13.96,
+        "avg_logprob": -0.3088888973659939,
+        "no_speech_prob": 0.11846923828125,
+        "compression_ratio": 2.215686274509804,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 14.12,
+        "end": 20.66,
+        "avg_logprob": -0.3552777650621202,
+        "no_speech_prob": 0.1307373046875,
+        "compression_ratio": 2.182186234817814,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 21.14,
+        "end": 27.86,
+        "avg_logprob": -0.3552777650621202,
+        "no_speech_prob": 0.1307373046875,
+        "compression_ratio": 2.182186234817814,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 28.42,
+        "end": 33.62,
+        "avg_logprob": -0.3552777650621202,
+        "no_speech_prob": 0.1307373046875,
+        "compression_ratio": 2.182186234817814,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 33.62,
+        "end": 38.32,
+        "avg_logprob": -0.38867188098707367,
+        "no_speech_prob": 0.03668212890625,
+        "compression_ratio": 2.3164556962025316,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 38.49,
+        "end": 42.62,
+        "avg_logprob": -0.38867188098707367,
+        "no_speech_prob": 0.03668212890625,
+        "compression_ratio": 2.3164556962025316,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 42.66,
+        "end": 50.02,
+        "avg_logprob": -0.38867188098707367,
+        "no_speech_prob": 0.03668212890625,
+        "compression_ratio": 2.3164556962025316,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 50.09,
+        "end": 55.53,
+        "avg_logprob": -0.38867188098707367,
+        "no_speech_prob": 0.03668212890625,
+        "compression_ratio": 2.3164556962025316,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      }
+    ],
+    "note": "Machine-generated transcript; manual verification is still required.",
+    "source_metadata": {
+      "source": "youtube",
+      "video_id": "x9XAer5p6-k",
+      "title": "कल्पद्रुम यह समवशरण है ।। kalpdrum yah samvsharan hain",
+      "webpage_url": "https://www.youtube.com/watch?v=x9XAer5p6-k",
+      "channel": "Sarvodaya Ahimsa",
+      "channel_id": "UCFlYjf8iXEdCsDlWQ-NQDiw",
+      "upload_date": "20200522",
+      "duration_seconds": 510,
+      "source_language_metadata": "hi",
+      "source_audio_language": null,
+      "source_availability": "public",
+      "extractor": "youtube",
+      "normalized_audio": {
+        "format": "WAV PCM signed 16-bit",
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "path": ".cache\\youtube_audio\\x9XAer5p6-k.wav"
+      }
+    },
+    "language_requested_by_user": "hi",
+    "review_required": true,
+    "review_flags": [
+      "Machine-generated draft: verify against the original audio before quoting or publishing.",
+      "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections.",
+      "LOW TEXT YIELD: 12.8 whitespace tokens/minute over 8.5 minutes. Check silence, VAD clipping, partial decoding or unusually slow/chant-like speech."
+    ],
+    "transcript_quality": {
+      "status": "needs_review",
+      "manual_review_required": true,
+      "character_count": 520,
+      "whitespace_token_count": 109,
+      "unique_token_count": 85,
+      "unique_token_ratio": 0.7798,
+      "tokens_per_minute": 12.82,
+      "most_frequent_token": "हैं",
+      "most_frequent_token_count": 6,
+      "most_frequent_token_ratio": 0.055,
+      "longest_consecutive_token": "तीद्खंकर",
+      "longest_consecutive_token_count": 1,
+      "unicode_replacement_character_count": 0,
+      "language_probability_initial": 1.0,
+      "flags": [
+        "LOW TEXT YIELD: 12.8 whitespace tokens/minute over 8.5 minutes. Check silence, VAD clipping, partial decoding or unusually slow/chant-like speech."
+      ],
+      "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+    }
+  },
+  "transcript_quality": {
+    "status": "needs_review",
+    "manual_review_required": true,
+    "character_count": 520,
+    "whitespace_token_count": 109,
+    "unique_token_count": 85,
+    "unique_token_ratio": 0.7798,
+    "tokens_per_minute": 12.82,
+    "most_frequent_token": "हैं",
+    "most_frequent_token_count": 6,
+    "most_frequent_token_ratio": 0.055,
+    "longest_consecutive_token": "तीद्खंकर",
+    "longest_consecutive_token_count": 1,
+    "unicode_replacement_character_count": 0,
+    "language_probability_initial": 1.0,
+    "flags": [
+      "LOW TEXT YIELD: 12.8 whitespace tokens/minute over 8.5 minutes. Check silence, VAD clipping, partial decoding or unusually slow/chant-like speech."
+    ],
+    "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "status": "no_automatic_flags",
+  "manual_review_required": true,
+  "character_count": 797,
+  "whitespace_token_count": 154,
+  "unique_token_count": 99,
+  "unique_token_ratio": 0.6429,
+  "tokens_per_minute": 45.23,
+  "most_frequent_token": "में",
+  "most_frequent_token_count": 15,
+  "most_frequent_token_ratio": 0.0974,
+  "longest_consecutive_token": "श्रीमंडप",
+  "longest_consecutive_token_count": 1,
+  "unicode_replacement_character_count": 0,
+  "language_probability_initial": null,
+  "flags": [],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}

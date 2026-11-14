@@ -1,0 +1,40 @@
+{
+  "overall_status": "partial",
+  "backend_count": 2,
+  "transcripts_generated": 1,
+  "status_counts": {
+    "completed": 0,
+    "completed_needs_review": 1,
+    "empty_output": 0,
+    "blocked_access": 0,
+    "skipped": 0,
+    "failed": 1
+  },
+  "models": [
+    {
+      "backend": "whisper",
+      "status": "completed_needs_review",
+      "transcript_quality": "needs_review",
+      "elapsed_seconds": 1070.8607753000015,
+      "model": "small",
+      "language_detected": "hi",
+      "quality_flags": [
+        "ENCODING WARNING: found 68 Unicode replacement character(s) (�).",
+        "REPETITION WARNING: 'तो' occurs 74 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat.",
+        "LOW VOCABULARY DIVERSITY: 779 unique tokens across 4968 (ratio 0.157); inspect for loops or repeated output.",
+        "TOKEN DOMINANCE: 'तो' accounts for 19.5% of tokens."
+      ],
+      "review_required": true
+    },
+    {
+      "backend": "vaani-whisper-hindi",
+      "status": "failed",
+      "elapsed_seconds": 3.5873364999988553,
+      "error_type": "OSError",
+      "error": "OSError: Can't load feature extractor for 'ARTPARK-IISc/whisper-small-vaani-hindi'. If you were trying to load it from 'https://huggingface.co/models', make sure you don't have a local directory with the same name. Otherwise, make sure 'ARTPARK-IISc/whisper-small-vaani-hindi' is the correct path to a directory containing a preprocessor_config.json file"
+    }
+  ],
+  "run_dir": "outputs\\20261114_172123_917243_3wlMq29K6TE",
+  "manual_review_required": true,
+  "note": "Backend completion only means text was returned and saved. It does not establish transcript correctness. Inspect quality.json and transcript.review.md; calculate WER/CER only against a human-verified reference transcript."
+}

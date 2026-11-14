@@ -1,0 +1,86 @@
+{
+  "backend": "vaani-whisper-hindi",
+  "model": "ARTPARK-IISc/whisper-small-vaani-hindi",
+  "elapsed_seconds": 233.64880399999674,
+  "audio_duration_seconds": 430.126438,
+  "real_time_factor": 0.5432095852708239,
+  "device": "cuda:0",
+  "compute_type": null,
+  "metadata": {
+    "device": "cuda:0",
+    "language_requested": "hi",
+    "language": "hi",
+    "language_detection": "not performed; Hindi is forced by this monolingual checkpoint",
+    "long_audio_chunk_length_seconds": 30,
+    "licence": "Apache-2.0",
+    "note": "Hindi-only Vaani fine-tune; not suitable for Sanskrit or Prakrit.",
+    "audio_duration_seconds": 430.126438,
+    "source_metadata": {
+      "source": "youtube",
+      "video_id": "gKDuNYi5j3c",
+      "title": "समवसरण के विविध रहस्य",
+      "webpage_url": "https://www.youtube.com/watch?v=gKDuNYi5j3c",
+      "channel": "Jain Pathshala ke sang ",
+      "channel_id": "UCXRm-cQHGAiKld9VLrbYCNA",
+      "upload_date": "20220612",
+      "duration_seconds": 430,
+      "source_language_metadata": "hi",
+      "source_audio_language": null,
+      "source_availability": "public",
+      "extractor": "youtube",
+      "normalized_audio": {
+        "format": "WAV PCM signed 16-bit",
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "path": ".cache\\youtube_audio\\gKDuNYi5j3c.wav"
+      }
+    },
+    "language_requested_by_user": "hi",
+    "review_required": true,
+    "review_flags": [
+      "Machine-generated draft: verify against the original audio before quoting or publishing.",
+      "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections.",
+      "ENCODING WARNING: found 1 Unicode replacement character(s) (�)."
+    ],
+    "transcript_quality": {
+      "status": "needs_review",
+      "manual_review_required": true,
+      "character_count": 4732,
+      "whitespace_token_count": 927,
+      "unique_token_count": 398,
+      "unique_token_ratio": 0.4293,
+      "tokens_per_minute": 129.31,
+      "most_frequent_token": "हैं",
+      "most_frequent_token_count": 48,
+      "most_frequent_token_ratio": 0.0518,
+      "longest_consecutive_token": "कौन",
+      "longest_consecutive_token_count": 2,
+      "unicode_replacement_character_count": 1,
+      "language_probability_initial": null,
+      "flags": [
+        "ENCODING WARNING: found 1 Unicode replacement character(s) (�)."
+      ],
+      "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+    }
+  },
+  "transcript_quality": {
+    "status": "needs_review",
+    "manual_review_required": true,
+    "character_count": 4732,
+    "whitespace_token_count": 927,
+    "unique_token_count": 398,
+    "unique_token_ratio": 0.4293,
+    "tokens_per_minute": 129.31,
+    "most_frequent_token": "हैं",
+    "most_frequent_token_count": 48,
+    "most_frequent_token_ratio": 0.0518,
+    "longest_consecutive_token": "कौन",
+    "longest_consecutive_token_count": 2,
+    "unicode_replacement_character_count": 1,
+    "language_probability_initial": null,
+    "flags": [
+      "ENCODING WARNING: found 1 Unicode replacement character(s) (�)."
+    ],
+    "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+  }
+}

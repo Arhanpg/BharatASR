@@ -1,0 +1,1140 @@
+{
+  "backend": "whisper",
+  "model": "small",
+  "elapsed_seconds": 109.85226359999797,
+  "audio_duration_seconds": 430.5444375,
+  "real_time_factor": 0.25514732982701227,
+  "device": "cuda",
+  "compute_type": "int8_float16",
+  "metadata": {
+    "language_detected_initial": "hi",
+    "language_probability_initial": 1.0,
+    "language_probabilities_initial": null,
+    "language_detection": "requested language hint + multilingual per-segment decoding",
+    "audio_duration_seconds": 430.5444375,
+    "audio_duration_after_vad_seconds": 429.66,
+    "device": "cuda",
+    "compute_type": "int8_float16",
+    "cuda_retry_error": null,
+    "vad_filter_requested": true,
+    "vad_fallback_without_vad": false,
+    "vad_min_silence_duration_ms": 500,
+    "word_timestamps": true,
+    "glossary_prompt_used": false,
+    "segment_diagnostics": [
+      {
+        "start": 0.0,
+        "end": 5.6,
+        "avg_logprob": -0.3263888973659939,
+        "no_speech_prob": 0.22900390625,
+        "compression_ratio": 2.1343873517786562,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 5.6,
+        "end": 8.42,
+        "avg_logprob": -0.3263888973659939,
+        "no_speech_prob": 0.22900390625,
+        "compression_ratio": 2.1343873517786562,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 8.42,
+        "end": 13.56,
+        "avg_logprob": -0.3263888973659939,
+        "no_speech_prob": 0.22900390625,
+        "compression_ratio": 2.1343873517786562,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 13.56,
+        "end": 18.56,
+        "avg_logprob": -0.32166667090521917,
+        "no_speech_prob": 0.435302734375,
+        "compression_ratio": 2.3405172413793105,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 19.24,
+        "end": 24.16,
+        "avg_logprob": -0.32166667090521917,
+        "no_speech_prob": 0.435302734375,
+        "compression_ratio": 2.3405172413793105,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 24.36,
+        "end": 26.42,
+        "avg_logprob": -0.32166667090521917,
+        "no_speech_prob": 0.435302734375,
+        "compression_ratio": 2.3405172413793105,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 26.8,
+        "end": 30.86,
+        "avg_logprob": -0.32166667090521917,
+        "no_speech_prob": 0.435302734375,
+        "compression_ratio": 2.3405172413793105,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 30.86,
+        "end": 36.06,
+        "avg_logprob": -0.38361112382676865,
+        "no_speech_prob": 0.09075927734375,
+        "compression_ratio": 2.192,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 36.2,
+        "end": 39.4,
+        "avg_logprob": -0.38361112382676865,
+        "no_speech_prob": 0.09075927734375,
+        "compression_ratio": 2.192,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 39.68,
+        "end": 43.46,
+        "avg_logprob": -0.38361112382676865,
+        "no_speech_prob": 0.09075927734375,
+        "compression_ratio": 2.192,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 43.94,
+        "end": 45.98,
+        "avg_logprob": -0.38361112382676865,
+        "no_speech_prob": 0.09075927734375,
+        "compression_ratio": 2.192,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 45.98,
+        "end": 51.64,
+        "avg_logprob": -0.34638888041178384,
+        "no_speech_prob": 0.311279296875,
+        "compression_ratio": 2.1728395061728394,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 51.64,
+        "end": 55.16,
+        "avg_logprob": -0.34638888041178384,
+        "no_speech_prob": 0.311279296875,
+        "compression_ratio": 2.1728395061728394,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 55.5,
+        "end": 59.68,
+        "avg_logprob": -0.34638888041178384,
+        "no_speech_prob": 0.311279296875,
+        "compression_ratio": 2.1728395061728394,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 59.68,
+        "end": 62.94,
+        "avg_logprob": -0.29555555555555557,
+        "no_speech_prob": 0.342529296875,
+        "compression_ratio": 2.438053097345133,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 62.94,
+        "end": 67.44,
+        "avg_logprob": -0.29555555555555557,
+        "no_speech_prob": 0.342529296875,
+        "compression_ratio": 2.438053097345133,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 67.44,
+        "end": 69.4,
+        "avg_logprob": -0.29555555555555557,
+        "no_speech_prob": 0.342529296875,
+        "compression_ratio": 2.438053097345133,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 69.4,
+        "end": 73.48,
+        "avg_logprob": -0.29555555555555557,
+        "no_speech_prob": 0.342529296875,
+        "compression_ratio": 2.438053097345133,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 73.48,
+        "end": 76.78,
+        "avg_logprob": -0.27805555555555556,
+        "no_speech_prob": 0.368408203125,
+        "compression_ratio": 2.3555555555555556,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 77.48,
+        "end": 79.2,
+        "avg_logprob": -0.27805555555555556,
+        "no_speech_prob": 0.368408203125,
+        "compression_ratio": 2.3555555555555556,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 79.2,
+        "end": 82.34,
+        "avg_logprob": -0.27805555555555556,
+        "no_speech_prob": 0.368408203125,
+        "compression_ratio": 2.3555555555555556,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 82.34,
+        "end": 85.0,
+        "avg_logprob": -0.27805555555555556,
+        "no_speech_prob": 0.368408203125,
+        "compression_ratio": 2.3555555555555556,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 85.01,
+        "end": 87.81,
+        "avg_logprob": -0.27805555555555556,
+        "no_speech_prob": 0.368408203125,
+        "compression_ratio": 2.3555555555555556,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 87.81,
+        "end": 89.87,
+        "avg_logprob": -0.27805555555555556,
+        "no_speech_prob": 0.368408203125,
+        "compression_ratio": 2.3555555555555556,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 89.87,
+        "end": 95.03,
+        "avg_logprob": -0.3861111068725586,
+        "no_speech_prob": 0.5244140625,
+        "compression_ratio": 2.235294117647059,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 95.11,
+        "end": 97.97,
+        "avg_logprob": -0.3861111068725586,
+        "no_speech_prob": 0.5244140625,
+        "compression_ratio": 2.235294117647059,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 98.27,
+        "end": 102.25,
+        "avg_logprob": -0.3861111068725586,
+        "no_speech_prob": 0.5244140625,
+        "compression_ratio": 2.235294117647059,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 102.43,
+        "end": 105.29,
+        "avg_logprob": -0.3861111068725586,
+        "no_speech_prob": 0.5244140625,
+        "compression_ratio": 2.235294117647059,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 105.29,
+        "end": 109.97,
+        "avg_logprob": -0.4565499835544162,
+        "no_speech_prob": 0.59814453125,
+        "compression_ratio": 2.3891402714932126,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 109.97,
+        "end": 113.17,
+        "avg_logprob": -0.4565499835544162,
+        "no_speech_prob": 0.59814453125,
+        "compression_ratio": 2.3891402714932126,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 113.17,
+        "end": 119.59,
+        "avg_logprob": -0.4565499835544162,
+        "no_speech_prob": 0.59814453125,
+        "compression_ratio": 2.3891402714932126,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 119.59,
+        "end": 123.23,
+        "avg_logprob": -0.33805556403266057,
+        "no_speech_prob": 0.195068359375,
+        "compression_ratio": 2.3333333333333335,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 123.23,
+        "end": 127.15,
+        "avg_logprob": -0.33805556403266057,
+        "no_speech_prob": 0.195068359375,
+        "compression_ratio": 2.3333333333333335,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 127.15,
+        "end": 129.83,
+        "avg_logprob": -0.33805556403266057,
+        "no_speech_prob": 0.195068359375,
+        "compression_ratio": 2.3333333333333335,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 129.83,
+        "end": 133.17,
+        "avg_logprob": -0.33805556403266057,
+        "no_speech_prob": 0.195068359375,
+        "compression_ratio": 2.3333333333333335,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 133.17,
+        "end": 138.59,
+        "avg_logprob": -0.32111110263400605,
+        "no_speech_prob": 0.392333984375,
+        "compression_ratio": 2.290983606557377,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 139.03,
+        "end": 143.93,
+        "avg_logprob": -0.32111110263400605,
+        "no_speech_prob": 0.392333984375,
+        "compression_ratio": 2.290983606557377,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 144.01,
+        "end": 147.91,
+        "avg_logprob": -0.32111110263400605,
+        "no_speech_prob": 0.392333984375,
+        "compression_ratio": 2.290983606557377,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 148.45,
+        "end": 152.29,
+        "avg_logprob": -0.32111110263400605,
+        "no_speech_prob": 0.392333984375,
+        "compression_ratio": 2.290983606557377,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 152.29,
+        "end": 156.11,
+        "avg_logprob": -0.35520047505696617,
+        "no_speech_prob": 0.0318603515625,
+        "compression_ratio": 2.3521739130434782,
+        "temperature": 0.4,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 156.11,
+        "end": 159.53,
+        "avg_logprob": -0.35520047505696617,
+        "no_speech_prob": 0.0318603515625,
+        "compression_ratio": 2.3521739130434782,
+        "temperature": 0.4,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 159.53,
+        "end": 163.89,
+        "avg_logprob": -0.35520047505696617,
+        "no_speech_prob": 0.0318603515625,
+        "compression_ratio": 2.3521739130434782,
+        "temperature": 0.4,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 163.89,
+        "end": 167.33,
+        "avg_logprob": -0.35520047505696617,
+        "no_speech_prob": 0.0318603515625,
+        "compression_ratio": 2.3521739130434782,
+        "temperature": 0.4,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 167.33,
+        "end": 171.79,
+        "avg_logprob": -0.35321093241373697,
+        "no_speech_prob": 0.55615234375,
+        "compression_ratio": 2.169491525423729,
+        "temperature": 0.2,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 171.79,
+        "end": 176.47,
+        "avg_logprob": -0.35321093241373697,
+        "no_speech_prob": 0.55615234375,
+        "compression_ratio": 2.169491525423729,
+        "temperature": 0.2,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 176.47,
+        "end": 179.21,
+        "avg_logprob": -0.35321093241373697,
+        "no_speech_prob": 0.55615234375,
+        "compression_ratio": 2.169491525423729,
+        "temperature": 0.2,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 179.21,
+        "end": 182.57,
+        "avg_logprob": -0.35321093241373697,
+        "no_speech_prob": 0.55615234375,
+        "compression_ratio": 2.169491525423729,
+        "temperature": 0.2,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 182.57,
+        "end": 187.73,
+        "avg_logprob": -0.3213889016045464,
+        "no_speech_prob": 0.326904296875,
+        "compression_ratio": 2.1701244813278007,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 188.19,
+        "end": 192.21,
+        "avg_logprob": -0.3213889016045464,
+        "no_speech_prob": 0.326904296875,
+        "compression_ratio": 2.1701244813278007,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 192.73,
+        "end": 195.03,
+        "avg_logprob": -0.3213889016045464,
+        "no_speech_prob": 0.326904296875,
+        "compression_ratio": 2.1701244813278007,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 195.03,
+        "end": 197.89,
+        "avg_logprob": -0.27305555979410806,
+        "no_speech_prob": 0.39111328125,
+        "compression_ratio": 2.25,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 197.89,
+        "end": 201.25,
+        "avg_logprob": -0.27305555979410806,
+        "no_speech_prob": 0.39111328125,
+        "compression_ratio": 2.25,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 201.25,
+        "end": 205.73,
+        "avg_logprob": -0.27305555979410806,
+        "no_speech_prob": 0.39111328125,
+        "compression_ratio": 2.25,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 205.73,
+        "end": 208.61,
+        "avg_logprob": -0.27305555979410806,
+        "no_speech_prob": 0.39111328125,
+        "compression_ratio": 2.25,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 208.61,
+        "end": 211.29,
+        "avg_logprob": -0.27305555979410806,
+        "no_speech_prob": 0.39111328125,
+        "compression_ratio": 2.25,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 211.29,
+        "end": 215.83,
+        "avg_logprob": -0.33944444020589193,
+        "no_speech_prob": 0.444091796875,
+        "compression_ratio": 2.1844262295081966,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 216.19,
+        "end": 220.09,
+        "avg_logprob": -0.33944444020589193,
+        "no_speech_prob": 0.444091796875,
+        "compression_ratio": 2.1844262295081966,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 220.41,
+        "end": 223.55,
+        "avg_logprob": -0.33944444020589193,
+        "no_speech_prob": 0.444091796875,
+        "compression_ratio": 2.1844262295081966,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 223.55,
+        "end": 227.29,
+        "avg_logprob": -0.3416666539510091,
+        "no_speech_prob": 0.045196533203125,
+        "compression_ratio": 2.18,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 227.29,
+        "end": 231.05,
+        "avg_logprob": -0.3416666539510091,
+        "no_speech_prob": 0.045196533203125,
+        "compression_ratio": 2.18,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 231.53,
+        "end": 235.73,
+        "avg_logprob": -0.3416666539510091,
+        "no_speech_prob": 0.045196533203125,
+        "compression_ratio": 2.18,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 236.07,
+        "end": 238.45,
+        "avg_logprob": -0.3416666539510091,
+        "no_speech_prob": 0.045196533203125,
+        "compression_ratio": 2.18,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 238.45,
+        "end": 248.79,
+        "avg_logprob": -0.4022222306993273,
+        "no_speech_prob": 0.0755615234375,
+        "compression_ratio": 2.2056451612903225,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 248.79,
+        "end": 253.83,
+        "avg_logprob": -0.4022222306993273,
+        "no_speech_prob": 0.0755615234375,
+        "compression_ratio": 2.2056451612903225,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 253.83,
+        "end": 258.77,
+        "avg_logprob": -0.33111112382676866,
+        "no_speech_prob": 0.133056640625,
+        "compression_ratio": 2.2953586497890295,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 258.77,
+        "end": 263.87,
+        "avg_logprob": -0.33111112382676866,
+        "no_speech_prob": 0.133056640625,
+        "compression_ratio": 2.2953586497890295,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 263.87,
+        "end": 267.83,
+        "avg_logprob": -0.33111112382676866,
+        "no_speech_prob": 0.133056640625,
+        "compression_ratio": 2.2953586497890295,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 267.83,
+        "end": 272.57,
+        "avg_logprob": -0.35361111958821617,
+        "no_speech_prob": 0.0777587890625,
+        "compression_ratio": 2.273109243697479,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 272.57,
+        "end": 274.93,
+        "avg_logprob": -0.35361111958821617,
+        "no_speech_prob": 0.0777587890625,
+        "compression_ratio": 2.273109243697479,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 274.93,
+        "end": 278.79,
+        "avg_logprob": -0.35361111958821617,
+        "no_speech_prob": 0.0777587890625,
+        "compression_ratio": 2.273109243697479,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 278.79,
+        "end": 281.95,
+        "avg_logprob": -0.35361111958821617,
+        "no_speech_prob": 0.0777587890625,
+        "compression_ratio": 2.273109243697479,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 281.95,
+        "end": 284.39,
+        "avg_logprob": -0.35361111958821617,
+        "no_speech_prob": 0.0777587890625,
+        "compression_ratio": 2.273109243697479,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 284.39,
+        "end": 288.77,
+        "avg_logprob": -0.28694444020589194,
+        "no_speech_prob": 0.50927734375,
+        "compression_ratio": 2.522935779816514,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 289.23,
+        "end": 293.67,
+        "avg_logprob": -0.28694444020589194,
+        "no_speech_prob": 0.50927734375,
+        "compression_ratio": 2.522935779816514,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 294.21,
+        "end": 295.47,
+        "avg_logprob": -0.28694444020589194,
+        "no_speech_prob": 0.50927734375,
+        "compression_ratio": 2.522935779816514,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 295.51,
+        "end": 300.41,
+        "avg_logprob": -0.35216803656684026,
+        "no_speech_prob": 0.27197265625,
+        "compression_ratio": 2.293877551020408,
+        "temperature": 0.2,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 300.41,
+        "end": 305.97,
+        "avg_logprob": -0.35216803656684026,
+        "no_speech_prob": 0.27197265625,
+        "compression_ratio": 2.293877551020408,
+        "temperature": 0.2,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 306.47,
+        "end": 310.63,
+        "avg_logprob": -0.35216803656684026,
+        "no_speech_prob": 0.27197265625,
+        "compression_ratio": 2.293877551020408,
+        "temperature": 0.2,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 310.63,
+        "end": 321.35,
+        "avg_logprob": -0.32611109839545355,
+        "no_speech_prob": 0.260986328125,
+        "compression_ratio": 2.1847389558232932,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 321.35,
+        "end": 324.33,
+        "avg_logprob": -0.3016666581895616,
+        "no_speech_prob": 0.27978515625,
+        "compression_ratio": 2.353711790393013,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 324.33,
+        "end": 328.31,
+        "avg_logprob": -0.3016666581895616,
+        "no_speech_prob": 0.27978515625,
+        "compression_ratio": 2.353711790393013,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 328.31,
+        "end": 331.51,
+        "avg_logprob": -0.3016666581895616,
+        "no_speech_prob": 0.27978515625,
+        "compression_ratio": 2.353711790393013,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 331.51,
+        "end": 334.11,
+        "avg_logprob": -0.3016666581895616,
+        "no_speech_prob": 0.27978515625,
+        "compression_ratio": 2.353711790393013,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 334.11,
+        "end": 347.21,
+        "avg_logprob": -0.3016666581895616,
+        "no_speech_prob": 0.27978515625,
+        "compression_ratio": 2.353711790393013,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 347.21,
+        "end": 349.69,
+        "avg_logprob": -0.3561111026340061,
+        "no_speech_prob": 0.2076416015625,
+        "compression_ratio": 2.12396694214876,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 350.23,
+        "end": 353.07,
+        "avg_logprob": -0.3561111026340061,
+        "no_speech_prob": 0.2076416015625,
+        "compression_ratio": 2.12396694214876,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 353.43,
+        "end": 357.25,
+        "avg_logprob": -0.3561111026340061,
+        "no_speech_prob": 0.2076416015625,
+        "compression_ratio": 2.12396694214876,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 357.29,
+        "end": 358.87,
+        "avg_logprob": -0.3561111026340061,
+        "no_speech_prob": 0.2076416015625,
+        "compression_ratio": 2.12396694214876,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 359.19,
+        "end": 360.51,
+        "avg_logprob": -0.3561111026340061,
+        "no_speech_prob": 0.2076416015625,
+        "compression_ratio": 2.12396694214876,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 360.51,
+        "end": 364.59,
+        "avg_logprob": -0.31916665818956164,
+        "no_speech_prob": 0.36083984375,
+        "compression_ratio": 2.2096774193548385,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 364.59,
+        "end": 368.61,
+        "avg_logprob": -0.31916665818956164,
+        "no_speech_prob": 0.36083984375,
+        "compression_ratio": 2.2096774193548385,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 368.61,
+        "end": 371.27,
+        "avg_logprob": -0.31916665818956164,
+        "no_speech_prob": 0.36083984375,
+        "compression_ratio": 2.2096774193548385,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 371.27,
+        "end": 375.11,
+        "avg_logprob": -0.31916665818956164,
+        "no_speech_prob": 0.36083984375,
+        "compression_ratio": 2.2096774193548385,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 375.11,
+        "end": 376.29,
+        "avg_logprob": -0.31916665818956164,
+        "no_speech_prob": 0.36083984375,
+        "compression_ratio": 2.2096774193548385,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 376.29,
+        "end": 380.79,
+        "avg_logprob": -0.36444444868299697,
+        "no_speech_prob": 0.1839599609375,
+        "compression_ratio": 2.2638297872340427,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 381.13,
+        "end": 386.33,
+        "avg_logprob": -0.36444444868299697,
+        "no_speech_prob": 0.1839599609375,
+        "compression_ratio": 2.2638297872340427,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 386.79,
+        "end": 391.19,
+        "avg_logprob": -0.36444444868299697,
+        "no_speech_prob": 0.1839599609375,
+        "compression_ratio": 2.2638297872340427,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 391.19,
+        "end": 396.31,
+        "avg_logprob": -0.3647222179836697,
+        "no_speech_prob": 0.460205078125,
+        "compression_ratio": 2.189516129032258,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 396.31,
+        "end": 400.67,
+        "avg_logprob": -0.3647222179836697,
+        "no_speech_prob": 0.460205078125,
+        "compression_ratio": 2.189516129032258,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 400.67,
+        "end": 406.37,
+        "avg_logprob": -0.3647222179836697,
+        "no_speech_prob": 0.460205078125,
+        "compression_ratio": 2.189516129032258,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 406.37,
+        "end": 411.27,
+        "avg_logprob": -0.3122222179836697,
+        "no_speech_prob": 0.058807373046875,
+        "compression_ratio": 2.253061224489796,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 411.63,
+        "end": 416.13,
+        "avg_logprob": -0.3122222179836697,
+        "no_speech_prob": 0.058807373046875,
+        "compression_ratio": 2.253061224489796,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 416.61,
+        "end": 420.43,
+        "avg_logprob": -0.3122222179836697,
+        "no_speech_prob": 0.058807373046875,
+        "compression_ratio": 2.253061224489796,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 420.55,
+        "end": 422.75,
+        "avg_logprob": -0.3122222179836697,
+        "no_speech_prob": 0.058807373046875,
+        "compression_ratio": 2.253061224489796,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 423.25,
+        "end": 429.35,
+        "avg_logprob": -0.44133771511546355,
+        "no_speech_prob": 0.1251220703125,
+        "compression_ratio": 1.8523489932885906,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      }
+    ],
+    "note": "Machine-generated transcript; manual verification is still required.",
+    "source_metadata": {
+      "source": "youtube",
+      "video_id": "R_Dd4slDghA",
+      "title": "समवसरण के चौंकाने वाले रहस्य | Jainism Explained#समवसरण #Jainism#peaceofmind #facts",
+      "webpage_url": "https://www.youtube.com/watch?v=R_Dd4slDghA",
+      "channel": "Jain sanskar shala ",
+      "channel_id": "UCb8aupktrDeFHyCqhkp5-Gg",
+      "upload_date": "20260606",
+      "duration_seconds": 431,
+      "source_language_metadata": "hi",
+      "source_audio_language": null,
+      "source_availability": "public",
+      "extractor": "youtube",
+      "normalized_audio": {
+        "format": "WAV PCM signed 16-bit",
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "path": ".cache\\youtube_audio\\R_Dd4slDghA.wav"
+      }
+    },
+    "language_requested_by_user": "hi",
+    "review_required": true,
+    "review_flags": [
+      "Machine-generated draft: verify against the original audio before quoting or publishing.",
+      "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections."
+    ],
+    "transcript_quality": {
+      "status": "no_automatic_flags",
+      "manual_review_required": true,
+      "character_count": 5302,
+      "whitespace_token_count": 1087,
+      "unique_token_count": 531,
+      "unique_token_ratio": 0.4885,
+      "tokens_per_minute": 151.48,
+      "most_frequent_token": "है",
+      "most_frequent_token_count": 48,
+      "most_frequent_token_ratio": 0.0442,
+      "longest_consecutive_token": "अपनी",
+      "longest_consecutive_token_count": 2,
+      "unicode_replacement_character_count": 0,
+      "language_probability_initial": 1.0,
+      "flags": [],
+      "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+    }
+  },
+  "transcript_quality": {
+    "status": "no_automatic_flags",
+    "manual_review_required": true,
+    "character_count": 5302,
+    "whitespace_token_count": 1087,
+    "unique_token_count": 531,
+    "unique_token_ratio": 0.4885,
+    "tokens_per_minute": 151.48,
+    "most_frequent_token": "है",
+    "most_frequent_token_count": 48,
+    "most_frequent_token_ratio": 0.0442,
+    "longest_consecutive_token": "अपनी",
+    "longest_consecutive_token_count": 2,
+    "unicode_replacement_character_count": 0,
+    "language_probability_initial": 1.0,
+    "flags": [],
+    "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+  }
+}

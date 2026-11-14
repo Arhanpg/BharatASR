@@ -1,0 +1,86 @@
+{
+  "backend": "vaani-whisper-hindi",
+  "model": "ARTPARK-IISc/whisper-small-vaani-hindi",
+  "elapsed_seconds": 484.1000020000065,
+  "audio_duration_seconds": 978.570188,
+  "real_time_factor": 0.4947013591221384,
+  "device": "cuda:0",
+  "compute_type": null,
+  "metadata": {
+    "device": "cuda:0",
+    "language_requested": "hi",
+    "language": "hi",
+    "language_detection": "not performed; Hindi is forced by this monolingual checkpoint",
+    "long_audio_chunk_length_seconds": 30,
+    "licence": "Apache-2.0",
+    "note": "Hindi-only Vaani fine-tune; not suitable for Sanskrit or Prakrit.",
+    "audio_duration_seconds": 978.570188,
+    "source_metadata": {
+      "source": "youtube",
+      "video_id": "PHyJ0uol4m0",
+      "title": "जानें, भगवान महावीर का प्रथम समवशरण कहां लगा था?मुनि श्री 108 प्रणम्य सागर जी महाराज",
+      "webpage_url": "https://www.youtube.com/watch?v=PHyJ0uol4m0",
+      "channel": "Muni Shri Pranamya Sagar Ji Ke Bhakt",
+      "channel_id": "UC5jEi4Sn4yzvXUB2gWLminQ",
+      "upload_date": "20210128",
+      "duration_seconds": 979,
+      "source_language_metadata": "hi",
+      "source_audio_language": null,
+      "source_availability": "public",
+      "extractor": "youtube",
+      "normalized_audio": {
+        "format": "WAV PCM signed 16-bit",
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "path": ".cache\\youtube_audio\\PHyJ0uol4m0.wav"
+      }
+    },
+    "language_requested_by_user": "hi",
+    "review_required": true,
+    "review_flags": [
+      "Machine-generated draft: verify against the original audio before quoting or publishing.",
+      "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections.",
+      "ENCODING WARNING: found 3 Unicode replacement character(s) (�)."
+    ],
+    "transcript_quality": {
+      "status": "needs_review",
+      "manual_review_required": true,
+      "character_count": 9674,
+      "whitespace_token_count": 2086,
+      "unique_token_count": 545,
+      "unique_token_ratio": 0.2613,
+      "tokens_per_minute": 127.9,
+      "most_frequent_token": "है",
+      "most_frequent_token_count": 93,
+      "most_frequent_token_ratio": 0.0446,
+      "longest_consecutive_token": "अभी",
+      "longest_consecutive_token_count": 2,
+      "unicode_replacement_character_count": 3,
+      "language_probability_initial": null,
+      "flags": [
+        "ENCODING WARNING: found 3 Unicode replacement character(s) (�)."
+      ],
+      "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+    }
+  },
+  "transcript_quality": {
+    "status": "needs_review",
+    "manual_review_required": true,
+    "character_count": 9674,
+    "whitespace_token_count": 2086,
+    "unique_token_count": 545,
+    "unique_token_ratio": 0.2613,
+    "tokens_per_minute": 127.9,
+    "most_frequent_token": "है",
+    "most_frequent_token_count": 93,
+    "most_frequent_token_ratio": 0.0446,
+    "longest_consecutive_token": "अभी",
+    "longest_consecutive_token_count": 2,
+    "unicode_replacement_character_count": 3,
+    "language_probability_initial": null,
+    "flags": [
+      "ENCODING WARNING: found 3 Unicode replacement character(s) (�)."
+    ],
+    "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+  }
+}

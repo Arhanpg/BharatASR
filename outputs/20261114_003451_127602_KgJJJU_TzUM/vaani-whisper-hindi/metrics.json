@@ -1,0 +1,86 @@
+{
+  "backend": "vaani-whisper-hindi",
+  "model": "ARTPARK-IISc/whisper-small-vaani-hindi",
+  "elapsed_seconds": 145.91143880000163,
+  "audio_duration_seconds": 256.116125,
+  "real_time_factor": 0.5697081306380128,
+  "device": "cuda:0",
+  "compute_type": null,
+  "metadata": {
+    "device": "cuda:0",
+    "language_requested": "hi",
+    "language": "hi",
+    "language_detection": "not performed; Hindi is forced by this monolingual checkpoint",
+    "long_audio_chunk_length_seconds": 30,
+    "licence": "Apache-2.0",
+    "note": "Hindi-only Vaani fine-tune; not suitable for Sanskrit or Prakrit.",
+    "audio_duration_seconds": 256.116125,
+    "source_metadata": {
+      "source": "youtube",
+      "video_id": "KgJJJU_TzUM",
+      "title": "samavasarana in Jainism/samosaran ki rachna/samosaran in Jainism/samosaran kya hota hai",
+      "webpage_url": "https://www.youtube.com/watch?v=KgJJJU_TzUM",
+      "channel": "TIRTHANKAR - AAGAM VAANI",
+      "channel_id": "UCHUo6JlW2hC4ewoWQznAhBw",
+      "upload_date": "20240815",
+      "duration_seconds": 256,
+      "source_language_metadata": "hi",
+      "source_audio_language": null,
+      "source_availability": "public",
+      "extractor": "youtube",
+      "normalized_audio": {
+        "format": "WAV PCM signed 16-bit",
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "path": ".cache\\youtube_audio\\KgJJJU_TzUM.wav"
+      }
+    },
+    "language_requested_by_user": "hi",
+    "review_required": true,
+    "review_flags": [
+      "Machine-generated draft: verify against the original audio before quoting or publishing.",
+      "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections.",
+      "ENCODING WARNING: found 2 Unicode replacement character(s) (�)."
+    ],
+    "transcript_quality": {
+      "status": "needs_review",
+      "manual_review_required": true,
+      "character_count": 2771,
+      "whitespace_token_count": 574,
+      "unique_token_count": 237,
+      "unique_token_ratio": 0.4129,
+      "tokens_per_minute": 134.47,
+      "most_frequent_token": "के",
+      "most_frequent_token_count": 27,
+      "most_frequent_token_ratio": 0.047,
+      "longest_consecutive_token": "पाँच",
+      "longest_consecutive_token_count": 2,
+      "unicode_replacement_character_count": 2,
+      "language_probability_initial": null,
+      "flags": [
+        "ENCODING WARNING: found 2 Unicode replacement character(s) (�)."
+      ],
+      "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+    }
+  },
+  "transcript_quality": {
+    "status": "needs_review",
+    "manual_review_required": true,
+    "character_count": 2771,
+    "whitespace_token_count": 574,
+    "unique_token_count": 237,
+    "unique_token_ratio": 0.4129,
+    "tokens_per_minute": 134.47,
+    "most_frequent_token": "के",
+    "most_frequent_token_count": 27,
+    "most_frequent_token_ratio": 0.047,
+    "longest_consecutive_token": "पाँच",
+    "longest_consecutive_token_count": 2,
+    "unicode_replacement_character_count": 2,
+    "language_probability_initial": null,
+    "flags": [
+      "ENCODING WARNING: found 2 Unicode replacement character(s) (�)."
+    ],
+    "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "status": "needs_review",
+  "manual_review_required": true,
+  "character_count": 2100,
+  "whitespace_token_count": 450,
+  "unique_token_count": 193,
+  "unique_token_ratio": 0.4289,
+  "tokens_per_minute": 105.42,
+  "most_frequent_token": "ौ",
+  "most_frequent_token_count": 73,
+  "most_frequent_token_ratio": 0.1622,
+  "longest_consecutive_token": "ौ",
+  "longest_consecutive_token_count": 73,
+  "unicode_replacement_character_count": 0,
+  "language_probability_initial": 1.0,
+  "flags": [
+    "REPETITION WARNING: 'ौ' occurs 73 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat.",
+    "TOKEN DOMINANCE: 'ौ' accounts for 16.2% of tokens."
+  ],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}

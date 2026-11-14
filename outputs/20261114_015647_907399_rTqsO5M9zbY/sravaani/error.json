@@ -1,0 +1,7 @@
+{
+  "backend": "sravaani",
+  "status": "blocked_access",
+  "elapsed_seconds": 0.9533508999884361,
+  "error_type": "RuntimeError",
+  "error": "RuntimeError: ARTPARK-IISc/SraVaani-1.0 could not be downloaded because Hugging Face denied access. The model did not reach inference; this is not a transcription-quality failure. Open https://huggingface.co/ARTPARK-IISc/SraVaani-1.0, sign in, request/accept access and licence terms, then authenticate in this environment with the Hugging Face CLI login or HF_TOKEN from an approved account. A token cannot bypass model-owner approval. Original error: OSError: You are trying to access a gated repo.\nMake sure to have access to it at https://huggingface.co/ARTPARK-IISc/SraVaani-1.0.\n403 Client Error. (Request ID: Root=1-6af7747a-112a81db05559f777717a852;2b84950f-bb0a-4821-b8b4-dfc0501ee008)\n\nCannot access gated repo for url https://huggingface.co/ARTPARK-IISc/SraVaani-1.0/resolve/main/config.json.\nAccess to model ARTPARK-IISc/SraVaani-1.0 is restricted and you are not in the authorized list. Visit https://huggingface.co/ARTPARK-IISc/SraVaani-1.0 to ask for access."
+}

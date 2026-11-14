@@ -18,9 +18,18 @@ def test_score_identical_text():
     result = score("यह एक परीक्षण है", "यह एक परीक्षण है")
     assert result["wer"] == 0.0
     assert result["cer"] == 0.0
+    assert result["hits"] == 4
+    assert result["substitutions"] == 0
+    assert result["deletions"] == 0
+    assert result["insertions"] == 0
 
 
 def test_score_nonidentical_text():
     result = score("hello world", "hello there")
-    assert result["wer"] > 0
+    assert result["wer"] == 0.5
     assert result["cer"] > 0
+    assert result["hits"] == 1
+    assert result["substitutions"] == 1
+    assert result["deletions"] == 0
+    assert result["insertions"] == 0
+    assert "char_substitutions" in result

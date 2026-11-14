@@ -1,0 +1,86 @@
+{
+  "backend": "vaani-whisper-hindi",
+  "model": "ARTPARK-IISc/whisper-small-vaani-hindi",
+  "elapsed_seconds": 166.17982920000213,
+  "audio_duration_seconds": 509.9915,
+  "real_time_factor": 0.3258482331568313,
+  "device": "cuda:0",
+  "compute_type": null,
+  "metadata": {
+    "device": "cuda:0",
+    "language_requested": "hi",
+    "language": "hi",
+    "language_detection": "not performed; Hindi is forced by this monolingual checkpoint",
+    "long_audio_chunk_length_seconds": 30,
+    "licence": "Apache-2.0",
+    "note": "Hindi-only Vaani fine-tune; not suitable for Sanskrit or Prakrit.",
+    "audio_duration_seconds": 509.9915,
+    "source_metadata": {
+      "source": "youtube",
+      "video_id": "x9XAer5p6-k",
+      "title": "कल्पद्रुम यह समवशरण है ।। kalpdrum yah samvsharan hain",
+      "webpage_url": "https://www.youtube.com/watch?v=x9XAer5p6-k",
+      "channel": "Sarvodaya Ahimsa",
+      "channel_id": "UCFlYjf8iXEdCsDlWQ-NQDiw",
+      "upload_date": "20200522",
+      "duration_seconds": 510,
+      "source_language_metadata": "hi",
+      "source_audio_language": null,
+      "source_availability": "public",
+      "extractor": "youtube",
+      "normalized_audio": {
+        "format": "WAV PCM signed 16-bit",
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "path": ".cache\\youtube_audio\\x9XAer5p6-k.wav"
+      }
+    },
+    "language_requested_by_user": "hi",
+    "review_required": true,
+    "review_flags": [
+      "Machine-generated draft: verify against the original audio before quoting or publishing.",
+      "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections.",
+      "ENCODING WARNING: found 3 Unicode replacement character(s) (�)."
+    ],
+    "transcript_quality": {
+      "status": "needs_review",
+      "manual_review_required": true,
+      "character_count": 3343,
+      "whitespace_token_count": 640,
+      "unique_token_count": 250,
+      "unique_token_ratio": 0.3906,
+      "tokens_per_minute": 75.3,
+      "most_frequent_token": "में",
+      "most_frequent_token_count": 44,
+      "most_frequent_token_ratio": 0.0688,
+      "longest_consecutive_token": "तीरथंकर",
+      "longest_consecutive_token_count": 1,
+      "unicode_replacement_character_count": 3,
+      "language_probability_initial": null,
+      "flags": [
+        "ENCODING WARNING: found 3 Unicode replacement character(s) (�)."
+      ],
+      "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+    }
+  },
+  "transcript_quality": {
+    "status": "needs_review",
+    "manual_review_required": true,
+    "character_count": 3343,
+    "whitespace_token_count": 640,
+    "unique_token_count": 250,
+    "unique_token_ratio": 0.3906,
+    "tokens_per_minute": 75.3,
+    "most_frequent_token": "में",
+    "most_frequent_token_count": 44,
+    "most_frequent_token_ratio": 0.0688,
+    "longest_consecutive_token": "तीरथंकर",
+    "longest_consecutive_token_count": 1,
+    "unicode_replacement_character_count": 3,
+    "language_probability_initial": null,
+    "flags": [
+      "ENCODING WARNING: found 3 Unicode replacement character(s) (�)."
+    ],
+    "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+  }
+}

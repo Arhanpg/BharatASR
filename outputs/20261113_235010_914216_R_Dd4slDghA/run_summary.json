@@ -1,0 +1,31 @@
+{
+  "overall_status": "completed_needs_review",
+  "backend_count": 1,
+  "transcripts_generated": 1,
+  "status_counts": {
+    "completed": 0,
+    "completed_needs_review": 1,
+    "empty_output": 0,
+    "blocked_access": 0,
+    "skipped": 0,
+    "failed": 0
+  },
+  "models": [
+    {
+      "backend": "whisper",
+      "status": "completed_needs_review",
+      "transcript_quality": "needs_review",
+      "elapsed_seconds": 99.44099350000033,
+      "model": "small",
+      "language_detected": "hi",
+      "quality_flags": [
+        "ENCODING WARNING: found 1 Unicode replacement character(s) (�).",
+        "REPETITION WARNING: 'तुछ' occurs 37 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat."
+      ],
+      "review_required": true
+    }
+  ],
+  "run_dir": "outputs\\20261113_235010_914216_R_Dd4slDghA",
+  "manual_review_required": true,
+  "note": "Backend completion only means text was returned and saved. It does not establish transcript correctness. Inspect quality.json and transcript.review.md; calculate WER/CER only against a human-verified reference transcript."
+}

@@ -1,0 +1,28 @@
+{
+  "overall_status": "completed",
+  "backend_count": 1,
+  "transcripts_generated": 1,
+  "status_counts": {
+    "completed": 1,
+    "completed_needs_review": 0,
+    "empty_output": 0,
+    "blocked_access": 0,
+    "skipped": 0,
+    "failed": 0
+  },
+  "models": [
+    {
+      "backend": "whisper",
+      "status": "completed",
+      "transcript_quality": "no_automatic_flags",
+      "elapsed_seconds": 109.85226359999797,
+      "model": "small",
+      "language_detected": "hi",
+      "quality_flags": [],
+      "review_required": true
+    }
+  ],
+  "run_dir": "outputs\\20261113_234526_922757_R_Dd4slDghA",
+  "manual_review_required": true,
+  "note": "Backend completion only means text was returned and saved. It does not establish transcript correctness. Inspect quality.json and transcript.review.md; calculate WER/CER only against a human-verified reference transcript."
+}

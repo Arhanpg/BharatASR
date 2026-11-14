@@ -1,0 +1,22 @@
+{
+  "status": "needs_review",
+  "manual_review_required": true,
+  "character_count": 51815,
+  "whitespace_token_count": 11333,
+  "unique_token_count": 1933,
+  "unique_token_ratio": 0.1706,
+  "tokens_per_minute": 155.78,
+  "most_frequent_token": "है",
+  "most_frequent_token_count": 359,
+  "most_frequent_token_ratio": 0.0317,
+  "longest_consecutive_token": "ए",
+  "longest_consecutive_token_count": 121,
+  "unicode_replacement_character_count": 15,
+  "language_probability_initial": null,
+  "flags": [
+    "ENCODING WARNING: found 15 Unicode replacement character(s) (�).",
+    "REPETITION WARNING: 'ए' occurs 121 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat.",
+    "LOW VOCABULARY DIVERSITY: 1933 unique tokens across 11333 (ratio 0.171); inspect for loops or repeated output."
+  ],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}

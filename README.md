@@ -158,7 +158,7 @@ outputs/
 The Sarvam folder appears only when you explicitly enable it. Failed backends receive an `error.json`; successful results remain intact.
 
 
-## YouTube video and playlist input
+## YouTube video, playlist, and batch file input
 
 VidTrace's YouTube extraction workflow is also carried into BharatASR: yt-dlp downloads **audio only**, FFmpeg converts it to WAV, and each downloaded video is benchmarked independently with the selected backends.
 
@@ -166,10 +166,14 @@ VidTrace's YouTube extraction workflow is also carried into BharatASR: yt-dlp do
 pip install -r requirements-youtube.txt
 # Install FFmpeg and confirm: ffmpeg -version
 
+# Single video
 python -m bharatasr run --youtube-url "https://www.youtube.com/watch?v=VIDEO_ID" --language auto --models whisper,indictranscribe
 
+# Single command running an entire list of URLs or audio files from a text file
+python -m bharatasr run --urls-file configs/benchmark_urls.txt --language auto --models whisper
+
 # Or a playlist (each successfully downloaded item gets its own output run)
-python -m bharatasr run --youtube-url "https://www.youtube.com/playlist?list=PLAYLIST_ID" --language auto --max-videos 20 --models all
+python -m bharatasr run --youtube-url "https://www.youtube.com/playlist?list=PLAYLIST_ID" --language auto --max-videos 25 --models all
 ```
 
 Downloaded audio is cached under `.cache/youtube_audio/`, normalized to mono 16 kHz PCM WAV, and accompanied by source metadata. Playlist downloads are limited to 20 videos by default; change the limit explicitly with `--max-videos` (1–100). The downloader is audio-only and does not configure cookies or access-control bypass. Do not publish or commit copyrighted audio or transcripts without the required permissions.
@@ -192,16 +196,23 @@ Then repeat with --no-whisper-vad to check whether VAD is suppressing quiet spee
 
 ## Accuracy evaluation (WER / CER)
 
-Create a UTF-8 reference transcript at `data/references/sample.txt`. Make sure it is manually verified against the audio.
+Create a UTF-8 reference transcript at `data/references/sample.txt` or `data/references/<video_id>.txt`. Make sure it is manually verified against the audio.
 
 ```powershell
+# Evaluate a single run against a specific reference
 python -m bharatasr compare --run outputs/20261112_123000_sample --reference data/references/sample.txt
+
+# Or evaluate all runs across your entire benchmark in one command:
+python -m bharatasr compare --runs-dir outputs --references-dir data/references
 ```
 
 The comparator calculates:
-- **WER** — word error rate (substitutions + deletions + insertions divided by reference words).
-- **CER** — character error rate (edit distance divided by reference characters).
-- Hypothesis/reference word counts.
+- **WER** — word error rate (`(substitutions + deletions + insertions) / reference words`).
+- **CER** — character error rate (`edit distance / reference characters`).
+- Detailed word error breakdown: substitutions (`Sub`), deletions (`Del`), insertions (`Ins`), and correct hits (`Hits`).
+- Detailed character error breakdown: character substitutions, deletions, insertions, and hits.
+- Hypothesis/reference word and character counts.
+- Saves detailed JSON and CSV summaries under `outputs/.../comparison/` (or `outputs/benchmark_summary.csv` for multi-run evaluations).
 
 Normalization applies Unicode NFC, case-folding, punctuation removal and whitespace collapsing. For Indic scripts, CER can be a more stable complementary metric. Before publishing, state the normalization rules, ensure one reference per audio, and use the same reference for every model. WER can be script/tokenization-sensitive, especially for code-mixed speech.
 

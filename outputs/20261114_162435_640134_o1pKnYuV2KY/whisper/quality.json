@@ -1,0 +1,23 @@
+{
+  "status": "needs_review",
+  "manual_review_required": true,
+  "character_count": 19441,
+  "whitespace_token_count": 4217,
+  "unique_token_count": 641,
+  "unique_token_ratio": 0.152,
+  "tokens_per_minute": 59.0,
+  "most_frequent_token": "अगर",
+  "most_frequent_token_count": 580,
+  "most_frequent_token_ratio": 0.1375,
+  "longest_consecutive_token": "ॐ",
+  "longest_consecutive_token_count": 148,
+  "unicode_replacement_character_count": 49,
+  "language_probability_initial": 1.0,
+  "flags": [
+    "ENCODING WARNING: found 49 Unicode replacement character(s) (�).",
+    "REPETITION WARNING: 'ॐ' occurs 148 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat.",
+    "LOW VOCABULARY DIVERSITY: 641 unique tokens across 4217 (ratio 0.152); inspect for loops or repeated output.",
+    "TOKEN DOMINANCE: 'अगर' accounts for 13.8% of tokens."
+  ],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}

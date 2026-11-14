@@ -1,0 +1,46 @@
+{
+  "overall_status": "completed_needs_review",
+  "backend_count": 2,
+  "transcripts_generated": 2,
+  "status_counts": {
+    "completed": 0,
+    "completed_needs_review": 2,
+    "empty_output": 0,
+    "blocked_access": 0,
+    "skipped": 0,
+    "failed": 0
+  },
+  "models": [
+    {
+      "backend": "whisper",
+      "status": "completed_needs_review",
+      "transcript_quality": "needs_review",
+      "elapsed_seconds": 1043.5918289,
+      "model": "small",
+      "language_detected": "hi",
+      "quality_flags": [
+        "ENCODING WARNING: found 20 Unicode replacement character(s) (�).",
+        "REPETITION WARNING: 'तो' occurs 74 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat.",
+        "TOKEN DOMINANCE: 'तो' accounts for 15.8% of tokens."
+      ],
+      "review_required": true
+    },
+    {
+      "backend": "vaani-whisper-hindi",
+      "status": "completed_needs_review",
+      "transcript_quality": "needs_review",
+      "elapsed_seconds": 2176.5843809,
+      "model": "ARTPARK-IISc/whisper-small-vaani-hindi",
+      "language_detected": "hi",
+      "quality_flags": [
+        "ENCODING WARNING: found 16 Unicode replacement character(s) (�).",
+        "REPETITION WARNING: 'ए' occurs 124 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat.",
+        "LOW VOCABULARY DIVERSITY: 1765 unique tokens across 9495 (ratio 0.186); inspect for loops or repeated output."
+      ],
+      "review_required": true
+    }
+  ],
+  "run_dir": "outputs\\20261114_143100_786067_jDzcOghVQ6Q",
+  "manual_review_required": true,
+  "note": "Backend completion only means text was returned and saved. It does not establish transcript correctness. Inspect quality.json and transcript.review.md; calculate WER/CER only against a human-verified reference transcript."
+}

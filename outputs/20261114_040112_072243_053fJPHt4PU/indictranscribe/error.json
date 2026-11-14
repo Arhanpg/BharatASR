@@ -1,0 +1,7 @@
+{
+  "backend": "indictranscribe",
+  "status": "blocked_access",
+  "elapsed_seconds": 0.8448609000042779,
+  "error_type": "RuntimeError",
+  "error": "RuntimeError: bodhan-ai/indic-transcribe-flex could not be downloaded because Hugging Face denied access. The model did not reach inference; this is not a transcription-quality failure. Open https://huggingface.co/bodhan-ai/indic-transcribe-flex, sign in, request/accept access and licence terms, then authenticate in this environment with the Hugging Face CLI login or HF_TOKEN from an approved account. A token cannot bypass model-owner approval. Original error: GatedRepoError: 403 Client Error. (Request ID: Root=1-6af7abd8-41c861eb63dc706258bd7aa2;b27e7efa-3730-4494-aa6c-48b76bbdfb4a)\n\nCannot access gated repo for url https://huggingface.co/bodhan-ai/indic-transcribe-flex/resolve/ecba9bac9013c0340fe814b336897ee51ed80be9/.gitattributes.\nAccess to model bodhan-ai/indic-transcribe-flex is restricted and you are not in the authorized list. Visit https://huggingface.co/bodhan-ai/indic-transcribe-flex to ask for access."
+}

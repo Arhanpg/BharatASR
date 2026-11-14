@@ -1,0 +1,620 @@
+{
+  "backend": "whisper",
+  "model": "small",
+  "transcript": "Music වවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවව the the the ლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლ�ლლლლლლ�ლ music music ༼ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ �",
+  "segments": [
+    {
+      "index": 0,
+      "start": 2.24,
+      "end": 3.64,
+      "text": "Music",
+      "words": [
+        {
+          "start": 2.24,
+          "end": 3.64,
+          "word": " Music",
+          "probability": 0.0148468017578125
+        }
+      ],
+      "language": null
+    },
+    {
+      "index": 1,
+      "start": 62.14,
+      "end": 63.54,
+      "text": "වවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවව",
+      "words": [
+        {
+          "start": 62.14,
+          "end": 63.54,
+          "word": " වවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවවව",
+          "probability": 0.8535796708590246
+        }
+      ],
+      "language": null
+    },
+    {
+      "index": 2,
+      "start": 99.74,
+      "end": 100.54,
+      "text": "the",
+      "words": [
+        {
+          "start": 99.74,
+          "end": 100.54,
+          "word": " the",
+          "probability": 0.005046844482421875
+        }
+      ],
+      "language": null
+    },
+    {
+      "index": 3,
+      "start": 102.88,
+      "end": 103.54,
+      "text": "the",
+      "words": [
+        {
+          "start": 102.88,
+          "end": 103.58,
+          "word": " the",
+          "probability": 0.144775390625
+        }
+      ],
+      "language": null
+    },
+    {
+      "index": 4,
+      "start": 106.24,
+      "end": 107.64,
+      "text": "the",
+      "words": [
+        {
+          "start": 106.24,
+          "end": 107.64,
+          "word": " the",
+          "probability": 0.87451171875
+        }
+      ],
+      "language": null
+    },
+    {
+      "index": 5,
+      "start": 107.64,
+      "end": 137.64,
+      "text": "ლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლლ�ლლლლლლ�ლ",
+      "words": [],
+      "language": null
+    },
+    {
+      "index": 6,
+      "start": 149.98,
+      "end": 151.38,
+      "text": "music",
+      "words": [
+        {
+          "start": 149.98,
+          "end": 151.38,
+          "word": " music",
+          "probability": 0.0015802383422851562
+        }
+      ],
+      "language": null
+    },
+    {
+      "index": 7,
+      "start": 151.38,
+      "end": 151.96,
+      "text": "music",
+      "words": [
+        {
+          "start": 151.38,
+          "end": 151.96,
+          "word": " music",
+          "probability": 0.9560546875
+        }
+      ],
+      "language": null
+    },
+    {
+      "index": 8,
+      "start": 151.96,
+      "end": 171.76,
+      "text": "༼ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ ༽ �",
+      "words": [
+        {
+          "start": 151.96,
+          "end": 153.96,
+          "word": " ༼",
+          "probability": 0.3203887939453125
+        },
+        {
+          "start": 153.96,
+          "end": 153.96,
+          "word": " ༽",
+          "probability": 0.6646728515625
+        },
+        {
+          "start": 153.96,
+          "end": 153.96,
+          "word": " ༽",
+          "probability": 0.819580078125
+        },
+        {
+          "start": 153.96,
+          "end": 153.96,
+          "word": " ༽",
+          "probability": 0.9588623046875
+        },
+        {
+          "start": 153.96,
+          "end": 153.96,
+          "word": " ༽",
+          "probability": 0.9739990234375
+        },
+        {
+          "start": 153.96,
+          "end": 154.12,
+          "word": " ༽",
+          "probability": 0.9825439453125
+        },
+        {
+          "start": 154.12,
+          "end": 155.88,
+          "word": " ༽",
+          "probability": 0.9842529296875
+        },
+        {
+          "start": 155.88,
+          "end": 158.14,
+          "word": " ༽",
+          "probability": 0.9847412109375
+        },
+        {
+          "start": 158.14,
+          "end": 158.14,
+          "word": " ༽",
+          "probability": 0.9859619140625
+        },
+        {
+          "start": 158.14,
+          "end": 162.1,
+          "word": " ༽",
+          "probability": 0.9869384765625
+        },
+        {
+          "start": 162.1,
+          "end": 162.1,
+          "word": " ༽",
+          "probability": 0.98681640625
+        },
+        {
+          "start": 162.1,
+          "end": 162.1,
+          "word": " ༽",
+          "probability": 0.9847412109375
+        },
+        {
+          "start": 162.1,
+          "end": 162.1,
+          "word": " ༽",
+          "probability": 0.9869384765625
+        },
+        {
+          "start": 162.1,
+          "end": 167.04,
+          "word": " ༽",
+          "probability": 0.9891357421875
+        },
+        {
+          "start": 167.04,
+          "end": 167.04,
+          "word": " ༽",
+          "probability": 0.98779296875
+        },
+        {
+          "start": 167.04,
+          "end": 167.04,
+          "word": " ༽",
+          "probability": 0.9869384765625
+        },
+        {
+          "start": 167.04,
+          "end": 168.44,
+          "word": " ༽",
+          "probability": 0.9866943359375
+        },
+        {
+          "start": 168.44,
+          "end": 170.78,
+          "word": " ༽",
+          "probability": 0.987548828125
+        },
+        {
+          "start": 170.78,
+          "end": 170.82,
+          "word": " ༽",
+          "probability": 0.9873046875
+        },
+        {
+          "start": 170.82,
+          "end": 170.82,
+          "word": " ༽",
+          "probability": 0.9874267578125
+        },
+        {
+          "start": 170.82,
+          "end": 171.24,
+          "word": " ༽",
+          "probability": 0.98681640625
+        },
+        {
+          "start": 171.24,
+          "end": 171.24,
+          "word": " ༽",
+          "probability": 0.9873046875
+        },
+        {
+          "start": 171.24,
+          "end": 171.24,
+          "word": " ༽",
+          "probability": 0.9869384765625
+        },
+        {
+          "start": 171.24,
+          "end": 171.24,
+          "word": " ༽",
+          "probability": 0.9876708984375
+        },
+        {
+          "start": 171.24,
+          "end": 171.24,
+          "word": " ༽",
+          "probability": 0.9871826171875
+        },
+        {
+          "start": 171.24,
+          "end": 171.24,
+          "word": " ༽",
+          "probability": 0.9866943359375
+        },
+        {
+          "start": 171.24,
+          "end": 171.24,
+          "word": " ༽",
+          "probability": 0.9874267578125
+        },
+        {
+          "start": 171.24,
+          "end": 171.24,
+          "word": " ༽",
+          "probability": 0.98779296875
+        },
+        {
+          "start": 171.24,
+          "end": 171.24,
+          "word": " ༽",
+          "probability": 0.9884033203125
+        },
+        {
+          "start": 171.24,
+          "end": 171.24,
+          "word": " ༽",
+          "probability": 0.9853515625
+        },
+        {
+          "start": 171.24,
+          "end": 171.24,
+          "word": " ༽",
+          "probability": 0.987548828125
+        },
+        {
+          "start": 171.24,
+          "end": 171.24,
+          "word": " ༽",
+          "probability": 0.987548828125
+        },
+        {
+          "start": 171.24,
+          "end": 171.24,
+          "word": " ༽",
+          "probability": 0.9871826171875
+        },
+        {
+          "start": 171.24,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.987548828125
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.9869384765625
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.984130859375
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.9783935546875
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.9810791015625
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.9842529296875
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.9859619140625
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.9832763671875
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.9803466796875
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.9808349609375
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.984375
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.9779052734375
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.98291015625
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.9827880859375
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.983154296875
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.9652099609375
+        },
+        {
+          "start": 171.36,
+          "end": 171.36,
+          "word": " ༽",
+          "probability": 0.960205078125
+        },
+        {
+          "start": 171.36,
+          "end": 171.76,
+          "word": " ༽",
+          "probability": 0.978515625
+        },
+        {
+          "start": 171.76,
+          "end": 171.76,
+          "word": " ༽",
+          "probability": 0.9564208984375
+        },
+        {
+          "start": 171.76,
+          "end": 171.76,
+          "word": " ༽",
+          "probability": 0.9779052734375
+        },
+        {
+          "start": 171.76,
+          "end": 171.76,
+          "word": " ༽",
+          "probability": 0.97412109375
+        },
+        {
+          "start": 171.76,
+          "end": 171.76,
+          "word": " ༽",
+          "probability": 0.9586181640625
+        }
+      ],
+      "language": null
+    }
+  ],
+  "metadata": {
+    "language_detected_initial": "hi",
+    "language_probability_initial": 1.0,
+    "language_probabilities_initial": null,
+    "language_detection": "requested language hint + multilingual per-segment decoding",
+    "audio_duration_seconds": 171.78125,
+    "audio_duration_after_vad_seconds": 171.78125,
+    "device": "cuda",
+    "compute_type": "int8_float16",
+    "cuda_retry_error": null,
+    "vad_filter_requested": true,
+    "vad_fallback_without_vad": true,
+    "vad_min_silence_duration_ms": 500,
+    "word_timestamps": true,
+    "glossary_prompt_used": false,
+    "segment_diagnostics": [
+      {
+        "start": 2.24,
+        "end": 3.64,
+        "avg_logprob": -1.4400634765625,
+        "no_speech_prob": 0.5146484375,
+        "compression_ratio": 0.38461538461538464,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 62.14,
+        "end": 63.54,
+        "avg_logprob": -0.1875000042385525,
+        "no_speech_prob": 0.93505859375,
+        "compression_ratio": 19.58823529411765,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 99.74,
+        "end": 100.54,
+        "avg_logprob": -0.9853979815607485,
+        "no_speech_prob": 0.935546875,
+        "compression_ratio": 1.9285714285714286,
+        "temperature": 0.2,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 102.88,
+        "end": 103.54,
+        "avg_logprob": -0.9853979815607485,
+        "no_speech_prob": 0.935546875,
+        "compression_ratio": 1.9285714285714286,
+        "temperature": 0.2,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 106.24,
+        "end": 107.64,
+        "avg_logprob": -0.9853979815607485,
+        "no_speech_prob": 0.935546875,
+        "compression_ratio": 1.9285714285714286,
+        "temperature": 0.2,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 107.64,
+        "end": 137.64,
+        "avg_logprob": -0.14233251147800022,
+        "no_speech_prob": 0.919921875,
+        "compression_ratio": 11.25,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 149.98,
+        "end": 151.38,
+        "avg_logprob": -0.5988051470588235,
+        "no_speech_prob": 0.92626953125,
+        "compression_ratio": 1.7058823529411764,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 151.38,
+        "end": 151.96,
+        "avg_logprob": -0.5988051470588235,
+        "no_speech_prob": 0.92626953125,
+        "compression_ratio": 1.7058823529411764,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 151.96,
+        "end": 171.76,
+        "avg_logprob": -0.06444324917263455,
+        "no_speech_prob": 0.61376953125,
+        "compression_ratio": 10.619047619047619,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      }
+    ],
+    "note": "VAD recovery was used because the first pass produced no text. Check timestamps and listen to the original audio; the retry may include non-speech material.",
+    "source_metadata": {
+      "source": "youtube",
+      "video_id": "qr8A8HNk9jk",
+      "title": "समवशरण।।जैन प्रश्नोत्तरी।।समवशरण पर जैन प्रश्न उत्तर।।",
+      "webpage_url": "https://www.youtube.com/watch?v=qr8A8HNk9jk",
+      "channel": "Jain Gurukul",
+      "channel_id": "UCZ5i6LfadXWJlhBvAtbr4Cg",
+      "upload_date": "20230801",
+      "duration_seconds": 172,
+      "source_language_metadata": null,
+      "source_audio_language": null,
+      "source_availability": "public",
+      "extractor": "youtube",
+      "normalized_audio": {
+        "format": "WAV PCM signed 16-bit",
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "path": ".cache\\youtube_audio\\qr8A8HNk9jk.wav"
+      }
+    },
+    "language_requested_by_user": "hi",
+    "review_required": true,
+    "review_flags": [
+      "Machine-generated draft: verify against the original audio before quoting or publishing.",
+      "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections.",
+      "ENCODING WARNING: found 3 Unicode replacement character(s) (�).",
+      "REPETITION WARNING: '༽' occurs 54 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat.",
+      "LOW TEXT YIELD: 22.4 whitespace tokens/minute over 2.9 minutes. Check silence, VAD clipping, partial decoding or unusually slow/chant-like speech."
+    ],
+    "transcript_quality": {
+      "status": "needs_review",
+      "manual_review_required": true,
+      "character_count": 329,
+      "whitespace_token_count": 64,
+      "unique_token_count": 8,
+      "unique_token_ratio": 0.125,
+      "tokens_per_minute": 22.35,
+      "most_frequent_token": "༽",
+      "most_frequent_token_count": 54,
+      "most_frequent_token_ratio": 0.8438,
+      "longest_consecutive_token": "༽",
+      "longest_consecutive_token_count": 54,
+      "unicode_replacement_character_count": 3,
+      "language_probability_initial": 1.0,
+      "flags": [
+        "ENCODING WARNING: found 3 Unicode replacement character(s) (�).",
+        "REPETITION WARNING: '༽' occurs 54 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat.",
+        "LOW TEXT YIELD: 22.4 whitespace tokens/minute over 2.9 minutes. Check silence, VAD clipping, partial decoding or unusually slow/chant-like speech."
+      ],
+      "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+    }
+  },
+  "elapsed_seconds": 35.541092400002526
+}

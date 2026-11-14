@@ -1,0 +1,238 @@
+{
+  "backend": "whisper",
+  "model": "small",
+  "elapsed_seconds": 24.858302500011632,
+  "audio_duration_seconds": 204.3008125,
+  "real_time_factor": 0.12167500557547528,
+  "device": "cuda",
+  "compute_type": "int8_float16",
+  "metadata": {
+    "language_detected_initial": "hi",
+    "language_probability_initial": 1.0,
+    "language_probabilities_initial": null,
+    "language_detection": "requested language hint + multilingual per-segment decoding",
+    "audio_duration_seconds": 204.3008125,
+    "audio_duration_after_vad_seconds": 97.008,
+    "device": "cuda",
+    "compute_type": "int8_float16",
+    "cuda_retry_error": null,
+    "vad_filter_requested": true,
+    "vad_fallback_without_vad": false,
+    "vad_min_silence_duration_ms": 500,
+    "word_timestamps": true,
+    "glossary_prompt_used": false,
+    "segment_diagnostics": [
+      {
+        "start": 13.46,
+        "end": 15.02,
+        "avg_logprob": -0.2541666539510091,
+        "no_speech_prob": 0.0251617431640625,
+        "compression_ratio": 2.9044117647058822,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 15.51,
+        "end": 17.11,
+        "avg_logprob": -0.2541666539510091,
+        "no_speech_prob": 0.0251617431640625,
+        "compression_ratio": 2.9044117647058822,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 17.47,
+        "end": 19.11,
+        "avg_logprob": -0.2541666539510091,
+        "no_speech_prob": 0.0251617431640625,
+        "compression_ratio": 2.9044117647058822,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 19.71,
+        "end": 22.05,
+        "avg_logprob": -0.2541666539510091,
+        "no_speech_prob": 0.0251617431640625,
+        "compression_ratio": 2.9044117647058822,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 23.55,
+        "end": 28.69,
+        "avg_logprob": -0.30916666666666665,
+        "no_speech_prob": 0.421142578125,
+        "compression_ratio": 2.324675324675325,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 32.38,
+        "end": 37.44,
+        "avg_logprob": -0.30916666666666665,
+        "no_speech_prob": 0.421142578125,
+        "compression_ratio": 2.324675324675325,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 37.54,
+        "end": 41.44,
+        "avg_logprob": -0.30916666666666665,
+        "no_speech_prob": 0.421142578125,
+        "compression_ratio": 2.324675324675325,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 42.43,
+        "end": 47.3,
+        "avg_logprob": -0.30916666666666665,
+        "no_speech_prob": 0.421142578125,
+        "compression_ratio": 2.324675324675325,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 47.3,
+        "end": 50.7,
+        "avg_logprob": -0.30916666666666665,
+        "no_speech_prob": 0.421142578125,
+        "compression_ratio": 2.324675324675325,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 51.13,
+        "end": 57.48,
+        "avg_logprob": -0.32222220950656466,
+        "no_speech_prob": 0.032012939453125,
+        "compression_ratio": 2.3521739130434782,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 58.22,
+        "end": 64.48,
+        "avg_logprob": -0.32222220950656466,
+        "no_speech_prob": 0.032012939453125,
+        "compression_ratio": 2.3521739130434782,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 65.84,
+        "end": 80.89,
+        "avg_logprob": -0.32222220950656466,
+        "no_speech_prob": 0.032012939453125,
+        "compression_ratio": 2.3521739130434782,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 86.21,
+        "end": 167.35,
+        "avg_logprob": -0.09341805564032661,
+        "no_speech_prob": 0.41845703125,
+        "compression_ratio": 10.714285714285714,
+        "temperature": 0.6,
+        "language": null,
+        "text_returned": true
+      },
+      {
+        "start": 171.71,
+        "end": 189.66,
+        "avg_logprob": -0.31250001254834625,
+        "no_speech_prob": 0.0015811920166015625,
+        "compression_ratio": 2.0301204819277108,
+        "temperature": 0.0,
+        "language": null,
+        "text_returned": true
+      }
+    ],
+    "note": "Machine-generated transcript; manual verification is still required.",
+    "source_metadata": {
+      "source": "youtube",
+      "video_id": "g8BvEaY9LoY",
+      "title": "Samavsharan (Part-10) | Samavsharan | Samavsharan Ki Rachna | 3d Animation | Crazy Mediaworks",
+      "webpage_url": "https://www.youtube.com/watch?v=g8BvEaY9LoY",
+      "channel": "Crazy MediaWorks Studios",
+      "channel_id": "UCWF4If7Lx7ZdFNAJyFLzFtg",
+      "upload_date": "20230330",
+      "duration_seconds": 204,
+      "source_language_metadata": "hi",
+      "source_audio_language": null,
+      "source_availability": "public",
+      "extractor": "youtube",
+      "normalized_audio": {
+        "format": "WAV PCM signed 16-bit",
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "path": ".cache\\youtube_audio\\g8BvEaY9LoY.wav"
+      }
+    },
+    "language_requested_by_user": "hi",
+    "review_required": true,
+    "review_flags": [
+      "Machine-generated draft: verify against the original audio before quoting or publishing.",
+      "Check mantra syllables and Sanskrit/Prakrit terms letter by letter; glossary entries are hints, not corrections.",
+      "ENCODING WARNING: found 1 Unicode replacement character(s) (�).",
+      "LOW TEXT YIELD: 33.2 whitespace tokens/minute over 3.4 minutes. Check silence, VAD clipping, partial decoding or unusually slow/chant-like speech."
+    ],
+    "transcript_quality": {
+      "status": "needs_review",
+      "manual_review_required": true,
+      "character_count": 730,
+      "whitespace_token_count": 113,
+      "unique_token_count": 78,
+      "unique_token_ratio": 0.6903,
+      "tokens_per_minute": 33.19,
+      "most_frequent_token": "में",
+      "most_frequent_token_count": 9,
+      "most_frequent_token_ratio": 0.0796,
+      "longest_consecutive_token": "श्री",
+      "longest_consecutive_token_count": 1,
+      "unicode_replacement_character_count": 1,
+      "language_probability_initial": 1.0,
+      "flags": [
+        "ENCODING WARNING: found 1 Unicode replacement character(s) (�).",
+        "LOW TEXT YIELD: 33.2 whitespace tokens/minute over 3.4 minutes. Check silence, VAD clipping, partial decoding or unusually slow/chant-like speech."
+      ],
+      "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+    }
+  },
+  "transcript_quality": {
+    "status": "needs_review",
+    "manual_review_required": true,
+    "character_count": 730,
+    "whitespace_token_count": 113,
+    "unique_token_count": 78,
+    "unique_token_ratio": 0.6903,
+    "tokens_per_minute": 33.19,
+    "most_frequent_token": "में",
+    "most_frequent_token_count": 9,
+    "most_frequent_token_ratio": 0.0796,
+    "longest_consecutive_token": "श्री",
+    "longest_consecutive_token_count": 1,
+    "unicode_replacement_character_count": 1,
+    "language_probability_initial": 1.0,
+    "flags": [
+      "ENCODING WARNING: found 1 Unicode replacement character(s) (�).",
+      "LOW TEXT YIELD: 33.2 whitespace tokens/minute over 3.4 minutes. Check silence, VAD clipping, partial decoding or unusually slow/chant-like speech."
+    ],
+    "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+  }
+}

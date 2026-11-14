@@ -1,0 +1,22 @@
+{
+  "status": "needs_review",
+  "manual_review_required": true,
+  "character_count": 2494,
+  "whitespace_token_count": 496,
+  "unique_token_count": 10,
+  "unique_token_ratio": 0.0202,
+  "tokens_per_minute": 173.24,
+  "most_frequent_token": "बहुत",
+  "most_frequent_token_count": 118,
+  "most_frequent_token_ratio": 0.2379,
+  "longest_consecutive_token": "दिखाई",
+  "longest_consecutive_token_count": 1,
+  "unicode_replacement_character_count": 3,
+  "language_probability_initial": null,
+  "flags": [
+    "ENCODING WARNING: found 3 Unicode replacement character(s) (�).",
+    "LOW VOCABULARY DIVERSITY: 10 unique tokens across 496 (ratio 0.020); inspect for loops or repeated output.",
+    "TOKEN DOMINANCE: 'बहुत' accounts for 23.8% of tokens."
+  ],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}

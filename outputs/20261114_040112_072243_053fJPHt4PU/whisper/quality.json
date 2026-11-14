@@ -1,0 +1,21 @@
+{
+  "status": "needs_review",
+  "manual_review_required": true,
+  "character_count": 64302,
+  "whitespace_token_count": 13439,
+  "unique_token_count": 3710,
+  "unique_token_ratio": 0.2761,
+  "tokens_per_minute": 72.05,
+  "most_frequent_token": "तो",
+  "most_frequent_token_count": 869,
+  "most_frequent_token_ratio": 0.0647,
+  "longest_consecutive_token": "ौ",
+  "longest_consecutive_token_count": 148,
+  "unicode_replacement_character_count": 131,
+  "language_probability_initial": 1.0,
+  "flags": [
+    "ENCODING WARNING: found 131 Unicode replacement character(s) (�).",
+    "REPETITION WARNING: 'ौ' occurs 148 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat."
+  ],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}

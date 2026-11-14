@@ -1,0 +1,22 @@
+{
+  "status": "needs_review",
+  "manual_review_required": true,
+  "character_count": 100928,
+  "whitespace_token_count": 21640,
+  "unique_token_count": 3557,
+  "unique_token_ratio": 0.1644,
+  "tokens_per_minute": 116.01,
+  "most_frequent_token": "है",
+  "most_frequent_token_count": 570,
+  "most_frequent_token_ratio": 0.0263,
+  "longest_consecutive_token": "ओह",
+  "longest_consecutive_token_count": 142,
+  "unicode_replacement_character_count": 40,
+  "language_probability_initial": null,
+  "flags": [
+    "ENCODING WARNING: found 40 Unicode replacement character(s) (�).",
+    "REPETITION WARNING: 'ओह' occurs 142 times consecutively. This may indicate a decoding loop; verify against audio because recitation can repeat.",
+    "LOW VOCABULARY DIVERSITY: 3557 unique tokens across 21640 (ratio 0.164); inspect for loops or repeated output."
+  ],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}

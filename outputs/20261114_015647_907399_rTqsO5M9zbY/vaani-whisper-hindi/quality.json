@@ -1,0 +1,20 @@
+{
+  "status": "needs_review",
+  "manual_review_required": true,
+  "character_count": 5418,
+  "whitespace_token_count": 1093,
+  "unique_token_count": 460,
+  "unique_token_ratio": 0.4209,
+  "tokens_per_minute": 121.71,
+  "most_frequent_token": "हैं",
+  "most_frequent_token_count": 49,
+  "most_frequent_token_ratio": 0.0448,
+  "longest_consecutive_token": "तीन",
+  "longest_consecutive_token_count": 2,
+  "unicode_replacement_character_count": 1,
+  "language_probability_initial": null,
+  "flags": [
+    "ENCODING WARNING: found 1 Unicode replacement character(s) (�)."
+  ],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}

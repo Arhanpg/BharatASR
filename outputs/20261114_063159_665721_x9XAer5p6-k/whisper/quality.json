@@ -1,0 +1,20 @@
+{
+  "status": "needs_review",
+  "manual_review_required": true,
+  "character_count": 520,
+  "whitespace_token_count": 109,
+  "unique_token_count": 85,
+  "unique_token_ratio": 0.7798,
+  "tokens_per_minute": 12.82,
+  "most_frequent_token": "हैं",
+  "most_frequent_token_count": 6,
+  "most_frequent_token_ratio": 0.055,
+  "longest_consecutive_token": "तीद्खंकर",
+  "longest_consecutive_token_count": 1,
+  "unicode_replacement_character_count": 0,
+  "language_probability_initial": 1.0,
+  "flags": [
+    "LOW TEXT YIELD: 12.8 whitespace tokens/minute over 8.5 minutes. Check silence, VAD clipping, partial decoding or unusually slow/chant-like speech."
+  ],
+  "method_note": "Heuristic screening only. It is not human review, semantic verification, WER or CER. No automatic flags do not prove correctness."
+}
