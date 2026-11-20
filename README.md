@@ -358,11 +358,6 @@ SraVaani and Indic-Transcribe have no transcript outputs in this snapshot becaus
 - Model-level language support is not identical; a language absent from a model should not be treated as a failed accuracy result.
 - A model output is not human-verified and must not be presented as ground truth.
 
-## License
-
-See [LICENSE](LICENSE). Each model/checkpoint and hosted service is also subject to its own license and usage terms.
-
-
 ## Recommended next experiments
 
 The next comparison should test these candidates on the **same byte-identical audio segments and same human-verified references**:
@@ -374,6 +369,12 @@ The next comparison should test these candidates on the **same byte-identical au
 | 3 | [AI4Bharat IndicConformer](https://github.com/AI4Bharat/IndicConformerASR) | Open multilingual CTC/RNNT Indian-language baseline | Adapter exists; no completed result in current test batch |
 | 4 | [Sarvam Saaras v4](https://docs.sarvam.ai/api/api-guides-tutorials/models/saaras) | Strong hosted candidate with verbatim mode and keyterm prompting; test domain vocabulary and long-form batch support | Optional metered API; not evaluated |
 | 5 | Whisper Small / Medium / Large-v3 or Turbo | Establish whether larger multilingual Whisper checkpoints improve specialist Hindi speech | Small is the current measured baseline; larger variants need controlled runs |
+
+### Published model-card context (not BharatASR test results)
+
+- The official [SraVaani 1.0 benchmark page](https://vaani.iisc.ac.in/models/sravaani) reports Hindi average WER of **12.4** across its listed evaluation sets and **10.9** on its FLEURS set.
+- The [Vaani Whisper-Small Hindi model card](https://huggingface.co/ARTPARK-IISc/whisper-small-vaani-hindi) reports **19.08 WER** on its FLEURS evaluation and results on several other Hindi speech datasets.
+- These published figures are useful reasons to prioritize SraVaani for a controlled trial, but they are **not a valid head-to-head result**: test-set versions, segmentation, normalization and evaluation implementations may differ. Only BharatASR runs over the same reference audio can decide which performs better on this Jain-domain corpus.
 
 Published benchmarks are **not directly comparable across datasets**. For context only, the SraVaani model page publishes Hindi WER values on FLEURS and other test sets; Vaani's Hindi Whisper model card also publishes WER on several corpora. Those numbers must not be placed in the same leaderboard as BharatASR results unless audio, references, normalization and evaluation split are identical.
 
@@ -403,4 +404,8 @@ Published benchmarks are **not directly comparable across datasets**. For contex
 **Not completed:** source-audio verification of every transcript, human-reference WER/CER, SraVaani/IndicConformer/Sarvam measured results, and a statistically defensible best-model claim.
 
 The project is therefore **not a concluded accuracy benchmark yet**. The defensible conclusion today is: *Vaani is the provisional text-readability choice for shorter Hindi explanatory audio among the two tested models; Whisper is the multilingual baseline; neither is validated for verbatim religious transcription.* Further experiments should target SraVaani first, then IndicConformer and a separate Sarvam Saaras v4 API track.
+
+## License
+
+See [LICENSE](LICENSE). Each model/checkpoint and hosted service is also subject to its own license and usage terms.
 
