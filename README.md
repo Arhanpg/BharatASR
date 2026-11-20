@@ -1,10 +1,67 @@
 # BharatASR 🇮🇳
 
-**An open-source benchmark for comparing speech-to-text (ASR) models on Indian languages.**
+**An open-source benchmark for evaluating speech-to-text (ASR) systems on Indian-language audio, with special attention to Hindi Jain, Sanskrit and Prakrit religious discourse.**
 
-BharatASR runs multiple local/self-hosted ASR systems against the same audio files, stores each model's transcript independently, and produces comparable runtime and (when reference transcripts are provided) accuracy metrics.
+[![Repository](https://img.shields.io/badge/GitHub-BharatASR-black?logo=github)](https://github.com/Arhanpg/BharatASR)
 
-> A transcript is not an accuracy score. WER/CER are calculated only when you provide a human-verified reference transcript.
+## 🏆 Current recommendation (evidence status: provisional)
+
+> **Best practical choice from the models actually tested in this repository: Vaani Whisper-Small Hindi for short/medium Hindi explanatory speech, with mandatory human review.** This is a text-quality/diagnostic preference, **not a proven accuracy winner**. The saved experiments contain no human-verified reference transcripts and no completed source-audio alignment, so WER/CER cannot be reported.
+
+> **For long religious recordings, mantras, Sanskrit or Prakrit: there is currently no validated winner. Do not publish or rely on either transcript without listening and expert correction.** The current results show severe repetition loops, incomplete outputs and Unicode replacement characters in both Whisper Small and Vaani.
+
+**Next model to test:** [SraVaani 1.0](https://vaani.iisc.ac.in/models/sravaani) is the highest-priority additional local candidate: a 430M FastConformer trained for Indian speech, with broad Indian-language/dialect coverage and published benchmark results. Its model access is gated, and it has not completed inference in this repository yet. **It is a candidate, not the current winner.**
+
+**Other candidates:** [AI4Bharat IndicConformer](https://ai4bharat.iitm.ac.in/areas/model/ASR/IndicConformer/) (local multilingual baseline) and [Sarvam Saaras v4](https://docs.sarvam.ai/api/api-guides-tutorials/models/saaras) (hosted API; separate paid/API track).
+
+### At-a-glance: latest 14 November 2026 test batch
+
+| Diagnostic (latest unique-video outputs) | Whisper Small | Vaani Whisper-Small Hindi |
+|---|---:|---:|
+| Non-empty transcripts | 22 | 21 |
+| Content tokens | 90,064 | 149,408 |
+| Median unique-token ratio | 0.3792 | 0.2985 |
+| Files containing U+FFFD replacement characters | 19/22 | 17/21 |
+| Files with a consecutive identical-token run ≥10 | 18/22 | 6/21 |
+| Median inference time on 21 matched videos | 156.5 s | 321.4 s |
+| Median real-time factor (21-video matched set) | 0.260 | 0.549 |
+
+**How to read this:** Vaani generated more text and had fewer long single-token runs in this batch, but it was about 2.09× slower by median paired inference time. Its outputs also contain phrase-loop examples (for example, *देखने के लिए* repeated 133 times). Token quantity and heuristic cleanliness are not accuracy. A repeated ॐ/mantra may be genuine; every suspicious span needs audio review.
+
+**Benchmark status:** a substantial *output-quality audit*, not a ground-truth accuracy benchmark. Do not interpret the table as WER, CER, word accuracy, or verified coverage.
+
+---
+
+## Executive conclusion
+
+BharatASR has so far evaluated 22 distinct YouTube recordings (about 18.17 hours of normalized audio) using Whisper Small and the Hindi-specific Vaani Whisper-Small model. The latest audit inspected 43 non-empty transcript outputs, with full-file text diagnostics and excerpts at multiple positions.
+
+- **Vaani is the provisional practical preference** for short/medium Hindi explanation-style clips among the two tested models: several inspected passages were more readable and the batch had fewer long identical-token runs. However, Vaani is slower, has low lexical diversity on many long recordings, and exhibits serious repeated-phrase loops.
+- **Whisper Small remains the multilingual baseline**, not the quality winner. Some short clips are readable, but the batch shows repeated fragments, script contamination, replacement characters and very low-yield/empty outputs.
+- **Neither model is dependable for verbatim Jain/Sanskrit/Prakrit content yet.** Sacred terms, mantra syllables, vowel length, anusvara/visarga, conjuncts and Prakrit forms need domain-expert review.
+- **No accuracy ranking is possible yet.** The repository has no independent human-verified reference transcript. YouTube auto-captions, when available, are another ASR system's output and must not be treated as ground truth.
+
+### Important failure cases to inspect first
+
+| Video ID | Observed issue | Interpretation |
+|---|---|---|
+| [qr8A8HNk9jk](https://www.youtube.com/watch?v=qr8A8HNk9jk) | Whisper output is empty/foreign-script; Vaani repeats phrases such as *बहुत अच्छा* and *देखने में* | Both hypotheses are unusable without re-run and source listening |
+| [g8BvEaY9LoY](https://www.youtube.com/watch?v=g8BvEaY9LoY) | Only about 112–154 content tokens for a 3.4-minute video | Possible partial output or low speech coverage |
+| [x9XAer5p6-k](https://www.youtube.com/watch?v=x9XAer5p6-k) | Whisper has about 109 tokens for an 8.5-minute video; Vaani has repeated devotional/refrain-like output | Coverage and genuine refrain must be checked against audio |
+| [053fJPHt4PU](https://www.youtube.com/watch?v=053fJPHt4PU) | Whisper has 131 replacement characters; Vaani has phrase repetition such as *देखने के लिए* ×133 | Neither can be accepted verbatim |
+| [r4hrxMl24B8](https://www.youtube.com/watch?v=r4hrxMl24B8) | 5.28-hour stress test; both outputs have mixed-script/repetition and replacement-character issues | Long-form decoding needs chunk-boundary and coverage validation |
+
+See the [full 14 November review](docs/MODEL_BENCHMARK_REVIEW_2026-11-14.md) and [per-video CSV](docs/MODEL_BENCHMARK_REVIEW_2026-11-14.csv) for the complete table and methodology.
+
+## What “best model” means in this repository
+
+We distinguish three different questions:
+
+1. **Accuracy:** how closely the transcript matches verified spoken words (WER/CER against a human-corrected reference).
+2. **Operational performance:** latency, real-time factor, model loading time, RAM/VRAM and hardware.
+3. **Output quality diagnostics:** empty output, incomplete coverage, repeated-token/phrase loops, unexpected scripts and Unicode replacement characters.
+
+Only the third category, plus recorded runtime, is available for the current 22-video comparison. These diagnostics are useful for rejecting suspicious outputs, but they cannot substitute for reference-based accuracy.
 
 ## Model lineup
 
@@ -229,7 +286,7 @@ Runtime, audio duration, device, precision and model metadata are saved separate
 7. Report model failures and unsupported languages instead of silently dropping them.
 8. Respect dataset licenses, privacy, consent and redistribution permissions.
 
-## Deep transcript review and benchmark — 14 November 2026
+## Detailed transcript audit — 14 November 2026
 
 The latest output batch contains **22 unique YouTube videos**, approximately **18.17 hours** of normalized Hindi audio and **43 latest non-empty transcript outputs**: 22 Whisper Small and 21 Vaani Hindi. Vaani failed to load its feature extractor on 3wlMq29K6TE.
 
@@ -304,3 +361,46 @@ SraVaani and Indic-Transcribe have no transcript outputs in this snapshot becaus
 ## License
 
 See [LICENSE](LICENSE). Each model/checkpoint and hosted service is also subject to its own license and usage terms.
+
+
+## Recommended next experiments
+
+The next comparison should test these candidates on the **same byte-identical audio segments and same human-verified references**:
+
+| Priority | Candidate | Why test it | Status in this repository |
+|---|---|---|---|
+| 1 | [SraVaani 1.0](https://huggingface.co/ARTPARK-IISc/SraVaani-1.0) | Indian-speech FastConformer; broad language/dialect coverage; published evaluation across multiple Indian datasets | Adapter exists; prior access attempts were blocked; no transcript result |
+| 2 | [Vaani Whisper-Small Hindi](https://huggingface.co/ARTPARK-IISc/whisper-small-vaani-hindi) | Hindi-specific fine-tune of Whisper Small; useful direct challenger | Inference completed on 21/22 latest videos |
+| 3 | [AI4Bharat IndicConformer](https://github.com/AI4Bharat/IndicConformerASR) | Open multilingual CTC/RNNT Indian-language baseline | Adapter exists; no completed result in current test batch |
+| 4 | [Sarvam Saaras v4](https://docs.sarvam.ai/api/api-guides-tutorials/models/saaras) | Strong hosted candidate with verbatim mode and keyterm prompting; test domain vocabulary and long-form batch support | Optional metered API; not evaluated |
+| 5 | Whisper Small / Medium / Large-v3 or Turbo | Establish whether larger multilingual Whisper checkpoints improve specialist Hindi speech | Small is the current measured baseline; larger variants need controlled runs |
+
+Published benchmarks are **not directly comparable across datasets**. For context only, the SraVaani model page publishes Hindi WER values on FLEURS and other test sets; Vaani's Hindi Whisper model card also publishes WER on several corpora. Those numbers must not be placed in the same leaderboard as BharatASR results unless audio, references, normalization and evaluation split are identical.
+
+### Religious-domain evaluation protocol
+
+1. Select representative 30–60 second clips from short explanations, long lectures, recitation/mantra, Q&A, music/noisy recordings and Sanskrit/Prakrit-heavy passages.
+2. Create a human-verified Devanagari reference by listening to the exact clip. Have specialist terminology and sacred syllables reviewed by a knowledgeable speaker.
+3. Store provenance, timestamp ranges, language variety, speaker/recording conditions, and annotator/reviewer notes. Keep copyrighted audio and captions out of Git unless redistribution is permitted.
+4. Run every model with identical audio, sample rate, channel count, chunking policy and decoding settings. Record exact model revision, library versions, hardware, precision, cold-start and warm inference times.
+5. Report normalized WER and CER, substitutions/deletions/insertions, plus domain-term accuracy as a separate metric. Publish raw and normalized scores; do not silently normalize away meaningful diacritics or sacred syllable differences.
+6. Manually inspect missing spans, repeated spans and chunk boundaries. Do not automatically remove repetitions: they may be real chants or audience responses.
+7. Keep local open-weight models and hosted API models in separate tables. Report API cost and network latency separately.
+
+### Suggested acceptance criteria before declaring an accuracy winner
+
+- At least 30 minutes of human-verified evaluation audio for the initial Hindi domain set, with coverage across multiple recordings and content types.
+- Identical test segments and a single reference per segment shared across every candidate.
+- Publish aggregate WER/CER and per-video scores, not only a few attractive examples.
+- Include confidence intervals or bootstrap intervals over segments when sample size permits.
+- Report model failures and unsupported cases; do not omit them from the accounting.
+- Have a second reviewer audit a subset, especially Sanskrit/Prakrit and mantra segments.
+
+## Current project status
+
+**Completed:** multi-backend framework, YouTube audio ingestion, timestamped model outputs, diagnostics, transcript review artifacts, 22-video Whisper/Vaani text-quality audit.
+
+**Not completed:** source-audio verification of every transcript, human-reference WER/CER, SraVaani/IndicConformer/Sarvam measured results, and a statistically defensible best-model claim.
+
+The project is therefore **not a concluded accuracy benchmark yet**. The defensible conclusion today is: *Vaani is the provisional text-readability choice for shorter Hindi explanatory audio among the two tested models; Whisper is the multilingual baseline; neither is validated for verbatim religious transcription.* Further experiments should target SraVaani first, then IndicConformer and a separate Sarvam Saaras v4 API track.
+
